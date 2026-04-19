@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="El Yousfi Mohamed — Full Stack Developer portfolio. Building premium web experiences with modern technologies." />
+  <meta name="theme-color" content="#050508" />
+  <title>El Yousfi Mohamed — Full Stack Developer</title>
+
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <!-- Video background preload hint -->
+
+  <!-- Devicons for tech brand icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <!-- ── CUSTOM CURSOR ──────────────────────── -->
+  <div id="cursor-dot" aria-hidden="true"></div>
+  <div id="cursor-ring" aria-hidden="true"></div>
+
+  <!-- ══════════════════════════════
+     NAVBAR
+══════════════════════════════ -->
+  <nav id="navbar" role="navigation" aria-label="Main navigation">
+    <!-- Solid 2px blue border layer perfectly tracing the shape -->
+    <div class="nav-border-wrapper"></div>
+
+    <!-- The glassmorphism background layer -->
+    <div class="nav-bg-wrapper"></div>
+
+    <!-- The seamless content layout on top -->
+    <div class="nav-content">
+      <div class="nav-side-left">
+        <a href="#hero" class="nav-logo">
+          <span class="nav-logo-dot"></span> EYM
+        </a>
+      </div>
+
+      <div class="nav-center-notch">
+        <ul class="nav-links">
+          <li><a href="#about" id="nav-about">About</a></li>
+          <li><a href="#skills" id="nav-skills">Skills</a></li>
+          <li><a href="#projects" id="nav-projects">Projects</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-side-right">
+        <a href="#contact" id="nav-contact" class="nav-cta">Let's Talk</a>
+      </div>
+    </div>
+
+    <!-- Contact Portal HUD Form (Hidden by default) -->
+    <div class="contact-portal-content">
+      <button id="portal-close" class="portal-close-btn" aria-label="Close Portal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 6L6 18M6 6l12 12"></path>
+        </svg>
+      </button>
+      <div class="hud-form-container">
+        <div class="hud-header">
+          <span class="hud-title">[ COMM-LINK ]</span>
+          <span class="hud-status">SYSTEM READY_</span>
+        </div>
+        <form class="cyber-form" id="cyber-contact-form">
+          <div class="cyber-input-wrapper">
+            <label>NAME</label>
+            <input type="text" name="name" required placeholder="Enter your name" />
+            <div class="hud-decor-hash">////</div>
+          </div>
+          <div class="cyber-input-wrapper">
+            <label>EMAIL</label>
+            <input type="email" name="email" required placeholder="Enter your email address" />
+            <div class="hud-decor-hash">////</div>
+          </div>
+          <div class="cyber-input-wrapper input-large">
+            <label>MESSAGE</label>
+            <textarea name="message" required rows="4" placeholder="How can I help you?"></textarea>
+            <div class="hud-decor-box"></div>
+          </div>
+          <button type="submit" class="cyber-submit-btn">
+            <span class="btn-text">INITIATE TRANSMISSION</span>
+            <span class="btn-glitch"></span>
+            <span class="btn-crosshair">+</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════
+     HERO
+══════════════════════════════ -->
+  <section id="hero" aria-label="Hero section">
+    <video id="hero-video" autoplay muted loop playsinline aria-hidden="true" preload="auto" poster="">
+      <source src="assets/video/Pre2.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay" aria-hidden="true"></div>
+
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        Available for Work
+      </div>
+
+      <h1 class="hero-name" aria-label="WELCOME TO MY WORLD">
+        <span class="hero-name-line">WELCOME TO MY</span>
+        <span class="hero-name-line">
+          <span class="name-gradient">WORLD</span>
+        </span>
+      </h1>
+
+      <p class="hero-role">
+        I build&nbsp;<span class="typed-text"></span><span class="cursor-blink" aria-hidden="true"></span>
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#projects" id="hero-cta-primary" class="btn-primary">
+          View My Work
+          <span aria-hidden="true">→</span>
+        </a>
+        <a href="#contact" id="hero-cta-secondary" class="btn-secondary">
+          Get in Touch
+          <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-scroll" aria-hidden="true">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+  </section>
+
+  <!-- ══════════════════════════════
+     MARQUEE
+══════════════════════════════ -->
+  <div class="marquee-section" aria-hidden="true">
+    <div class="marquee-track">
+      <!-- Set A -->
+      <span class="marquee-item">
+        <i class="devicon-react-original colored marquee-icon"></i>
+        <span class="marquee-text" style="--c:#61DAFB">React</span>
+      </span>
+      <span class="marquee-item">
+        <i class="devicon-vuejs-plain colored marquee-icon"></i>
+        <span class="marquee-text" style="--c:#42D392">Vue.js</span>
+      </span>
+      <span class="marquee-item">
+        <i class="devicon-nodejs-plain colored marquee-icon"></i>
+        <span class="marquee-text" style="--c:#6CCC55">Node.js</span>
+      </span>
+      <span class="marquee-item">
+        <i class="devicon-typescript-plain colored marquee-icon"></i>
+        <span class="marquee-text" style="--c:#3178C6">TypeScript</span>
+      </span>
+      <span class="marquee-item">
+        <i class="devicon-laravel-plain colored marquee-icon"></i>
+        <span class="marquee-text" style="--c:#FF2D20">Laravel</span>
+      </span>
+      <span class="marquee-item">
+        <i class="devicon-postgresql-plain colored marquee-icon"></i>
+        <span class="marquee-text" style="--c:#4169E1">PostgreSQL</span>
+      </span>
+      <span class="marquee-item">
+        <i class="devicon-docker-plain colored marquee-icon"></i>
+        <span class="marquee-text" style="--c:#2496ED">Docker</span>
+      </span>
+      <span class="marquee-item">
+        <i class="devicon-tailwindcss-plain colored marquee-icon"></i>
+        <span class="marquee-text" style="--c:#38BDF8">Tailwind</span>
+      </span>
+      <span class="marquee-item">
+        <i class="devicon-graphql-plain colored marquee-icon"></i>
+        <span class="marquee-text" style="--c:#E10098">GraphQL</span>
+      </span>
+      <span class="marquee-item">
+        <i class="devicon-nextjs-plain marquee-icon" style="color:#fff"></i>
+        <span class="marquee-text" style="--c:#ffffff">Next.js</span>
+      </span>
+      <span class="marquee-item">
+        <i class="devicon-mongodb-plain colored marquee-icon"></i>
+        <span class="marquee-text" style="--c:#4DB33D">MongoDB</span>
+      </span>
+      <span class="marquee-item">
+        <i class="devicon-amazonwebservices-plain-wordmark colored marquee-icon"></i>
+        <span class="marquee-text" style="--c:#FF9900">AWS</span>
+      </span>
+      <!-- Set B (duplicate for seamless loop) -->
+      <span class="marquee-item">
+        <i class="devicon-react-original colored marquee-icon"></i>
+        <span class="marquee-text" style="--c:#61DAFB">React</span>
+      </span>
+      <span class="marquee-item">
+        <i class="devicon-vuejs-plain colored marquee-icon"></i>
+        <span class="marquee-text" style="--c:#42D392">Vue.js</span>
+      </span>
+      <span class="marquee-item">
+        <i class="devicon-nodejs-plain colored marquee-icon"></i>
+        <span class="marquee-text" style="--c:#6CCC55">Node.js</span>
+      </span>
+      <span class="marquee-item">
+        <i class="devicon-typescript-plain colored marquee-icon"></i>
+        <span class="marquee-text" style="--c:#3178C6">TypeScript</span>
+      </span>
+      <span class="marquee-item">
+        <i class="devicon-laravel-plain colored marquee-icon"></i>
+        <span class="marquee-text" style="--c:#FF2D20">Laravel</span>
+      </span>
+      <span class="marquee-item">
+        <i class="devicon-postgresql-plain colored marquee-icon"></i>
+        <span class="marquee-text" style="--c:#4169E1">PostgreSQL</span>
+      </span>
+      <span class="marquee-item">
+        <i class="devicon-docker-plain colored marquee-icon"></i>
+        <span class="marquee-text" style="--c:#2496ED">Docker</span>
+      </span>
+      <span class="marquee-item">
+        <i class="devicon-tailwindcss-plain colored marquee-icon"></i>
+        <span class="marquee-text" style="--c:#38BDF8">Tailwind</span>
+      </span>
+      <span class="marquee-item">
+        <i class="devicon-graphql-plain colored marquee-icon"></i>
+        <span class="marquee-text" style="--c:#E10098">GraphQL</span>
+      </span>
+      <span class="marquee-item">
+        <i class="devicon-nextjs-plain marquee-icon" style="color:#fff"></i>
+        <span class="marquee-text" style="--c:#ffffff">Next.js</span>
+      </span>
+      <span class="marquee-item">
+        <i class="devicon-mongodb-plain colored marquee-icon"></i>
+        <span class="marquee-text" style="--c:#4DB33D">MongoDB</span>
+      </span>
+      <span class="marquee-item">
+        <i class="devicon-amazonwebservices-plain-wordmark colored marquee-icon"></i>
+        <span class="marquee-text" style="--c:#FF9900">AWS</span>
+      </span>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+     ABOUT
+══════════════════════════════ -->
+  <section id="about" class="section" aria-label="About me">
+    <div class="about-grid">
+
+      <!-- Visual -->
+      <div class="about-visual reveal-left" style="flex: 1.2;">
+        <div class="about-slider-wrap">
+          <div class="about-slider-images">
+            <img src="assets/images/webdev.png" class="slider-img active" alt="Web Development" loading="lazy" />
+            <img src="assets/images/uiux.png" class="slider-img" alt="UI/UX Design" loading="lazy" />
+            <img src="assets/images/ecommerce.png" class="slider-img" alt="E-Commerce App" loading="lazy" />
+          </div>
+          <div class="slider-controls">
+            <button class="slider-btn" id="sliderPrev">❮</button>
+            <div class="slider-dots">
+              <span class="slider-dot active" data-index="0"></span>
+              <span class="slider-dot" data-index="1"></span>
+              <span class="slider-dot" data-index="2"></span>
+            </div>
+            <button class="slider-btn" id="sliderNext">❯</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Text -->
+      <div class="about-text">
+        <div class="section-label reveal stagger-1">About Me</div>
+        <h2 class="section-title reveal stagger-2">
+          Crafting <span class="highlight">digital experiences</span><br>
+          that matter
+        </h2>
+
+        <div class="reveal stagger-3">
+          <p>
+            Hey, I'm <strong>El Yousfi Mohamed</strong> — a passionate full-stack developer
+            based in Morocco who loves turning complex problems into beautiful,
+            intuitive solutions.
+          </p>
+          <p>
+            I specialize in building scalable web applications from pixel-perfect
+            frontends to robust backend architectures. I care deeply about
+            <strong>clean code</strong>, <strong>great UX</strong>, and writing
+            software that genuinely helps people.
+          </p>
+          <p>
+            When I'm not coding, I'm exploring new design trends, experimenting
+            with emerging technologies, or contributing to open-source projects.
+          </p>
+        </div>
+
+        <div class="hero-buttons reveal stagger-4" style="justify-content: flex-start; margin-top: 32px;">
+          <a href="#projects" class="btn-primary" id="about-cta">See My Work →</a>
+          <a href="#contact" class="btn-secondary" id="about-contact">Contact Me ↗</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="glow-divider"></div>
+
+  <!-- ══════════════════════════════
+     SKILLS
+══════════════════════════════ -->
+  <section id="skills" class="section section-full" aria-label="Skills and technologies">
+    <div style="max-width:1400px;margin:0 auto;">
+      <div class="section-label reveal">Stack</div>
+      <h2 class="section-title reveal stagger-1">
+        Technologies I <span class="highlight">master</span>
+      </h2>
+      <p class="section-sub reveal stagger-2">
+        A curated toolkit for building modern, scalable, high-performance web products.
+      </p>
+
+      <div class="skills-grid">
+
+        <!-- Frontend -->
+        <div class="skill-category reveal stagger-1"
+          style="background: linear-gradient(to bottom, rgba(5,5,8,0.85), rgba(5,5,8,0.98)), url('https://images.unsplash.com/photo-1555099962-4199c345e5dd?auto=format&fit=crop&w=600&q=80') center/cover;">
+          <div class="skill-cat-header">
+            <span class="skill-cat-icon">⚛️</span>
+            <span class="skill-cat-title">Frontend</span>
+          </div>
+          <div class="skill-items">
+            <span class="skill-pill"><i class="devicon-react-original colored"></i> React</span>
+            <span class="skill-pill"><i class="devicon-vuejs-plain colored"></i> Vue.js</span>
+            <span class="skill-pill"><i class="devicon-nextjs-plain"></i> Next.js</span>
+            <span class="skill-pill"><i class="devicon-typescript-plain colored"></i> TypeScript</span>
+            <span class="skill-pill"><i class="devicon-tailwindcss-original colored"></i> Tailwind CSS</span>
+            <span class="skill-pill"><i class="devicon-framermotion-original"></i> Framer Motion</span>
+            <span class="skill-pill"><i class="devicon-threejs-original colored"></i> Three.js</span>
+            <span class="skill-pill"><i class="devicon-html5-plain colored"></i> HTML5 / CSS3</span>
+          </div>
+        </div>
+
+        <!-- Backend -->
+        <div class="skill-category reveal stagger-2"
+          style="background: linear-gradient(to bottom, rgba(5,5,8,0.85), rgba(5,5,8,0.98)), url('https://images.unsplash.com/photo-1623282033815-40b05d96c903?auto=format&fit=crop&w=600&q=80') center/cover;">
+          <div class="skill-cat-header">
+            <span class="skill-cat-icon">🛠️</span>
+            <span class="skill-cat-title">Backend</span>
+          </div>
+          <div class="skill-items">
+            <span class="skill-pill"><i class="devicon-nodejs-plain colored"></i> Node.js</span>
+            <span class="skill-pill"><i class="devicon-express-original"></i> Express</span>
+            <span class="skill-pill"><i class="devicon-laravel-plain colored"></i> Laravel</span>
+            <span class="skill-pill"><i class="devicon-php-plain colored"></i> PHP</span>
+            <span class="skill-pill"><i class="devicon-spring-plain colored"></i> REST APIs</span>
+            <span class="skill-pill"><i class="devicon-graphql-plain colored"></i> GraphQL</span>
+            <span class="skill-pill"><i class="devicon-socketio-original"></i> WebSockets</span>
+            <span class="skill-pill"><i class="devicon-oauth-plain colored"></i> JWT / OAuth</span>
+          </div>
+        </div>
+
+        <!-- Database -->
+        <div class="skill-category reveal stagger-3"
+          style="background: linear-gradient(to bottom, rgba(5,5,8,0.85), rgba(5,5,8,0.98)), url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80') center/cover;">
+          <div class="skill-cat-header">
+            <span class="skill-cat-icon">🗄️</span>
+            <span class="skill-cat-title">Database</span>
+          </div>
+          <div class="skill-items">
+            <span class="skill-pill"><i class="devicon-postgresql-plain colored"></i> PostgreSQL</span>
+            <span class="skill-pill"><i class="devicon-mysql-plain colored"></i> MySQL</span>
+            <span class="skill-pill"><i class="devicon-mongodb-plain colored"></i> MongoDB</span>
+            <span class="skill-pill"><i class="devicon-redis-plain colored"></i> Redis</span>
+            <span class="skill-pill"><i class="devicon-prisma-original"></i> Prisma</span>
+            <span class="skill-pill"><i class="devicon-laravel-plain colored"></i> Eloquent ORM</span>
+          </div>
+        </div>
+
+        <!-- DevOps -->
+        <div class="skill-category reveal stagger-4"
+          style="background: linear-gradient(to bottom, rgba(5,5,8,0.85), rgba(5,5,8,0.98)), url('https://images.unsplash.com/photo-1614064641913-6b1e60f54bbf?auto=format&fit=crop&w=600&q=80') center/cover;">
+          <div class="skill-cat-header">
+            <span class="skill-cat-icon">☁️</span>
+            <span class="skill-cat-title">DevOps & Tools</span>
+          </div>
+          <div class="skill-items">
+            <span class="skill-pill"><i class="devicon-docker-plain colored"></i> Docker</span>
+            <span class="skill-pill"><i class="devicon-git-plain colored"></i> Git / GitHub</span>
+            <span class="skill-pill"><i class="devicon-linux-plain"></i> Linux</span>
+            <span class="skill-pill"><i class="devicon-githubactions-plain colored"></i> CI/CD</span>
+            <span class="skill-pill"><i class="devicon-nginx-original colored"></i> Nginx</span>
+            <span class="skill-pill"><i class="devicon-amazonwebservices-plain-wordmark colored"></i> AWS</span>
+            <span class="skill-pill"><i class="devicon-vercel-original"></i> Vercel</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════
+     PROJECTS
+══════════════════════════════ -->
+  <section id="projects" class="section section-full" aria-label="Projects">
+    <div style="max-width:1400px;margin:0 auto;">
+
+      <div class="projects-header">
+        <div>
+          <div class="section-label reveal">Work</div>
+          <h2 class="section-title reveal stagger-1">
+            Selected <span class="highlight">Projects</span>
+          </h2>
+        </div>
+        <p class="section-sub reveal stagger-2" style="max-width:360px; text-align:right;">
+          More projects are on the way — check back soon or reach out to collaborate.
+        </p>
+      </div>
+
+      <div class="projects-carousel-container">
+        <!-- The spotlight beam -->
+        <div class="active-glow" id="carousel-glow"></div>
+
+        <div class="carousel-track" id="project-track">
+
+          <!-- Card 1 — Schedio -->
+          <div class="project-card reveal" id="project-schedio" data-index="0" style="border-top: 2px solid #0EA5D1;">
+            <div
+              style="background:#f0f4f8; border-bottom: 1px solid var(--glass-border); border-radius: 14px 14px 0 0; overflow:hidden; aspect-ratio: 16/11;">
+              <img src="assets/images/image.png" alt="Schedio" loading="lazy"
+                style="width:100%; height:100%; display:block; object-fit:contain;" />
+            </div>
+            <div class="project-card-body" style="gap:16px;">
+              <div class="project-tags" style="margin:0;">
+                <span class="project-tag"
+                  style="background:rgba(14,165,209,0.18); color:#0EA5D1; border-color:rgba(14,165,209,0.35);">Featured</span>
+                <span class="project-tag">School Admin</span>
+              </div>
+              <div>
+                <h3 class="project-title" style="margin:0 0 4px; font-size:1.6rem;">Schedio</h3>
+                <p
+                  style="margin:0; font-size:0.82rem; color:var(--text-muted); text-transform:uppercase; font-weight:500;">
+                  Pedagogical Planning &amp; Timetable</p>
+              </div>
+              <p class="project-desc" style="margin:0; line-height:1.7;">
+                <strong>Schedio</strong> is a full-stack school administration and timetable management platform built
+                with <strong>React, Vite, Laravel, and MySQL</strong>. It helps training centers manage poles, sectors,
+                programs, groups, trainers, rooms, module assignments, academic calendars, and weekly timetables from
+                one <strong>centralized system</strong>. The app includes role-based dashboards, timetable validation
+                workflows, trainer availability/change requests, conflict checks, and module progress tracking.
+              </p>
+              <div style="display:flex; flex-wrap:wrap; gap:8px;">
+                <span class="project-tag"
+                  style="background:transparent; border:1px solid var(--glass-border); color:var(--text-muted); text-transform:none;">🗓
+                  Timetable Builder</span>
+                <span class="project-tag"
+                  style="background:transparent; border:1px solid var(--glass-border); color:var(--text-muted); text-transform:none;">🔐
+                  Role-Based Access</span>
+              </div>
+              <div class="project-footer">
+                <div class="project-stack">
+                  <div class="stack-dot" title="React">Re</div>
+                  <div class="stack-dot" title="Laravel">La</div>
+                  <div class="stack-dot" title="MySQL">My</div>
+                </div>
+                <button class="project-arrow" style="color:#0EA5D1;" aria-label="Next Project">→</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 — Recipe & Meal Planner -->
+          <div class="project-card reveal" id="project-meal-planner" data-index="1"
+            style="border-top:2px solid #f97316;">
+            <div
+              style="position:relative;overflow:hidden;border-bottom:1px solid var(--glass-border);border-radius:14px 14px 0 0;background:#f8f8f6; aspect-ratio: 16/11;">
+              <div class="project-gallery" data-gallery-interval="3600" aria-label="Recipe and Meal Planner screenshots">
+                <img class="project-gallery-image active" src="assets/images/recipe-meal-planer/image.png"
+                  alt="Recipe collection dashboard" loading="lazy" />
+                <img class="project-gallery-image" src="assets/images/recipe-meal-planer/image copy.png"
+                  alt="Weekly meal plan calendar" loading="lazy" />
+                <img class="project-gallery-image" src="assets/images/recipe-meal-planer/image copy 2.png"
+                  alt="Generated grocery list view" loading="lazy" />
+                <div class="project-gallery-controls" aria-hidden="true">
+                  <button class="project-gallery-dot active" type="button" aria-label="Show recipe collection screenshot"></button>
+                  <button class="project-gallery-dot" type="button" aria-label="Show meal planner screenshot"></button>
+                  <button class="project-gallery-dot" type="button" aria-label="Show grocery list screenshot"></button>
+                </div>
+              </div>
+            </div>
+            <div class="project-card-body" style="gap:14px;">
+              <div class="project-tags">
+                <span class="project-tag"
+                  style="background:rgba(249,115,22,0.15);color:#f97316;border-color:rgba(249,115,22,0.3);">Full
+                  Stack</span>
+                <span class="project-tag">Web App</span>
+              </div>
+              <h3 class="project-title">Recipe &amp; Meal Planner</h3>
+              <p class="project-desc">
+                A personal cookbook meets weekly planner. Build your recipe collection with full details — ingredients,
+                steps, cook time &amp; servings — then plan your <strong>week at a glance</strong>. When ready, the app
+                generates a clean <strong>consolidated grocery list</strong> so you buy exactly what you need.
+              </p>
+              <div class="project-footer">
+                <div class="project-stack">
+                  <div class="stack-dot" title="React">Re</div>
+                  <div class="stack-dot" title="Node.js">Nd</div>
+                </div>
+                <button class="project-arrow" style="color:#f97316;" aria-label="Next Project">→</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 — DevPulse -->
+          <div class="project-card reveal" id="project-devpulse" data-index="2" style="border-top:2px solid #10b981;">
+            <div
+              style="position:relative; overflow:hidden; border-bottom:1px solid var(--glass-border); border-radius:14px 14px 0 0; background:#050508; aspect-ratio: 16/11;">
+              <div class="project-gallery" data-gallery-interval="4000" aria-label="DevPulse screenshots">
+                <img class="project-gallery-image active" src="assets/images/DevPulse/image1.png"
+                  alt="DevPulse overview dashboard" loading="lazy" />
+                <img class="project-gallery-image" src="assets/images/DevPulse/image2.png"
+                  alt="DevPulse monitoring analytics" loading="lazy" />
+                <img class="project-gallery-image" src="assets/images/DevPulse/image3.png"
+                  alt="DevPulse incident details" loading="lazy" />
+                <div class="project-gallery-controls" aria-hidden="true">
+                  <button class="project-gallery-dot active" type="button" aria-label="Show DevPulse dashboard screenshot"></button>
+                  <button class="project-gallery-dot" type="button" aria-label="Show DevPulse analytics screenshot"></button>
+                  <button class="project-gallery-dot" type="button" aria-label="Show DevPulse incident screenshot"></button>
+                </div>
+              </div>
+            </div>
+            <div class="project-card-body" style="gap:16px;">
+              <div class="project-tags">
+                <span class="project-tag"
+                  style="background:rgba(16,185,129,0.18); color:#10b981; border-color:rgba(16,185,129,0.35);">Full
+                  Stack SaaS</span>
+                <span class="project-tag">Next.js</span>
+              </div>
+              <h3 class="project-title" style="font-size:1.6rem;">DevPulse</h3>
+              <p class="project-desc" style="margin:0; line-height:1.6; font-size: 0.92rem;">
+                DevPulse is a full-stack uptime monitoring platform I built for developers and small teams. It lets
+                users track websites and APIs, view response-time history, detect outages, and share public status
+                pages. The app includes a protected dashboard, incident tracking, manual and scheduled health checks,
+                and email alert support for downtime and recovery.
+              </p>
+              <p class="project-desc" style="margin:8px 0 0; line-height:1.6; font-size: 0.85rem; opacity: 0.8;">
+                I built it with Next.js, TypeScript, Tailwind CSS, Prisma, and PostgreSQL, with Auth.js for
+                authentication, QStash for scheduled checks, Resend for alerts, and Recharts for monitoring visuals. The
+                project was designed to demonstrate production-style engineering: secure server-side monitoring,
+                database design, background job workflows, and resilient failure handling.
+              </p>
+              <div class="project-footer">
+                <div class="project-stack">
+                  <div class="stack-dot" title="Next.js">Nx</div>
+                  <div class="stack-dot" title="Prisma">Pr</div>
+                  <div class="stack-dot" title="PostgreSQL">Pg</div>
+                </div>
+                <button class="project-arrow" style="color:#10b981;" aria-label="Next Project">→</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Navigation buttons -->
+        <div class="carousel-nav">
+          <button class="carousel-btn" id="carousel-prev" aria-label="Previous Project">← PREV</button>
+          <button class="carousel-btn" id="carousel-next" aria-label="Next Project">NEXT →</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="glow-divider" style="margin: 0 clamp(24px,8vw,120px)"></div>
+
+  <!-- ══════════════════════════════
+     CONTACT
+══════════════════════════════ -->
+  <section id="contact" class="section" aria-label="Contact">
+    <div style="max-width:700px;margin:0 auto;">
+      <div class="section-label reveal" style="justify-content:center;">Contact</div>
+      <h2 class="section-title reveal stagger-1" style="text-align:center;">
+        Let's build something<br><span class="highlight">great together</span>
+      </h2>
+      <p class="section-sub reveal stagger-2" style="text-align:center;margin:0 auto 40px;">
+        Have a project in mind, a collaboration idea, or just want to say hi?
+        My inbox is always open.
+      </p>
+
+      <div style="text-align:center;" class="reveal stagger-3">
+        <a href="mailto:elyousfimohamed263@gmail.com" class="contact-email" id="contact-email">
+          <span>✉</span> elyousfimohamed263@gmail.com
+        </a>
+      </div>
+
+      <div class="social-links reveal stagger-4">
+        <a href="https://github.com/mohamed-elyousfi" target="_blank" rel="noopener noreferrer" id="social-github" class="social-link">
+          <span class="social-icon">⌥</span> GitHub
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════
+     FOOTER
+══════════════════════════════ -->
+  <footer role="contentinfo">
+    <span class="footer-logo">EYM</span>
+    <p>© 2026 El Yousfi Mohamed. All rights reserved.</p>
+    <p>Built with HTML, CSS &amp; JavaScript</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js" defer></script>
+  <script type="application/json" id="legacy-gallery-script-disabled">
+    // ── MEAL PLANNER IMAGE SLIDER ───────────────
+    (function () {
+      const slides = [0, 1, 2].map(i => document.getElementById('meal-slide-' + i));
+      const dots = document.querySelectorAll('.meal-dot');
+      if (!slides[0]) return;
+      let current = 0;
+
+      function goTo(n) {
+        slides[current].style.opacity = '0';
+        dots[current].style.background = 'rgba(255,255,255,0.4)';
+        dots[current].style.transform = 'scale(1)';
+        current = (n + slides.length) % slides.length;
+        slides[current].style.opacity = '1';
+        dots[current].style.background = '#f97316';
+        dots[current].style.transform = 'scale(1.3)';
+      }
+
+      dots.forEach(d => d.addEventListener('click', () => goTo(+d.dataset.i)));
+      setInterval(() => goTo(current + 1), 3500);
+    })();
+
+    // ── DEVPULSE IMAGE SLIDER ───────────────
+    (function () {
+      const slides = [0, 1, 2].map(i => document.getElementById('devpulse-slide-' + i));
+      const dots = document.querySelectorAll('.devpulse-dot');
+      if (!slides[0]) return;
+      let current = 0;
+
+      function goTo(n) {
+        slides[current].style.opacity = '0';
+        dots[current].style.background = 'rgba(255,255,255,0.4)';
+        dots[current].style.transform = 'scale(1)';
+        current = (n + slides.length) % slides.length;
+        slides[current].style.opacity = '1';
+        dots[current].style.background = '#10b981';
+        dots[current].style.transform = 'scale(1.3)';
+      }
+
+      dots.forEach(d => d.addEventListener('click', () => goTo(+d.dataset.i)));
+      setInterval(() => goTo(current + 1), 3500);
+    })();
+  </script>
+
+</body>
+
+</html>
