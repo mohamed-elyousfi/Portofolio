@@ -36,6 +36,15 @@
 
   --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --nav-h: 80px;
+
+  /*
+    Navbar notch geometry. --notch-w is the half-width of the notch at the top
+    bar, --notch-b the half-width where it drops. Both shrink on narrow screens
+    so the same shape works everywhere instead of swapping in a second layout.
+  */
+  --notch-w: 200px;
+  --notch-b: 170px;
+  --notch-drop: 57px;
 }
 
 /* ==========================================
@@ -61,53 +70,12 @@ body {
   background-color: var(--bg);
   color: var(--text);
   overflow-x: hidden;
-  cursor: none;
   line-height: 1.6;
 }
 
 ::selection {
   background: rgba(192, 132, 252, 0.3);
   color: #fff;
-}
-
-/* ==========================================
-   CUSTOM CURSOR
-   ========================================== */
-#cursor-dot {
-  position: fixed;
-  width: 8px;
-  height: 8px;
-  background: var(--purple);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: width 0.2s var(--ease-apple), height 0.2s var(--ease-apple), background 0.2s;
-  box-shadow: var(--glow-sm);
-  top: 0;
-  left: 0;
-}
-
-#cursor-ring {
-  position: fixed;
-  width: 40px;
-  height: 40px;
-  border: 1.5px solid rgba(192, 132, 252, 0.6);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9998;
-  transform: translate(-50%, -50%);
-  transition: width 0.35s var(--ease-apple), height 0.35s var(--ease-apple),
-    border-color 0.35s, background 0.35s;
-  top: 0;
-  left: 0;
-}
-
-#cursor-ring.hovering {
-  width: 60px;
-  height: 60px;
-  background: rgba(192, 132, 252, 0.08);
-  border-color: var(--purple);
 }
 
 /* ==========================================
@@ -157,19 +125,19 @@ body {
       0 0,
       100% 0,
       100% 10px,
-      calc(50% + 200px) 10px,
-      calc(50% + 170px) 57px,
-      calc(50% - 170px) 57px,
-      calc(50% - 200px) 10px,
+      calc(50% + var(--notch-w)) 10px,
+      calc(50% + var(--notch-b)) var(--notch-drop),
+      calc(50% - var(--notch-b)) var(--notch-drop),
+      calc(50% - var(--notch-w)) 10px,
       0 10px,
       0 0,
 
       /* Inner Edge (Counter-Clockwise to hollow out the shape) */
       0 8px,
-      calc(50% - 198px) 8px,
-      calc(50% - 168px) 55px,
-      calc(50% + 168px) 55px,
-      calc(50% + 198px) 8px,
+      calc(50% - var(--notch-w) + 2px) 8px,
+      calc(50% - var(--notch-b) + 2px) calc(var(--notch-drop) - 2px),
+      calc(50% + var(--notch-b) - 2px) calc(var(--notch-drop) - 2px),
+      calc(50% + var(--notch-w) - 2px) 8px,
       100% 8px,
       100% 0,
       0 0);
@@ -188,10 +156,10 @@ body {
   clip-path: polygon(0 0,
       100% 0,
       100% 8px,
-      calc(50% + 198px) 8px,
-      calc(50% + 168px) 55px,
-      calc(50% - 168px) 55px,
-      calc(50% - 198px) 8px,
+      calc(50% + var(--notch-w) - 2px) 8px,
+      calc(50% + var(--notch-b) - 2px) calc(var(--notch-drop) - 2px),
+      calc(50% - var(--notch-b) + 2px) calc(var(--notch-drop) - 2px),
+      calc(50% - var(--notch-w) + 2px) 8px,
       0 8px);
   transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
 }
@@ -315,9 +283,9 @@ body.portal-open .nav-content {
 
 /* Fits exactly inside the slimmed central dropped area */
 .nav-center-notch {
-  width: 396px;
-  /* Exactly matches the calc(50% +/- 198px) boundaries */
-  height: 55px;
+  width: calc((var(--notch-w) - 2px) * 2);
+  /* Exactly matches the notch clip-path boundaries */
+  height: calc(var(--notch-drop) - 2px);
   /* Tightly hugs the nav links now! */
   display: flex;
   align-items: center;
@@ -400,7 +368,10 @@ body.portal-open .nav-content {
 
 .nav-cta {
   position: relative;
-  background: rgba(192, 132, 252, 0.1);
+  /* Near-opaque: headings scrolling under the fixed nav used to show through it */
+  background: rgba(14, 10, 24, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border: 1px solid var(--purple);
   color: var(--purple) !important;
   padding: 10px 24px;
@@ -412,6 +383,7 @@ body.portal-open .nav-content {
   text-decoration: none;
   transition: all 0.3s var(--ease-apple);
   overflow: hidden;
+  white-space: nowrap;
   clip-path: polygon(10% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 40%);
   pointer-events: auto;
 }
@@ -488,34 +460,6 @@ body.portal-open .nav-content {
   position: relative;
   z-index: 2;
   max-width: 900px;
-}
-
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 18px;
-  border-radius: 9999px;
-  border: 1px solid var(--glass-border);
-  background: var(--glass-bg);
-  backdrop-filter: blur(12px);
-  font-size: 0.78rem;
-  font-weight: 500;
-  color: var(--purple);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  margin-bottom: 28px;
-  opacity: 0;
-  animation: fadeUp 0.8s var(--ease-out) 0.2s forwards;
-}
-
-.hero-badge-dot {
-  width: 6px;
-  height: 6px;
-  background: var(--purple-bright);
-  border-radius: 50%;
-  box-shadow: 0 0 6px var(--purple-bright);
-  animation: pulse-dot 1.5s ease-in-out infinite;
 }
 
 .hero-name {
@@ -627,7 +571,7 @@ body.portal-open .nav-content {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  cursor: none;
+  cursor: pointer;
   z-index: 1;
   overflow: hidden;
   transition: all 0.3s var(--ease-apple);
@@ -691,7 +635,7 @@ body.portal-open .nav-content {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  cursor: none;
+  cursor: pointer;
   z-index: 1;
   overflow: hidden;
   transition: all 0.3s var(--ease-apple);
@@ -746,6 +690,13 @@ body.portal-open .nav-content {
   animation: fadeUp 1s var(--ease-out) 1.5s forwards;
 }
 
+/* On short viewports the indicator lands on top of the hero buttons */
+@media (max-height: 780px) {
+  .hero-scroll {
+    display: none;
+  }
+}
+
 .hero-scroll span {
   font-size: 0.72rem;
   font-weight: 500;
@@ -784,6 +735,15 @@ body.portal-open .nav-content {
   padding: clamp(80px, 10vw, 140px) clamp(24px, 8vw, 120px);
   max-width: 1400px;
   margin: 0 auto;
+}
+
+/* Keep anchored headings clear of the fixed navbar */
+#hero,
+#about,
+#skills,
+#projects,
+#contact {
+  scroll-margin-top: calc(var(--nav-h) + 24px);
 }
 
 .section-full {
@@ -1316,36 +1276,48 @@ body.portal-open .nav-content {
   border-color: rgba(16, 185, 129, 0.4);
 }
 
+/*
+  Side cards sit far enough out to frame the active card but are pushed by a
+  viewport-relative distance so their body text never bleeds off both edges of
+  the screen, and are dimmed/blurred so they read as context, not as content.
+*/
 .carousel-track .project-card.prev {
-  opacity: 0.6;
+  opacity: 0.22;
   visibility: visible;
-  transform: translate3d(-560px, 0, -320px) rotateY(38deg);
+  transform: translate3d(min(-460px, -34vw), 0, -320px) rotateY(38deg);
   z-index: 10;
-  filter: grayscale(0.4) brightness(0.7);
+  filter: grayscale(0.7) blur(3px) brightness(0.5);
 }
 
 .carousel-track .project-card.next {
-  opacity: 0.6;
+  opacity: 0.22;
   visibility: visible;
-  transform: translate3d(560px, 0, -320px) rotateY(-38deg);
+  transform: translate3d(max(460px, 34vw), 0, -320px) rotateY(-38deg);
   z-index: 10;
-  filter: grayscale(0.4) brightness(0.7);
+  filter: grayscale(0.7) blur(3px) brightness(0.5);
 }
 
 .carousel-track .project-card.far-prev {
-  opacity: 0.25;
+  opacity: 0.14;
   visibility: visible;
-  transform: translate3d(-950px, 0, -600px) rotateY(58deg);
+  transform: translate3d(min(-800px, -58vw), 0, -600px) rotateY(58deg);
   z-index: 5;
-  filter: grayscale(0.8) blur(2px) brightness(0.5);
+  filter: grayscale(0.9) blur(3px) brightness(0.4);
 }
 
 .carousel-track .project-card.far-next {
-  opacity: 0.25;
+  opacity: 0.14;
   visibility: visible;
-  transform: translate3d(950px, 0, -600px) rotateY(-58deg);
+  transform: translate3d(max(800px, 58vw), 0, -600px) rotateY(-58deg);
   z-index: 5;
-  filter: grayscale(0.8) blur(2px) brightness(0.5);
+  filter: grayscale(0.9) blur(3px) brightness(0.4);
+}
+
+/* Only the active card is interactive — side cards are advanced via the nav buttons */
+.carousel-track .project-card.far-prev,
+.carousel-track .project-card.far-next,
+.carousel-track .project-card.hidden {
+  pointer-events: none;
 }
 
 /* Hide by default for others */
@@ -1457,11 +1429,11 @@ body.portal-open .nav-content {
 /* Responsive adjustment for perspective and distance */
 @media (max-width: 1000px) {
   .carousel-track .project-card.prev {
-    transform: translate3d(-380px, 0, -200px) rotateY(35deg);
+    transform: translate3d(-38vw, 0, -200px) rotateY(35deg);
   }
 
   .carousel-track .project-card.next {
-    transform: translate3d(380px, 0, -200px) rotateY(-35deg);
+    transform: translate3d(38vw, 0, -200px) rotateY(-35deg);
   }
 
   .carousel-track .project-card.far-prev,
@@ -1480,7 +1452,7 @@ body.portal-open .nav-content {
   overflow: hidden;
   border: 1px solid var(--glass-border);
   background: var(--bg-3);
-  cursor: none;
+  cursor: pointer;
   transition: border-color 0.35s, box-shadow 0.35s, transform 0.35s var(--ease-spring);
 }
 
@@ -1781,6 +1753,12 @@ body.portal-open .nav-content {
   animation: scanning-beam 1.2s linear infinite;
 }
 
+button.social-link {
+  cursor: pointer;
+  appearance: none;
+  line-height: inherit;
+}
+
 .social-icon {
   font-size: 1rem;
 }
@@ -1948,108 +1926,62 @@ footer .footer-logo {
 /* ==========================================
    RESPONSIVE
    ========================================== */
+/*
+  The navbar keeps the same notched shape at every width — only the notch
+  geometry and the type scale down, so mobile is the desktop bar, not a
+  different component.
+*/
 @media (max-width: 1100px) {
   :root {
-    --nav-h: 128px;
-  }
-
-  #navbar {
-    height: auto;
-    padding: 12px clamp(14px, 3vw, 24px) 0;
-  }
-
-  body.portal-open #navbar {
-    padding: 0;
-  }
-
-  .nav-border-wrapper,
-  .nav-bg-wrapper {
-    display: none;
-  }
-
-  body.portal-open .nav-border-wrapper,
-  body.portal-open .nav-bg-wrapper {
-    display: block;
-  }
-
-  .nav-content {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    grid-template-areas:
-      'logo cta'
-      'links links';
-    align-items: center;
-    gap: 12px;
-    padding: 14px 16px 16px;
-    background: rgba(10, 10, 14, 0.72);
-    border: 1px solid rgba(14, 165, 209, 0.28);
-    border-radius: 24px;
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
-  }
-
-  #navbar.scrolled .nav-content {
-    background: rgba(10, 10, 14, 0.84);
-  }
-
-  body.portal-open .nav-content {
-    background: transparent;
-    border: none;
-    box-shadow: none;
-  }
-
-  .nav-side-left,
-  .nav-side-right {
-    height: auto;
-    padding-top: 0;
-    align-items: center;
+    --notch-w: 170px;
+    --notch-b: 145px;
   }
 
   .nav-side-left {
-    grid-area: logo;
-    padding-left: 0;
+    padding-left: 18px;
   }
 
   .nav-side-right {
-    grid-area: cta;
-    padding-right: 0;
-  }
-
-  .nav-center-notch {
-    grid-area: links;
-    width: 100%;
-    height: auto;
-    justify-content: flex-start;
+    padding-right: 18px;
   }
 
   .nav-links {
-    width: 100%;
-    justify-content: flex-start;
-    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .nav-links a {
+    font-size: 0.8rem;
+  }
+
+  .nav-cta {
+    padding: 9px 16px;
+    font-size: 0.7rem;
+    letter-spacing: 1.2px;
+  }
+}
+
+@media (max-width: 820px) {
+  :root {
+    --notch-w: 148px;
+    --notch-b: 126px;
+  }
+
+  .nav-logo {
+    font-size: 1rem;
+  }
+
+  .nav-links {
     gap: 10px;
   }
 
   .nav-links a {
-    padding: 8px 12px;
-    border: 1px solid rgba(96, 165, 250, 0.2);
-    border-radius: 999px;
-    background: rgba(59, 130, 246, 0.08);
-    font-size: 0.78rem;
-  }
-
-  .nav-links a::after {
-    display: none;
+    font-size: 0.74rem;
   }
 
   .nav-cta {
-    padding: 10px 18px;
-    font-size: 0.72rem;
-    letter-spacing: 1.2px;
-  }
-
-  #hero {
-    padding-top: calc(var(--nav-h) + 24px);
+    padding: 8px 13px;
+    font-size: 0.64rem;
+    letter-spacing: 0.8px;
   }
 }
 
@@ -2107,6 +2039,11 @@ footer .footer-logo {
   }
 
   .projects-carousel-container {
+    /*
+      The base rule is a flex row. Left as flex, the static nav becomes a second
+      flex item and sits next to the card instead of under it, squeezing the card.
+    */
+    display: block;
     height: auto;
     margin: 64px 0 0;
     padding-top: 0;
@@ -2167,16 +2104,35 @@ footer .footer-logo {
 
 @media (max-width: 600px) {
   :root {
-    --nav-h: 152px;
+    --notch-w: 100px;
+    --notch-b: 84px;
   }
 
-  #navbar {
-    padding-inline: 12px;
+  .section {
+    padding: clamp(56px, 12vw, 80px) 20px;
   }
 
-  .nav-content {
-    padding: 12px;
-    border-radius: 20px;
+  .section-full {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .nav-side-left {
+    padding-left: 12px;
+  }
+
+  .nav-side-right {
+    padding-right: 12px;
+  }
+
+  .nav-logo {
+    font-size: 0.92rem;
+    gap: 7px;
+  }
+
+  .nav-logo-dot {
+    width: 6px;
+    height: 6px;
   }
 
   .nav-links {
@@ -2184,8 +2140,22 @@ footer .footer-logo {
   }
 
   .nav-links a {
-    padding: 6px 10px;
-    font-size: 0.74rem;
+    font-size: 0.68rem;
+  }
+
+  .nav-cta {
+    padding: 7px 10px;
+    font-size: 0.58rem;
+    letter-spacing: 0.5px;
+  }
+
+  .hero-name {
+    font-size: clamp(2rem, 9.5vw, 3rem);
+  }
+
+  .hero-role {
+    font-size: 1rem;
+    margin-bottom: 28px;
   }
 
   .hero-buttons {
@@ -2202,8 +2172,37 @@ footer .footer-logo {
     justify-content: center;
   }
 
+  .btn-primary,
+  .btn-secondary {
+    padding: 14px 24px;
+    font-size: 0.82rem;
+    letter-spacing: 1.5px;
+  }
+
   .hero-scroll {
     display: none;
+  }
+
+  /* Marquee: 2rem icons + 1.25rem text overflow badly at phone widths */
+  .marquee-section {
+    padding: 18px 0;
+  }
+
+  .marquee-track {
+    gap: 28px;
+  }
+
+  .marquee-icon {
+    font-size: 1.4rem;
+  }
+
+  .marquee-text {
+    font-size: 0.95rem;
+  }
+
+  .marquee-item {
+    gap: 10px;
+    padding: 4px 6px;
   }
 
   .about-stats {
@@ -2229,6 +2228,16 @@ footer .footer-logo {
     padding: 20px;
   }
 
+  /* Cards carry inline font sizes tuned for the desktop carousel */
+  .project-card .project-title {
+    font-size: 1.15rem !important;
+  }
+
+  .project-card .project-desc {
+    font-size: 0.84rem !important;
+    line-height: 1.65 !important;
+  }
+
   .project-footer {
     flex-direction: column;
     align-items: flex-start;
@@ -2248,14 +2257,63 @@ footer .footer-logo {
     text-align: center;
   }
 
+  /*
+    The pod is drawn with vw/vh clip-paths. At phone widths 10vw is only ~39px,
+    so the default pod was narrower than the form inside it. Widen the pod and
+    inset the content so the form always sits within the frame.
+  */
+  body.portal-open .nav-bg-wrapper {
+    clip-path: polygon(2vw 6vh,
+        98vw 6vh,
+        100vw 9vh,
+        100vw 95vh,
+        98vw 98vh,
+        2vw 98vh,
+        0 95vh,
+        0 9vh);
+  }
+
+  body.portal-open .nav-border-wrapper {
+    clip-path: polygon(2vw calc(6vh - 2px),
+        98vw calc(6vh - 2px),
+        calc(100vw - 1px) 9vh,
+        calc(100vw - 1px) 95vh,
+        98vw calc(98vh + 2px),
+        2vw calc(98vh + 2px),
+        1px 95vh,
+        1px 9vh,
+        2vw calc(6vh - 2px),
+
+        /* Inner CCW */
+        1px 9vh,
+        1px 95vh,
+        2vw 98vh,
+        98vw 98vh,
+        calc(100vw - 1px) 95vh,
+        calc(100vw - 1px) 9vh,
+        98vw 6vh,
+        2vw 6vh);
+  }
+
   .contact-portal-content {
-    top: 88px;
-    left: 12px;
-    right: 12px;
-    bottom: 12px;
+    top: 8vh;
+    left: 20px;
+    right: 20px;
+    bottom: 4vh;
     justify-content: flex-start;
-    padding-top: 40px;
+    padding-top: 52px;
     overflow-y: auto;
+  }
+
+  .portal-close-btn {
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+  }
+
+  .hud-form-container {
+    width: 100%;
   }
 
   .hud-header {
@@ -2278,30 +2336,61 @@ footer .footer-logo {
   }
 
   .cyber-submit-btn {
-    font-size: 0.92rem;
-    letter-spacing: 2px;
+    font-size: 0.88rem;
+    letter-spacing: 1.5px;
+    padding: 16px 12px;
   }
 }
 
-@media (hover: none), (pointer: coarse) {
-  body {
-    cursor: auto;
+/* Very small phones (iPhone SE and similar) */
+@media (max-width: 400px) {
+  :root {
+    --notch-w: 90px;
+    --notch-b: 76px;
   }
 
-  #cursor-dot,
-  #cursor-ring {
-    display: none;
+  .section,
+  .section-full {
+    padding-left: 16px;
+    padding-right: 16px;
   }
 
-  a,
-  button,
-  .btn-primary,
-  .btn-secondary,
-  .project-card,
-  .skill-pill,
-  .social-link,
-  .project-gallery-dot {
-    cursor: pointer;
+  .hero-name {
+    font-size: 1.85rem;
+  }
+
+  .nav-side-left {
+    padding-left: 8px;
+  }
+
+  .nav-side-right {
+    padding-right: 8px;
+  }
+
+  .nav-logo {
+    font-size: 0.85rem;
+  }
+
+  .nav-links {
+    gap: 6px;
+  }
+
+  .nav-links a {
+    font-size: 0.63rem;
+  }
+
+  .nav-cta {
+    padding: 6px 8px;
+    font-size: 0.52rem;
+    letter-spacing: 0.3px;
+  }
+
+  .contact-email {
+    font-size: 1rem;
+  }
+
+  .marquee-text {
+    font-size: 0.85rem;
   }
 }
 
@@ -2492,4 +2581,76 @@ body.portal-open .contact-portal-content {
   right: 20px;
   color: #e879f9;
   font-weight: 400;
+}
+
+.form-status {
+  min-height: 1.2em;
+  font-size: 0.78rem;
+  letter-spacing: 1px;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+.form-status.is-success {
+  color: #42D392;
+}
+
+.form-status.is-error {
+  color: #ef4444;
+}
+
+/* ==========================================
+   REDUCED MOTION
+   Last in the file so it overrides everything above.
+   ========================================== */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Elements that animate themselves into view must not stay invisible */
+  .hero-name,
+  .hero-role,
+  .hero-buttons,
+  .hero-scroll,
+  .reveal,
+  .reveal-left,
+  .reveal-right {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+
+  .marquee-track {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  /* The duplicated marquee set is only there for the scroll loop */
+  .marquee-track .marquee-item:nth-child(n + 13) {
+    display: none;
+  }
+
+  .carousel-track .project-card {
+    transition: none !important;
+  }
+
+  .active-glow {
+    display: none;
+  }
+
+  .scroll-line,
+  .nav-logo-dot,
+  .cursor-blink {
+    animation: none !important;
+  }
 }
