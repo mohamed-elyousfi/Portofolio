@@ -32,6 +32,9 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Hero mockup is the LCP element — fetch it alongside the stylesheet -->
+  <link rel="preload" as="image" href="assets/images/mockups/devpulse.png" fetchpriority="high" />
   <link
     href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
     rel="stylesheet" />
@@ -42,68 +45,66 @@
 <body>
   <a href="#main" class="skip-link">Skip to content</a>
 
+  <!--
+    Card glyphs: Phosphor Fill v2.1.1 (MIT) — solid, 256 grid.
+    UI icons (arrow, mail, check): Lucide v1.28.0 (ISC) — 24 grid, 2px stroke.
+    Both are free for commercial use.
+    https://phosphoricons.com  ·  https://lucide.dev
+  -->
   <svg class="sprite" aria-hidden="true" focusable="false">
     <defs>
-      <symbol id="i-arrow" viewBox="0 0 16 16">
-        <path d="M3 13L13 3M13 3H6M13 3v7" fill="none" stroke="currentColor" stroke-width="1.9"
-          stroke-linecap="round" stroke-linejoin="round" />
+      <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="M7 7h10v10" />
+        <path d="M7 17 17 7" />
       </symbol>
-      <!-- Fully responsive: desktop + phone -->
-      <symbol id="i-responsive" viewBox="0 0 40 40">
-        <rect x="3" y="7" width="25" height="18" rx="2.4" fill="none" stroke="currentColor" stroke-width="2.4" />
-        <path d="M11 31h9" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" />
-        <path d="M15.5 25v6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" />
-        <rect x="27" y="16" width="10" height="19" rx="2.4" fill="none" stroke="currentColor" stroke-width="2.4" />
-        <path d="M30.5 32h3" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+
+      <!-- Card glyphs: Phosphor Fill, 256 grid, solid -->
+      <symbol id="i-responsive" viewBox="0 0 256 256" fill="currentColor">
+        <path
+          d="M224,72H208V64a24,24,0,0,0-24-24H40A24,24,0,0,0,16,64v96a24,24,0,0,0,24,24H152v8a24,24,0,0,0,24,24h48a24,24,0,0,0,24-24V96A24,24,0,0,0,224,72Zm8,120a8,8,0,0,1-8,8H176a8,8,0,0,1-8-8V96a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8Zm-96,16a8,8,0,0,1-8,8H88a8,8,0,0,1,0-16h40A8,8,0,0,1,136,208Zm80-96a8,8,0,0,1-8,8H192a8,8,0,0,1,0-16h16A8,8,0,0,1,216,112Z" />
       </symbol>
-      <!-- Performance: gauge -->
-      <symbol id="i-speed" viewBox="0 0 40 40">
-        <path d="M5 29a15 15 0 1 1 30 0" fill="none" stroke="currentColor" stroke-width="2.6"
-          stroke-linecap="round" />
-        <path d="M20 29 27 17" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" />
-        <circle cx="20" cy="29" r="2.6" fill="currentColor" />
-        <path d="M8.5 22.5 11 24M20 11v3M31.5 22.5 29 24" stroke="currentColor" stroke-width="2"
-          stroke-linecap="round" opacity=".65" />
+
+      <symbol id="i-speed" viewBox="0 0 256 256" fill="currentColor">
+        <path
+          d="M240,152v24a16,16,0,0,1-16,16H115.93a4,4,0,0,1-3.24-6.35L174.27,101a8.21,8.21,0,0,0-1.37-11.3,8,8,0,0,0-11.37,1.61l-72,99.06A4,4,0,0,1,86.25,192H32a16,16,0,0,1-16-16V153.13c0-1.79,0-3.57.13-5.33a4,4,0,0,1,4-3.8H48a8,8,0,0,0,8-8.53A8.17,8.17,0,0,0,47.73,128H23.92a4,4,0,0,1-3.87-5c12-43.84,49.66-77.13,95.52-82.28a4,4,0,0,1,4.43,4V72a8,8,0,0,0,8.53,8A8.17,8.17,0,0,0,136,71.73V44.67a4,4,0,0,1,4.43-4A112.18,112.18,0,0,1,236.23,123a4,4,0,0,1-3.88,5H208.27a8.17,8.17,0,0,0-8.25,7.47,8,8,0,0,0,8,8.53h27.92a4,4,0,0,1,4,3.86C240,149.23,240,150.61,240,152Z" />
       </symbol>
-      <!-- Modern design: pen nib on a frame -->
-      <symbol id="i-design" viewBox="0 0 40 40">
-        <rect x="4" y="5" width="32" height="30" rx="2.6" fill="none" stroke="currentColor" stroke-width="2.4" />
-        <path d="M4 12h32" stroke="currentColor" stroke-width="2.4" />
-        <path d="M15 29l1.6-5.4L26 14.2a2.2 2.2 0 0 1 3.1 3.1l-9.4 9.4L15 29Z" fill="none" stroke="currentColor"
-          stroke-width="2.2" stroke-linejoin="round" />
+
+      <symbol id="i-design" viewBox="0 0 256 256" fill="currentColor">
+        <path
+          d="M200.77,53.89A103.27,103.27,0,0,0,128,24h-1.07A104,104,0,0,0,24,128c0,43,26.58,79.06,69.36,94.17A32,32,0,0,0,136,192a16,16,0,0,1,16-16h46.21a31.81,31.81,0,0,0,31.2-24.88,104.43,104.43,0,0,0,2.59-24A103.28,103.28,0,0,0,200.77,53.89ZM84,168a12,12,0,1,1,12-12A12,12,0,0,1,84,168Zm0-56a12,12,0,1,1,12-12A12,12,0,0,1,84,112Zm44-24a12,12,0,1,1,12-12A12,12,0,0,1,128,88Zm44,24a12,12,0,1,1,12-12A12,12,0,0,1,172,112Z" />
       </symbol>
-      <!-- Secure: shield + check -->
-      <symbol id="i-shield" viewBox="0 0 40 40">
-        <path d="M20 4 34 9v11c0 8-6 13.4-14 16-8-2.6-14-8-14-16V9l14-5Z" fill="none" stroke="currentColor"
-          stroke-width="2.4" stroke-linejoin="round" />
-        <path d="M14 20.5l4.2 4.2L27 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"
-          stroke-linejoin="round" />
+
+      <symbol id="i-shield" viewBox="0 0 256 256" fill="currentColor">
+        <path
+          d="M208,40H48A16,16,0,0,0,32,56v56c0,52.72,25.52,84.67,46.93,102.19,23.06,18.86,46,25.26,47,25.53a8,8,0,0,0,4.2,0c1-.27,23.91-6.67,47-25.53C198.48,196.67,224,164.72,224,112V56A16,16,0,0,0,208,40Zm-34.32,69.66-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32Z" />
       </symbol>
-      <!-- Cross-browser: stacked windows -->
-      <symbol id="i-browser" viewBox="0 0 40 40">
-        <rect x="3" y="9" width="24" height="19" rx="2.4" fill="none" stroke="currentColor" stroke-width="2.4" />
-        <path d="M3 15h24" stroke="currentColor" stroke-width="2.4" />
-        <circle cx="7" cy="12" r="1.2" fill="currentColor" />
-        <path d="M13 32V14.4A2.4 2.4 0 0 1 15.4 12H35a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H15" fill="none"
-          stroke="currentColor" stroke-width="2.4" stroke-linejoin="round" opacity=".75" />
+
+      <symbol id="i-browser" viewBox="0 0 256 256" fill="currentColor">
+        <path
+          d="M128,24h0A104,104,0,1,0,232,128,104.12,104.12,0,0,0,128,24Zm78.36,64H170.71a135.28,135.28,0,0,0-22.3-45.6A88.29,88.29,0,0,1,206.37,88ZM216,128a87.61,87.61,0,0,1-3.33,24H174.16a157.44,157.44,0,0,0,0-48h38.51A87.61,87.61,0,0,1,216,128ZM128,43a115.27,115.27,0,0,1,26,45H102A115.11,115.11,0,0,1,128,43ZM102,168H154a115.11,115.11,0,0,1-26,45A115.27,115.27,0,0,1,102,168Zm-3.9-16a140.84,140.84,0,0,1,0-48h59.88a140.84,140.84,0,0,1,0,48Zm50.35,61.6a135.28,135.28,0,0,0,22.3-45.6h35.66A88.29,88.29,0,0,1,148.41,213.6Z" />
       </symbol>
-      <!-- Custom development: code brackets -->
-      <symbol id="i-code" viewBox="0 0 40 40">
-        <path d="M13 12 4 20l9 8M27 12l9 8-9 8" fill="none" stroke="currentColor" stroke-width="2.6"
-          stroke-linecap="round" stroke-linejoin="round" />
-        <path d="M23 8 17 32" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" />
+
+      <symbol id="i-code" viewBox="0 0 256 256" fill="currentColor">
+        <path
+          d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40ZM92.8,145.6a8,8,0,1,1-9.6,12.8l-32-24a8,8,0,0,1,0-12.8l32-24a8,8,0,0,1,9.6,12.8L69.33,128Zm58.89-71.4-32,112a8,8,0,1,1-15.38-4.4l32-112a8,8,0,0,1,15.38,4.4Zm53.11,60.2-32,24a8,8,0,0,1-9.6-12.8L186.67,128,163.2,110.4a8,8,0,1,1,9.6-12.8l32,24a8,8,0,0,1,0,12.8Z" />
       </symbol>
+
+      <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
+        <rect x="2" y="4" width="20" height="16" rx="2" />
+      </symbol>
+
+      <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20 6 9 17l-5-5" />
+      </symbol>
+
+      <!-- GitHub wordmark path (official brand mark, not part of Lucide) -->
       <symbol id="i-github" viewBox="0 0 24 24">
         <path fill="currentColor"
           d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2c-3.2.7-3.88-1.54-3.88-1.54-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.56-.29-5.26-1.28-5.26-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.12 3.05.74.81 1.18 1.84 1.18 3.1 0 4.43-2.7 5.4-5.28 5.69.42.36.79 1.07.79 2.15v3.19c0 .31.21.68.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5Z" />
-      </symbol>
-      <symbol id="i-mail" viewBox="0 0 24 24">
-        <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"
-          d="M3 6h18v12H3zM3.4 6.5 12 13l8.6-6.5" />
-      </symbol>
-      <symbol id="i-check" viewBox="0 0 16 16">
-        <path d="M3 8.5 6.2 12 13 4.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
-          stroke-linejoin="round" />
       </symbol>
     </defs>
   </svg>
@@ -172,25 +173,34 @@
       </div>
 
       <div class="hero-inner">
-        <p class="eyebrow"><span class="eyebrow-bar"></span>Full-Stack Web Developer &mdash; Morocco</p>
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="eyebrow-bar"></span>Full-Stack Web Developer &mdash; Morocco</p>
 
-        <h1 class="hero-title">
-          Built to perform.<br />
-          Built to <span class="grad">last</span>.
-        </h1>
+          <h1 class="hero-title">
+            Built to perform.<br />
+            Built to <span class="grad">last</span>.
+          </h1>
 
-        <p class="hero-lede">
-          I offer 100% hand-coded websites and modern web applications with clean,
-          maintainable code. From landing pages to full-stack platforms, I create fast,
-          responsive experiences that are built to perform and built to last.
-        </p>
+          <p class="hero-lede">
+            I offer 100% hand-coded websites and modern web applications with clean,
+            maintainable code. From landing pages to full-stack platforms, I create fast,
+            responsive experiences that are built to perform and built to last.
+          </p>
 
-        <div class="hero-actions">
-          <a href="#contact" class="btn btn-primary btn-lg">
-            Start a Project
-            <svg class="btn-arrow" aria-hidden="true"><use href="#i-arrow" /></svg>
-          </a>
-          <a href="#work" class="btn btn-ghost btn-lg">See My Work</a>
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn-primary btn-lg">
+              Start a Project
+              <svg class="btn-arrow" aria-hidden="true"><use href="#i-arrow" /></svg>
+            </a>
+            <a href="#work" class="btn btn-ghost btn-lg">See My Work</a>
+          </div>
+        </div>
+
+        <div class="hero-media">
+          <div class="devices">
+            <img class="devices-img" src="assets/image (2).png" alt="DevPulse shown on a laptop and phone"
+              width="1316" height="783" loading="eager" fetchpriority="high" decoding="async" />
+          </div>
         </div>
 
         <ul class="hero-proof">
@@ -211,63 +221,165 @@
 
       <ol class="steps">
         <li class="step reveal">
-          <span class="step-plate" aria-hidden="true"><svg><use href="#i-responsive" /></svg></span>
+          <span class="step-plate" aria-hidden="true"><span class="step-plate-in"><svg><use href="#i-responsive" /></svg></span></span>
           <h3 class="step-title">Fully Responsive</h3>
           <p class="step-text">
             Your website will look and work great on desktops, tablets, and mobile
             devices, ensuring a consistent experience across every screen size.
           </p>
-          <span class="step-deco" aria-hidden="true"></span>
+          <span class="step-fx" aria-hidden="true">
+                      <svg class="step-circuit" viewBox="0 0 320 320" preserveAspectRatio="xMidYMid slice">
+                        <g class="trace">
+                          <path d="M-20 54h96l30 30h124l26-26h114" />
+                          <path d="M-20 138h58l28-28h108l30 30h116" />
+                          <path d="M-20 226h130l28 28h182" />
+                          <path d="M-20 292h74l30-30h96" />
+                        </g>
+                        <g class="node">
+                          <circle cx="76" cy="54" r="2.6" /><circle cx="206" cy="84" r="2.6" />
+                          <circle cx="86" cy="110" r="2.6" /><circle cx="194" cy="140" r="2.6" />
+                          <circle cx="130" cy="226" r="2.6" /><circle cx="104" cy="262" r="2.6" />
+                        </g>
+                      </svg>
+                      <span class="step-mesh"></span>
+                    </span>
+                    <span class="step-corner step-corner-tr" aria-hidden="true"></span>
+                    <span class="step-corner step-corner-bl" aria-hidden="true"></span>
         </li>
 
         <li class="step reveal">
-          <span class="step-plate" aria-hidden="true"><svg><use href="#i-speed" /></svg></span>
+          <span class="step-plate" aria-hidden="true"><span class="step-plate-in"><svg><use href="#i-speed" /></svg></span></span>
           <h3 class="step-title">Performance Optimized</h3>
           <p class="step-text">
             Built with speed in mind. Fast loading times, optimized assets, and efficient
             code help deliver a smooth browsing experience.
           </p>
-          <span class="step-deco" aria-hidden="true"></span>
+          <span class="step-fx" aria-hidden="true">
+                      <svg class="step-circuit" viewBox="0 0 320 320" preserveAspectRatio="xMidYMid slice">
+                        <g class="trace">
+                          <path d="M-20 54h96l30 30h124l26-26h114" />
+                          <path d="M-20 138h58l28-28h108l30 30h116" />
+                          <path d="M-20 226h130l28 28h182" />
+                          <path d="M-20 292h74l30-30h96" />
+                        </g>
+                        <g class="node">
+                          <circle cx="76" cy="54" r="2.6" /><circle cx="206" cy="84" r="2.6" />
+                          <circle cx="86" cy="110" r="2.6" /><circle cx="194" cy="140" r="2.6" />
+                          <circle cx="130" cy="226" r="2.6" /><circle cx="104" cy="262" r="2.6" />
+                        </g>
+                      </svg>
+                      <span class="step-mesh"></span>
+                    </span>
+                    <span class="step-corner step-corner-tr" aria-hidden="true"></span>
+                    <span class="step-corner step-corner-bl" aria-hidden="true"></span>
         </li>
 
         <li class="step reveal">
-          <span class="step-plate" aria-hidden="true"><svg><use href="#i-design" /></svg></span>
+          <span class="step-plate" aria-hidden="true"><span class="step-plate-in"><svg><use href="#i-design" /></svg></span></span>
           <h3 class="step-title">Modern Design</h3>
           <p class="step-text">
             Clean, intuitive interfaces designed to be visually appealing, easy to
             navigate, and focused on the user experience.
           </p>
-          <span class="step-deco" aria-hidden="true"></span>
+          <span class="step-fx" aria-hidden="true">
+                      <svg class="step-circuit" viewBox="0 0 320 320" preserveAspectRatio="xMidYMid slice">
+                        <g class="trace">
+                          <path d="M-20 54h96l30 30h124l26-26h114" />
+                          <path d="M-20 138h58l28-28h108l30 30h116" />
+                          <path d="M-20 226h130l28 28h182" />
+                          <path d="M-20 292h74l30-30h96" />
+                        </g>
+                        <g class="node">
+                          <circle cx="76" cy="54" r="2.6" /><circle cx="206" cy="84" r="2.6" />
+                          <circle cx="86" cy="110" r="2.6" /><circle cx="194" cy="140" r="2.6" />
+                          <circle cx="130" cy="226" r="2.6" /><circle cx="104" cy="262" r="2.6" />
+                        </g>
+                      </svg>
+                      <span class="step-mesh"></span>
+                    </span>
+                    <span class="step-corner step-corner-tr" aria-hidden="true"></span>
+                    <span class="step-corner step-corner-bl" aria-hidden="true"></span>
         </li>
 
         <li class="step reveal">
-          <span class="step-plate" aria-hidden="true"><svg><use href="#i-shield" /></svg></span>
+          <span class="step-plate" aria-hidden="true"><span class="step-plate-in"><svg><use href="#i-shield" /></svg></span></span>
           <h3 class="step-title">Secure &amp; Reliable</h3>
           <p class="step-text">
             Developed following modern best practices with security, stability, and
             maintainability as a priority.
           </p>
-          <span class="step-deco" aria-hidden="true"></span>
+          <span class="step-fx" aria-hidden="true">
+                      <svg class="step-circuit" viewBox="0 0 320 320" preserveAspectRatio="xMidYMid slice">
+                        <g class="trace">
+                          <path d="M-20 54h96l30 30h124l26-26h114" />
+                          <path d="M-20 138h58l28-28h108l30 30h116" />
+                          <path d="M-20 226h130l28 28h182" />
+                          <path d="M-20 292h74l30-30h96" />
+                        </g>
+                        <g class="node">
+                          <circle cx="76" cy="54" r="2.6" /><circle cx="206" cy="84" r="2.6" />
+                          <circle cx="86" cy="110" r="2.6" /><circle cx="194" cy="140" r="2.6" />
+                          <circle cx="130" cy="226" r="2.6" /><circle cx="104" cy="262" r="2.6" />
+                        </g>
+                      </svg>
+                      <span class="step-mesh"></span>
+                    </span>
+                    <span class="step-corner step-corner-tr" aria-hidden="true"></span>
+                    <span class="step-corner step-corner-bl" aria-hidden="true"></span>
         </li>
 
         <li class="step reveal">
-          <span class="step-plate" aria-hidden="true"><svg><use href="#i-browser" /></svg></span>
+          <span class="step-plate" aria-hidden="true"><span class="step-plate-in"><svg><use href="#i-browser" /></svg></span></span>
           <h3 class="step-title">Cross-Browser Compatible</h3>
           <p class="step-text">
             Tested to work consistently across modern browsers, providing a reliable
             experience for all visitors.
           </p>
-          <span class="step-deco" aria-hidden="true"></span>
+          <span class="step-fx" aria-hidden="true">
+                      <svg class="step-circuit" viewBox="0 0 320 320" preserveAspectRatio="xMidYMid slice">
+                        <g class="trace">
+                          <path d="M-20 54h96l30 30h124l26-26h114" />
+                          <path d="M-20 138h58l28-28h108l30 30h116" />
+                          <path d="M-20 226h130l28 28h182" />
+                          <path d="M-20 292h74l30-30h96" />
+                        </g>
+                        <g class="node">
+                          <circle cx="76" cy="54" r="2.6" /><circle cx="206" cy="84" r="2.6" />
+                          <circle cx="86" cy="110" r="2.6" /><circle cx="194" cy="140" r="2.6" />
+                          <circle cx="130" cy="226" r="2.6" /><circle cx="104" cy="262" r="2.6" />
+                        </g>
+                      </svg>
+                      <span class="step-mesh"></span>
+                    </span>
+                    <span class="step-corner step-corner-tr" aria-hidden="true"></span>
+                    <span class="step-corner step-corner-bl" aria-hidden="true"></span>
         </li>
 
         <li class="step reveal">
-          <span class="step-plate" aria-hidden="true"><svg><use href="#i-code" /></svg></span>
+          <span class="step-plate" aria-hidden="true"><span class="step-plate-in"><svg><use href="#i-code" /></svg></span></span>
           <h3 class="step-title">Custom Development</h3>
           <p class="step-text">
             Every website is built to match your requirements using modern technologies —
             no unnecessary features or bloated code.
           </p>
-          <span class="step-deco" aria-hidden="true"></span>
+          <span class="step-fx" aria-hidden="true">
+                      <svg class="step-circuit" viewBox="0 0 320 320" preserveAspectRatio="xMidYMid slice">
+                        <g class="trace">
+                          <path d="M-20 54h96l30 30h124l26-26h114" />
+                          <path d="M-20 138h58l28-28h108l30 30h116" />
+                          <path d="M-20 226h130l28 28h182" />
+                          <path d="M-20 292h74l30-30h96" />
+                        </g>
+                        <g class="node">
+                          <circle cx="76" cy="54" r="2.6" /><circle cx="206" cy="84" r="2.6" />
+                          <circle cx="86" cy="110" r="2.6" /><circle cx="194" cy="140" r="2.6" />
+                          <circle cx="130" cy="226" r="2.6" /><circle cx="104" cy="262" r="2.6" />
+                        </g>
+                      </svg>
+                      <span class="step-mesh"></span>
+                    </span>
+                    <span class="step-corner step-corner-tr" aria-hidden="true"></span>
+                    <span class="step-corner step-corner-bl" aria-hidden="true"></span>
         </li>
       </ol>
     </section>
@@ -295,12 +407,82 @@
             -->
             <div class="devices">
               <div class="dv-laptop">
-                <div class="dv-screen">
-                  <img src="assets/images/image.png" alt="Schedio on desktop" loading="lazy" width="1845"
-                    height="878" />
-                  <span class="dv-glare" aria-hidden="true"></span>
+                <div class="dv-lid">
+                  <span class="dv-cam" aria-hidden="true"></span>
+                  <div class="dv-screen">
+                    <img src="assets/images/image.png" alt="Schedio on desktop" loading="lazy" width="1845" height="878" />
+                    <span class="dv-glare" aria-hidden="true"></span>
+                  </div>
                 </div>
-                <div class="dv-base" aria-hidden="true"><span></span></div>
+                <svg class="dv-deck" viewBox="0 0 1000 134" aria-hidden="true" focusable="false">
+                  <path class="dv-edge" d="M16 100 H984 L992 122 Q994 132 982 132 H18 Q6 132 8 122 Z" />
+                  <path class="dv-body" d="M66 0 H934 L984 104 Q992 118 977 118 H23 Q8 118 16 104 Z" />
+                  <rect class="dv-hinge" x="66" y="0" width="868" height="3.5" />
+                  <g class="dv-keys">
+                    <rect x="148.0" y="13" width="47.1" height="8.6" rx="2" />
+                    <rect x="198.5" y="13" width="47.1" height="8.6" rx="2" />
+                    <rect x="249.1" y="13" width="47.1" height="8.6" rx="2" />
+                    <rect x="299.6" y="13" width="47.1" height="8.6" rx="2" />
+                    <rect x="350.1" y="13" width="47.1" height="8.6" rx="2" />
+                    <rect x="400.6" y="13" width="47.1" height="8.6" rx="2" />
+                    <rect x="451.2" y="13" width="47.1" height="8.6" rx="2" />
+                    <rect x="501.7" y="13" width="47.1" height="8.6" rx="2" />
+                    <rect x="552.2" y="13" width="47.1" height="8.6" rx="2" />
+                    <rect x="602.8" y="13" width="47.1" height="8.6" rx="2" />
+                    <rect x="653.3" y="13" width="47.1" height="8.6" rx="2" />
+                    <rect x="703.8" y="13" width="47.1" height="8.6" rx="2" />
+                    <rect x="754.3" y="13" width="47.1" height="8.6" rx="2" />
+                    <rect x="804.9" y="13" width="47.1" height="8.6" rx="2" />
+                    <rect x="140.0" y="24.5" width="48.3" height="9" rx="2" />
+                    <rect x="191.7" y="24.5" width="48.3" height="9" rx="2" />
+                    <rect x="243.3" y="24.5" width="48.3" height="9" rx="2" />
+                    <rect x="295.0" y="24.5" width="48.3" height="9" rx="2" />
+                    <rect x="346.7" y="24.5" width="48.3" height="9" rx="2" />
+                    <rect x="398.4" y="24.5" width="48.3" height="9" rx="2" />
+                    <rect x="450.0" y="24.5" width="48.3" height="9" rx="2" />
+                    <rect x="501.7" y="24.5" width="48.3" height="9" rx="2" />
+                    <rect x="553.4" y="24.5" width="48.3" height="9" rx="2" />
+                    <rect x="605.0" y="24.5" width="48.3" height="9" rx="2" />
+                    <rect x="656.7" y="24.5" width="48.3" height="9" rx="2" />
+                    <rect x="708.4" y="24.5" width="48.3" height="9" rx="2" />
+                    <rect x="760.1" y="24.5" width="48.3" height="9" rx="2" />
+                    <rect x="811.7" y="24.5" width="48.3" height="9" rx="2" />
+                    <rect x="132.0" y="36.4" width="53.5" height="9.4" rx="2" />
+                    <rect x="188.9" y="36.4" width="53.5" height="9.4" rx="2" />
+                    <rect x="245.8" y="36.4" width="53.5" height="9.4" rx="2" />
+                    <rect x="302.6" y="36.4" width="53.5" height="9.4" rx="2" />
+                    <rect x="359.5" y="36.4" width="53.5" height="9.4" rx="2" />
+                    <rect x="416.4" y="36.4" width="53.5" height="9.4" rx="2" />
+                    <rect x="473.3" y="36.4" width="53.5" height="9.4" rx="2" />
+                    <rect x="530.1" y="36.4" width="53.5" height="9.4" rx="2" />
+                    <rect x="587.0" y="36.4" width="53.5" height="9.4" rx="2" />
+                    <rect x="643.9" y="36.4" width="53.5" height="9.4" rx="2" />
+                    <rect x="700.8" y="36.4" width="53.5" height="9.4" rx="2" />
+                    <rect x="757.6" y="36.4" width="53.5" height="9.4" rx="2" />
+                    <rect x="814.5" y="36.4" width="53.5" height="9.4" rx="2" />
+                    <rect x="124.0" y="48.7" width="59.6" height="9.8" rx="2" />
+                    <rect x="186.9" y="48.7" width="59.6" height="9.8" rx="2" />
+                    <rect x="249.9" y="48.7" width="59.6" height="9.8" rx="2" />
+                    <rect x="312.9" y="48.7" width="59.6" height="9.8" rx="2" />
+                    <rect x="375.8" y="48.7" width="59.6" height="9.8" rx="2" />
+                    <rect x="438.8" y="48.7" width="59.6" height="9.8" rx="2" />
+                    <rect x="501.7" y="48.7" width="59.6" height="9.8" rx="2" />
+                    <rect x="564.7" y="48.7" width="59.6" height="9.8" rx="2" />
+                    <rect x="627.6" y="48.7" width="59.6" height="9.8" rx="2" />
+                    <rect x="690.6" y="48.7" width="59.6" height="9.8" rx="2" />
+                    <rect x="753.5" y="48.7" width="59.6" height="9.8" rx="2" />
+                    <rect x="816.5" y="48.7" width="59.6" height="9.8" rx="2" />
+                    <rect x="116.0" y="61.4" width="64.4" height="10.2" rx="2" />
+                    <rect x="183.8" y="61.4" width="64.4" height="10.2" rx="2" />
+                    <rect x="251.7" y="61.4" width="64.4" height="10.2" rx="2" />
+                    <rect x="319.5" y="61.4" width="360.9" height="10.2" rx="2" />
+                    <rect x="683.9" y="61.4" width="64.4" height="10.2" rx="2" />
+                    <rect x="751.7" y="61.4" width="64.4" height="10.2" rx="2" />
+                    <rect x="819.6" y="61.4" width="64.4" height="10.2" rx="2" />
+                  </g>
+                  <rect class="dv-trackpad" x="415" y="79" width="170" height="30" rx="4" />
+                  <path class="dv-notchline" d="M430 118 h140" />
+                </svg>
               </div>
               <div class="dv-phone">
                 <span class="dv-notch" aria-hidden="true"></span>
@@ -341,12 +523,82 @@
           <div class="proj-visual">
             <div class="devices">
               <div class="dv-laptop">
-                <div class="dv-screen">
-                  <img src="assets/images/DevPulse/image1.png" alt="DevPulse on desktop" loading="lazy" width="1581"
-                    height="845" />
-                  <span class="dv-glare" aria-hidden="true"></span>
+                <div class="dv-lid">
+                  <span class="dv-cam" aria-hidden="true"></span>
+                  <div class="dv-screen">
+                    <img src="assets/images/DevPulse/image1.png" alt="DevPulse on desktop" loading="lazy" width="1581" height="845" />
+                    <span class="dv-glare" aria-hidden="true"></span>
+                  </div>
                 </div>
-                <div class="dv-base" aria-hidden="true"><span></span></div>
+                <svg class="dv-deck" viewBox="0 0 1000 134" aria-hidden="true" focusable="false">
+                  <path class="dv-edge" d="M16 100 H984 L992 122 Q994 132 982 132 H18 Q6 132 8 122 Z" />
+                  <path class="dv-body" d="M66 0 H934 L984 104 Q992 118 977 118 H23 Q8 118 16 104 Z" />
+                  <rect class="dv-hinge" x="66" y="0" width="868" height="3.5" />
+                  <g class="dv-keys">
+                    <rect x="148.0" y="13" width="47.1" height="8.6" rx="2" />
+                    <rect x="198.5" y="13" width="47.1" height="8.6" rx="2" />
+                    <rect x="249.1" y="13" width="47.1" height="8.6" rx="2" />
+                    <rect x="299.6" y="13" width="47.1" height="8.6" rx="2" />
+                    <rect x="350.1" y="13" width="47.1" height="8.6" rx="2" />
+                    <rect x="400.6" y="13" width="47.1" height="8.6" rx="2" />
+                    <rect x="451.2" y="13" width="47.1" height="8.6" rx="2" />
+                    <rect x="501.7" y="13" width="47.1" height="8.6" rx="2" />
+                    <rect x="552.2" y="13" width="47.1" height="8.6" rx="2" />
+                    <rect x="602.8" y="13" width="47.1" height="8.6" rx="2" />
+                    <rect x="653.3" y="13" width="47.1" height="8.6" rx="2" />
+                    <rect x="703.8" y="13" width="47.1" height="8.6" rx="2" />
+                    <rect x="754.3" y="13" width="47.1" height="8.6" rx="2" />
+                    <rect x="804.9" y="13" width="47.1" height="8.6" rx="2" />
+                    <rect x="140.0" y="24.5" width="48.3" height="9" rx="2" />
+                    <rect x="191.7" y="24.5" width="48.3" height="9" rx="2" />
+                    <rect x="243.3" y="24.5" width="48.3" height="9" rx="2" />
+                    <rect x="295.0" y="24.5" width="48.3" height="9" rx="2" />
+                    <rect x="346.7" y="24.5" width="48.3" height="9" rx="2" />
+                    <rect x="398.4" y="24.5" width="48.3" height="9" rx="2" />
+                    <rect x="450.0" y="24.5" width="48.3" height="9" rx="2" />
+                    <rect x="501.7" y="24.5" width="48.3" height="9" rx="2" />
+                    <rect x="553.4" y="24.5" width="48.3" height="9" rx="2" />
+                    <rect x="605.0" y="24.5" width="48.3" height="9" rx="2" />
+                    <rect x="656.7" y="24.5" width="48.3" height="9" rx="2" />
+                    <rect x="708.4" y="24.5" width="48.3" height="9" rx="2" />
+                    <rect x="760.1" y="24.5" width="48.3" height="9" rx="2" />
+                    <rect x="811.7" y="24.5" width="48.3" height="9" rx="2" />
+                    <rect x="132.0" y="36.4" width="53.5" height="9.4" rx="2" />
+                    <rect x="188.9" y="36.4" width="53.5" height="9.4" rx="2" />
+                    <rect x="245.8" y="36.4" width="53.5" height="9.4" rx="2" />
+                    <rect x="302.6" y="36.4" width="53.5" height="9.4" rx="2" />
+                    <rect x="359.5" y="36.4" width="53.5" height="9.4" rx="2" />
+                    <rect x="416.4" y="36.4" width="53.5" height="9.4" rx="2" />
+                    <rect x="473.3" y="36.4" width="53.5" height="9.4" rx="2" />
+                    <rect x="530.1" y="36.4" width="53.5" height="9.4" rx="2" />
+                    <rect x="587.0" y="36.4" width="53.5" height="9.4" rx="2" />
+                    <rect x="643.9" y="36.4" width="53.5" height="9.4" rx="2" />
+                    <rect x="700.8" y="36.4" width="53.5" height="9.4" rx="2" />
+                    <rect x="757.6" y="36.4" width="53.5" height="9.4" rx="2" />
+                    <rect x="814.5" y="36.4" width="53.5" height="9.4" rx="2" />
+                    <rect x="124.0" y="48.7" width="59.6" height="9.8" rx="2" />
+                    <rect x="186.9" y="48.7" width="59.6" height="9.8" rx="2" />
+                    <rect x="249.9" y="48.7" width="59.6" height="9.8" rx="2" />
+                    <rect x="312.9" y="48.7" width="59.6" height="9.8" rx="2" />
+                    <rect x="375.8" y="48.7" width="59.6" height="9.8" rx="2" />
+                    <rect x="438.8" y="48.7" width="59.6" height="9.8" rx="2" />
+                    <rect x="501.7" y="48.7" width="59.6" height="9.8" rx="2" />
+                    <rect x="564.7" y="48.7" width="59.6" height="9.8" rx="2" />
+                    <rect x="627.6" y="48.7" width="59.6" height="9.8" rx="2" />
+                    <rect x="690.6" y="48.7" width="59.6" height="9.8" rx="2" />
+                    <rect x="753.5" y="48.7" width="59.6" height="9.8" rx="2" />
+                    <rect x="816.5" y="48.7" width="59.6" height="9.8" rx="2" />
+                    <rect x="116.0" y="61.4" width="64.4" height="10.2" rx="2" />
+                    <rect x="183.8" y="61.4" width="64.4" height="10.2" rx="2" />
+                    <rect x="251.7" y="61.4" width="64.4" height="10.2" rx="2" />
+                    <rect x="319.5" y="61.4" width="360.9" height="10.2" rx="2" />
+                    <rect x="683.9" y="61.4" width="64.4" height="10.2" rx="2" />
+                    <rect x="751.7" y="61.4" width="64.4" height="10.2" rx="2" />
+                    <rect x="819.6" y="61.4" width="64.4" height="10.2" rx="2" />
+                  </g>
+                  <rect class="dv-trackpad" x="415" y="79" width="170" height="30" rx="4" />
+                  <path class="dv-notchline" d="M430 118 h140" />
+                </svg>
               </div>
               <div class="dv-phone">
                 <span class="dv-notch" aria-hidden="true"></span>
@@ -388,18 +640,87 @@
           <div class="proj-visual">
             <div class="devices">
               <div class="dv-laptop">
-                <div class="dv-screen">
-                  <img src="assets/images/recipe-meal-planer/image.png" alt="Recipe &amp; Meal Planner on desktop"
-                    loading="lazy" width="1051" height="636" />
-                  <span class="dv-glare" aria-hidden="true"></span>
+                <div class="dv-lid">
+                  <span class="dv-cam" aria-hidden="true"></span>
+                  <div class="dv-screen">
+                    <img src="assets/images/recipe-meal-planer/image.png" alt="Recipe &amp; Meal Planner on desktop" loading="lazy" width="1051" height="636" />
+                    <span class="dv-glare" aria-hidden="true"></span>
+                  </div>
                 </div>
-                <div class="dv-base" aria-hidden="true"><span></span></div>
+                <svg class="dv-deck" viewBox="0 0 1000 134" aria-hidden="true" focusable="false">
+                  <path class="dv-edge" d="M16 100 H984 L992 122 Q994 132 982 132 H18 Q6 132 8 122 Z" />
+                  <path class="dv-body" d="M66 0 H934 L984 104 Q992 118 977 118 H23 Q8 118 16 104 Z" />
+                  <rect class="dv-hinge" x="66" y="0" width="868" height="3.5" />
+                  <g class="dv-keys">
+                    <rect x="148.0" y="13" width="47.1" height="8.6" rx="2" />
+                    <rect x="198.5" y="13" width="47.1" height="8.6" rx="2" />
+                    <rect x="249.1" y="13" width="47.1" height="8.6" rx="2" />
+                    <rect x="299.6" y="13" width="47.1" height="8.6" rx="2" />
+                    <rect x="350.1" y="13" width="47.1" height="8.6" rx="2" />
+                    <rect x="400.6" y="13" width="47.1" height="8.6" rx="2" />
+                    <rect x="451.2" y="13" width="47.1" height="8.6" rx="2" />
+                    <rect x="501.7" y="13" width="47.1" height="8.6" rx="2" />
+                    <rect x="552.2" y="13" width="47.1" height="8.6" rx="2" />
+                    <rect x="602.8" y="13" width="47.1" height="8.6" rx="2" />
+                    <rect x="653.3" y="13" width="47.1" height="8.6" rx="2" />
+                    <rect x="703.8" y="13" width="47.1" height="8.6" rx="2" />
+                    <rect x="754.3" y="13" width="47.1" height="8.6" rx="2" />
+                    <rect x="804.9" y="13" width="47.1" height="8.6" rx="2" />
+                    <rect x="140.0" y="24.5" width="48.3" height="9" rx="2" />
+                    <rect x="191.7" y="24.5" width="48.3" height="9" rx="2" />
+                    <rect x="243.3" y="24.5" width="48.3" height="9" rx="2" />
+                    <rect x="295.0" y="24.5" width="48.3" height="9" rx="2" />
+                    <rect x="346.7" y="24.5" width="48.3" height="9" rx="2" />
+                    <rect x="398.4" y="24.5" width="48.3" height="9" rx="2" />
+                    <rect x="450.0" y="24.5" width="48.3" height="9" rx="2" />
+                    <rect x="501.7" y="24.5" width="48.3" height="9" rx="2" />
+                    <rect x="553.4" y="24.5" width="48.3" height="9" rx="2" />
+                    <rect x="605.0" y="24.5" width="48.3" height="9" rx="2" />
+                    <rect x="656.7" y="24.5" width="48.3" height="9" rx="2" />
+                    <rect x="708.4" y="24.5" width="48.3" height="9" rx="2" />
+                    <rect x="760.1" y="24.5" width="48.3" height="9" rx="2" />
+                    <rect x="811.7" y="24.5" width="48.3" height="9" rx="2" />
+                    <rect x="132.0" y="36.4" width="53.5" height="9.4" rx="2" />
+                    <rect x="188.9" y="36.4" width="53.5" height="9.4" rx="2" />
+                    <rect x="245.8" y="36.4" width="53.5" height="9.4" rx="2" />
+                    <rect x="302.6" y="36.4" width="53.5" height="9.4" rx="2" />
+                    <rect x="359.5" y="36.4" width="53.5" height="9.4" rx="2" />
+                    <rect x="416.4" y="36.4" width="53.5" height="9.4" rx="2" />
+                    <rect x="473.3" y="36.4" width="53.5" height="9.4" rx="2" />
+                    <rect x="530.1" y="36.4" width="53.5" height="9.4" rx="2" />
+                    <rect x="587.0" y="36.4" width="53.5" height="9.4" rx="2" />
+                    <rect x="643.9" y="36.4" width="53.5" height="9.4" rx="2" />
+                    <rect x="700.8" y="36.4" width="53.5" height="9.4" rx="2" />
+                    <rect x="757.6" y="36.4" width="53.5" height="9.4" rx="2" />
+                    <rect x="814.5" y="36.4" width="53.5" height="9.4" rx="2" />
+                    <rect x="124.0" y="48.7" width="59.6" height="9.8" rx="2" />
+                    <rect x="186.9" y="48.7" width="59.6" height="9.8" rx="2" />
+                    <rect x="249.9" y="48.7" width="59.6" height="9.8" rx="2" />
+                    <rect x="312.9" y="48.7" width="59.6" height="9.8" rx="2" />
+                    <rect x="375.8" y="48.7" width="59.6" height="9.8" rx="2" />
+                    <rect x="438.8" y="48.7" width="59.6" height="9.8" rx="2" />
+                    <rect x="501.7" y="48.7" width="59.6" height="9.8" rx="2" />
+                    <rect x="564.7" y="48.7" width="59.6" height="9.8" rx="2" />
+                    <rect x="627.6" y="48.7" width="59.6" height="9.8" rx="2" />
+                    <rect x="690.6" y="48.7" width="59.6" height="9.8" rx="2" />
+                    <rect x="753.5" y="48.7" width="59.6" height="9.8" rx="2" />
+                    <rect x="816.5" y="48.7" width="59.6" height="9.8" rx="2" />
+                    <rect x="116.0" y="61.4" width="64.4" height="10.2" rx="2" />
+                    <rect x="183.8" y="61.4" width="64.4" height="10.2" rx="2" />
+                    <rect x="251.7" y="61.4" width="64.4" height="10.2" rx="2" />
+                    <rect x="319.5" y="61.4" width="360.9" height="10.2" rx="2" />
+                    <rect x="683.9" y="61.4" width="64.4" height="10.2" rx="2" />
+                    <rect x="751.7" y="61.4" width="64.4" height="10.2" rx="2" />
+                    <rect x="819.6" y="61.4" width="64.4" height="10.2" rx="2" />
+                  </g>
+                  <rect class="dv-trackpad" x="415" y="79" width="170" height="30" rx="4" />
+                  <path class="dv-notchline" d="M430 118 h140" />
+                </svg>
               </div>
               <div class="dv-phone">
                 <span class="dv-notch" aria-hidden="true"></span>
                 <div class="dv-phone-screen">
-                  <img src="assets/images/recipe-meal-planer/image copy.png"
-                    alt="Recipe &amp; Meal Planner on mobile" loading="lazy" />
+                  <img src="assets/images/recipe-meal-planer/image copy.png" alt="Recipe &amp; Meal Planner on mobile" loading="lazy" />
                 </div>
               </div>
             </div>
