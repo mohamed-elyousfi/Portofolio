@@ -4,629 +4,613 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>El Yousfi Mohamed — Full-Stack Web Developer</title>
   <meta name="description"
-    content="El Yousfi Mohamed — Full Stack Developer portfolio. Building premium web experiences with modern technologies." />
-  <meta name="theme-color" content="#050508" />
-  <title>El Yousfi Mohamed — Full Stack Developer</title>
+    content="100% hand-coded websites and modern web applications with clean, maintainable code. Fast, responsive experiences built to perform and built to last." />
 
-  <!-- Social sharing -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="El Yousfi Mohamed — Full Stack Developer" />
+  <meta property="og:title" content="El Yousfi Mohamed — Full-Stack Web Developer" />
   <meta property="og:description"
-    content="Full stack developer based in Morocco. React, Laravel, Next.js — building premium web experiences." />
-  <meta name="twitter:card" content="summary" />
+    content="100% hand-coded websites and modern web applications, built to perform and built to last." />
+  <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- Favicon (inline so there is no extra request) -->
   <link rel="icon"
-    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23050508'/%3E%3Ctext x='16' y='22' font-family='Inter,sans-serif' font-size='14' font-weight='700' fill='%23c084fc' text-anchor='middle'%3EE%3C/text%3E%3C/svg%3E" />
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M0 0h26l6 6v26H6l-6-6Z' fill='%230a0a12'/%3E%3Cpath d='M9 23V9h9M9 16h6.5M9 23h9' stroke='%23c084fc' stroke-width='2.6' fill='none' stroke-linecap='square'/%3E%3C/svg%3E" />
 
-  <!-- Preconnect for performance -->
+  <script>
+    (function () {
+      try {
+        var s = localStorage.getItem('theme');
+        document.documentElement.setAttribute(
+          'data-theme',
+          s || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark')
+        );
+      } catch (e) { document.documentElement.setAttribute('data-theme', 'dark'); }
+      document.documentElement.classList.add('js');
+    })();
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-  <!-- Google Fonts -->
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
     rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
-  <!-- Video background preload hint -->
 
-  <!-- Devicons for tech brand icons -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css" />
-
-  <!-- Styles -->
   <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
+  <a href="#main" class="skip-link">Skip to content</a>
 
-  <!-- ══════════════════════════════
-     NAVBAR
-══════════════════════════════ -->
-  <nav id="navbar" role="navigation" aria-label="Main navigation">
-    <!-- Solid 2px blue border layer perfectly tracing the shape -->
-    <div class="nav-border-wrapper"></div>
+  <svg class="sprite" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="i-arrow" viewBox="0 0 16 16">
+        <path d="M3 13L13 3M13 3H6M13 3v7" fill="none" stroke="currentColor" stroke-width="1.9"
+          stroke-linecap="round" stroke-linejoin="round" />
+      </symbol>
+      <!-- Fully responsive: desktop + phone -->
+      <symbol id="i-responsive" viewBox="0 0 40 40">
+        <rect x="3" y="7" width="25" height="18" rx="2.4" fill="none" stroke="currentColor" stroke-width="2.4" />
+        <path d="M11 31h9" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" />
+        <path d="M15.5 25v6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" />
+        <rect x="27" y="16" width="10" height="19" rx="2.4" fill="none" stroke="currentColor" stroke-width="2.4" />
+        <path d="M30.5 32h3" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+      </symbol>
+      <!-- Performance: gauge -->
+      <symbol id="i-speed" viewBox="0 0 40 40">
+        <path d="M5 29a15 15 0 1 1 30 0" fill="none" stroke="currentColor" stroke-width="2.6"
+          stroke-linecap="round" />
+        <path d="M20 29 27 17" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" />
+        <circle cx="20" cy="29" r="2.6" fill="currentColor" />
+        <path d="M8.5 22.5 11 24M20 11v3M31.5 22.5 29 24" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" opacity=".65" />
+      </symbol>
+      <!-- Modern design: pen nib on a frame -->
+      <symbol id="i-design" viewBox="0 0 40 40">
+        <rect x="4" y="5" width="32" height="30" rx="2.6" fill="none" stroke="currentColor" stroke-width="2.4" />
+        <path d="M4 12h32" stroke="currentColor" stroke-width="2.4" />
+        <path d="M15 29l1.6-5.4L26 14.2a2.2 2.2 0 0 1 3.1 3.1l-9.4 9.4L15 29Z" fill="none" stroke="currentColor"
+          stroke-width="2.2" stroke-linejoin="round" />
+      </symbol>
+      <!-- Secure: shield + check -->
+      <symbol id="i-shield" viewBox="0 0 40 40">
+        <path d="M20 4 34 9v11c0 8-6 13.4-14 16-8-2.6-14-8-14-16V9l14-5Z" fill="none" stroke="currentColor"
+          stroke-width="2.4" stroke-linejoin="round" />
+        <path d="M14 20.5l4.2 4.2L27 16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"
+          stroke-linejoin="round" />
+      </symbol>
+      <!-- Cross-browser: stacked windows -->
+      <symbol id="i-browser" viewBox="0 0 40 40">
+        <rect x="3" y="9" width="24" height="19" rx="2.4" fill="none" stroke="currentColor" stroke-width="2.4" />
+        <path d="M3 15h24" stroke="currentColor" stroke-width="2.4" />
+        <circle cx="7" cy="12" r="1.2" fill="currentColor" />
+        <path d="M13 32V14.4A2.4 2.4 0 0 1 15.4 12H35a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H15" fill="none"
+          stroke="currentColor" stroke-width="2.4" stroke-linejoin="round" opacity=".75" />
+      </symbol>
+      <!-- Custom development: code brackets -->
+      <symbol id="i-code" viewBox="0 0 40 40">
+        <path d="M13 12 4 20l9 8M27 12l9 8-9 8" fill="none" stroke="currentColor" stroke-width="2.6"
+          stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M23 8 17 32" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" />
+      </symbol>
+      <symbol id="i-github" viewBox="0 0 24 24">
+        <path fill="currentColor"
+          d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2c-3.2.7-3.88-1.54-3.88-1.54-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.56-.29-5.26-1.28-5.26-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.12 3.05.74.81 1.18 1.84 1.18 3.1 0 4.43-2.7 5.4-5.28 5.69.42.36.79 1.07.79 2.15v3.19c0 .31.21.68.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5Z" />
+      </symbol>
+      <symbol id="i-mail" viewBox="0 0 24 24">
+        <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"
+          d="M3 6h18v12H3zM3.4 6.5 12 13l8.6-6.5" />
+      </symbol>
+      <symbol id="i-check" viewBox="0 0 16 16">
+        <path d="M3 8.5 6.2 12 13 4.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+          stroke-linejoin="round" />
+      </symbol>
+    </defs>
+  </svg>
 
-    <!-- The glassmorphism background layer -->
-    <div class="nav-bg-wrapper"></div>
+  <!-- ═══════════════════════════════════════════════════════ NAV ═══ -->
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#top" class="logo" aria-label="El Yousfi Mohamed — home">
+        <span class="logo-plate">
+          <svg viewBox="0 0 26 26" aria-hidden="true">
+            <path d="M7 20V6h10M7 13h7M7 20h10" fill="none" stroke="currentColor" stroke-width="2.6"
+              stroke-linecap="square" />
+          </svg>
+        </span>
+        <span class="logo-type">
+          <strong>El Yousfi Mohamed</strong>
+          <em>Full-Stack Web Developer</em>
+        </span>
+      </a>
 
-    <!-- The seamless content layout on top -->
-    <div class="nav-content">
-      <div class="nav-side-left">
-        <a href="#hero" class="nav-logo">
-          <span class="nav-logo-dot"></span> EYM
-        </a>
-      </div>
+      <nav class="nav-links" aria-label="Main">
+        <a href="#services" data-nav>What I Do</a>
+        <a href="#work" data-nav>Work</a>
+        <a href="#about" data-nav>About</a>
+        <a href="#stack" data-nav>Stack</a>
+      </nav>
 
-      <div class="nav-center-notch">
-        <ul class="nav-links">
-          <li><a href="#about" id="nav-about">About</a></li>
-          <li><a href="#skills" id="nav-skills">Skills</a></li>
-          <li><a href="#projects" id="nav-projects">Projects</a></li>
-        </ul>
-      </div>
-
-      <div class="nav-side-right">
-        <a href="#contact" id="nav-contact" class="nav-cta">Let's Talk</a>
+      <div class="nav-actions">
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch theme">
+          <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="4.2" fill="currentColor" />
+            <g stroke="currentColor" stroke-width="1.9" stroke-linecap="round">
+              <path
+                d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6" />
+            </g>
+          </svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="currentColor" d="M20.5 14.9A8.6 8.6 0 0 1 9.1 3.5a8.6 8.6 0 1 0 11.4 11.4Z" />
+          </svg>
+        </button>
+        <a href="#contact" class="btn btn-primary nav-cta">Start a Project</a>
+        <button type="button" class="burger" id="burger" aria-label="Open menu" aria-expanded="false"
+          aria-controls="mobile-menu">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
 
-    <!-- Contact Portal HUD Form (Hidden by default) -->
-    <div class="contact-portal-content">
-      <button id="portal-close" class="portal-close-btn" aria-label="Close Portal">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M18 6L6 18M6 6l12 12"></path>
-        </svg>
-      </button>
-      <div class="hud-form-container">
-        <div class="hud-header">
-          <span class="hud-title">[ COMM-LINK ]</span>
-          <span class="hud-status">SYSTEM READY_</span>
+    <div class="mobile-menu" id="mobile-menu" hidden>
+      <a href="#services" data-nav-mobile>What I Do</a>
+      <a href="#work" data-nav-mobile>Work</a>
+      <a href="#about" data-nav-mobile>About</a>
+      <a href="#stack" data-nav-mobile>Stack</a>
+      <a href="#contact" data-nav-mobile class="mm-cta">Start a Project</a>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ═══════════════════════════════════════════════════ HERO ═══ -->
+    <section class="hero" id="top">
+      <div class="hero-bg" aria-hidden="true">
+        <span class="hero-grid-layer"></span>
+        <span class="hero-orb hero-orb-a"></span>
+        <span class="hero-orb hero-orb-b"></span>
+      </div>
+
+      <div class="hero-inner">
+        <p class="eyebrow"><span class="eyebrow-bar"></span>Full-Stack Web Developer &mdash; Morocco</p>
+
+        <h1 class="hero-title">
+          Built to perform.<br />
+          Built to <span class="grad">last</span>.
+        </h1>
+
+        <p class="hero-lede">
+          I offer 100% hand-coded websites and modern web applications with clean,
+          maintainable code. From landing pages to full-stack platforms, I create fast,
+          responsive experiences that are built to perform and built to last.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary btn-lg">
+            Start a Project
+            <svg class="btn-arrow" aria-hidden="true"><use href="#i-arrow" /></svg>
+          </a>
+          <a href="#work" class="btn btn-ghost btn-lg">See My Work</a>
         </div>
-        <form class="cyber-form" id="cyber-contact-form">
-          <div class="cyber-input-wrapper">
-            <label>NAME</label>
-            <input type="text" name="name" required placeholder="Enter your name" />
-            <div class="hud-decor-hash">////</div>
+
+        <ul class="hero-proof">
+          <li><svg aria-hidden="true"><use href="#i-check" /></svg>Fully responsive</li>
+          <li><svg aria-hidden="true"><use href="#i-check" /></svg>Optimised for speed</li>
+          <li><svg aria-hidden="true"><use href="#i-check" /></svg>Hand-coded</li>
+          <li><svg aria-hidden="true"><use href="#i-check" /></svg>SEO-ready markup</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════ PROCESS ═══ -->
+    <section class="section" id="services" aria-label="What I do">
+      <header class="section-head">
+        <p class="eyebrow"><span class="eyebrow-bar"></span>What I Do</p>
+        <h2 class="section-title">Everything a site<br />needs to hold up</h2>
+      </header>
+
+      <ol class="steps">
+        <li class="step reveal">
+          <span class="step-plate" aria-hidden="true"><svg><use href="#i-responsive" /></svg></span>
+          <h3 class="step-title">Fully Responsive</h3>
+          <p class="step-text">
+            Your website will look and work great on desktops, tablets, and mobile
+            devices, ensuring a consistent experience across every screen size.
+          </p>
+          <span class="step-deco" aria-hidden="true"></span>
+        </li>
+
+        <li class="step reveal">
+          <span class="step-plate" aria-hidden="true"><svg><use href="#i-speed" /></svg></span>
+          <h3 class="step-title">Performance Optimized</h3>
+          <p class="step-text">
+            Built with speed in mind. Fast loading times, optimized assets, and efficient
+            code help deliver a smooth browsing experience.
+          </p>
+          <span class="step-deco" aria-hidden="true"></span>
+        </li>
+
+        <li class="step reveal">
+          <span class="step-plate" aria-hidden="true"><svg><use href="#i-design" /></svg></span>
+          <h3 class="step-title">Modern Design</h3>
+          <p class="step-text">
+            Clean, intuitive interfaces designed to be visually appealing, easy to
+            navigate, and focused on the user experience.
+          </p>
+          <span class="step-deco" aria-hidden="true"></span>
+        </li>
+
+        <li class="step reveal">
+          <span class="step-plate" aria-hidden="true"><svg><use href="#i-shield" /></svg></span>
+          <h3 class="step-title">Secure &amp; Reliable</h3>
+          <p class="step-text">
+            Developed following modern best practices with security, stability, and
+            maintainability as a priority.
+          </p>
+          <span class="step-deco" aria-hidden="true"></span>
+        </li>
+
+        <li class="step reveal">
+          <span class="step-plate" aria-hidden="true"><svg><use href="#i-browser" /></svg></span>
+          <h3 class="step-title">Cross-Browser Compatible</h3>
+          <p class="step-text">
+            Tested to work consistently across modern browsers, providing a reliable
+            experience for all visitors.
+          </p>
+          <span class="step-deco" aria-hidden="true"></span>
+        </li>
+
+        <li class="step reveal">
+          <span class="step-plate" aria-hidden="true"><svg><use href="#i-code" /></svg></span>
+          <h3 class="step-title">Custom Development</h3>
+          <p class="step-text">
+            Every website is built to match your requirements using modern technologies —
+            no unnecessary features or bloated code.
+          </p>
+          <span class="step-deco" aria-hidden="true"></span>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════ WORK ═══ -->
+    <section class="section" id="work" aria-label="Selected work">
+      <header class="section-head">
+        <p class="eyebrow"><span class="eyebrow-bar"></span>Selected Work</p>
+        <h2 class="section-title">Built, shipped,<br />and responsive</h2>
+        <p class="section-lede">
+          Every project below works the same on a desktop and a phone. That's the baseline,
+          not a feature.
+        </p>
+      </header>
+
+      <div class="work-list">
+
+        <!-- 01 Schedio -->
+        <article class="proj reveal">
+          <div class="proj-visual">
+            <!--
+              Authored device frames. TODO(you): drop a real mobile screenshot at
+              assets/images/mobile/schedio.png and swap the phone <img> src — right now
+              the phone shows a crop of the desktop capture.
+            -->
+            <div class="devices">
+              <div class="dv-laptop">
+                <div class="dv-screen">
+                  <img src="assets/images/image.png" alt="Schedio on desktop" loading="lazy" width="1845"
+                    height="878" />
+                  <span class="dv-glare" aria-hidden="true"></span>
+                </div>
+                <div class="dv-base" aria-hidden="true"><span></span></div>
+              </div>
+              <div class="dv-phone">
+                <span class="dv-notch" aria-hidden="true"></span>
+                <div class="dv-phone-screen">
+                  <img src="assets/images/image.png" alt="Schedio on mobile" loading="lazy" />
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="cyber-input-wrapper">
-            <label>EMAIL</label>
-            <input type="email" name="email" required placeholder="Enter your email address" />
-            <div class="hud-decor-hash">////</div>
+
+          <div class="proj-body">
+            <p class="proj-index">01</p>
+            <h3 class="proj-title">Schedio</h3>
+            <p class="proj-kicker">Pedagogical planning &amp; timetable management</p>
+            <p class="proj-text">
+              A full-stack school administration and timetable platform. Training centres
+              manage poles, sectors, programmes, groups, trainers, rooms, module
+              assignments, academic calendars and weekly timetables from one centralised
+              system — with role-based dashboards, validation workflows, trainer
+              availability and change requests, conflict checks and progress tracking.
+            </p>
+            <ul class="chips">
+              <li>React</li>
+              <li>Vite</li>
+              <li>Laravel</li>
+              <li>MySQL</li>
+            </ul>
+            <!-- TODO(you): live URL -->
+            <a class="btn btn-ghost proj-link" href="#" hidden>
+              Visit site
+              <svg class="btn-arrow" aria-hidden="true"><use href="#i-arrow" /></svg>
+            </a>
           </div>
-          <div class="cyber-input-wrapper input-large">
-            <label>MESSAGE</label>
-            <textarea name="message" required rows="4" placeholder="How can I help you?"></textarea>
-            <div class="hud-decor-box"></div>
+        </article>
+
+        <!-- 02 DevPulse -->
+        <article class="proj reveal">
+          <div class="proj-visual">
+            <div class="devices">
+              <div class="dv-laptop">
+                <div class="dv-screen">
+                  <img src="assets/images/DevPulse/image1.png" alt="DevPulse on desktop" loading="lazy" width="1581"
+                    height="845" />
+                  <span class="dv-glare" aria-hidden="true"></span>
+                </div>
+                <div class="dv-base" aria-hidden="true"><span></span></div>
+              </div>
+              <div class="dv-phone">
+                <span class="dv-notch" aria-hidden="true"></span>
+                <div class="dv-phone-screen">
+                  <img src="assets/images/DevPulse/image2.png" alt="DevPulse on mobile" loading="lazy" />
+                </div>
+              </div>
+            </div>
           </div>
-          <button type="submit" class="cyber-submit-btn">
-            <span class="btn-text">INITIATE TRANSMISSION</span>
-            <span class="btn-glitch"></span>
-            <span class="btn-crosshair">+</span>
+
+          <div class="proj-body">
+            <p class="proj-index">02</p>
+            <h3 class="proj-title">DevPulse</h3>
+            <p class="proj-kicker">Uptime monitoring for developers &amp; small teams</p>
+            <p class="proj-text">
+              Track websites and APIs, view response-time history, detect outages and share
+              public status pages. Includes a protected dashboard, incident tracking, manual
+              and scheduled health checks, and email alerts for downtime and recovery —
+              built around secure server-side monitoring, background job workflows and
+              resilient failure handling.
+            </p>
+            <ul class="chips">
+              <li>Next.js</li>
+              <li>TypeScript</li>
+              <li>Prisma</li>
+              <li>PostgreSQL</li>
+              <li>Auth.js</li>
+            </ul>
+            <!-- TODO(you): live URL -->
+            <a class="btn btn-ghost proj-link" href="#" hidden>
+              Visit site
+              <svg class="btn-arrow" aria-hidden="true"><use href="#i-arrow" /></svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- 03 Meal Planner -->
+        <article class="proj reveal">
+          <div class="proj-visual">
+            <div class="devices">
+              <div class="dv-laptop">
+                <div class="dv-screen">
+                  <img src="assets/images/recipe-meal-planer/image.png" alt="Recipe &amp; Meal Planner on desktop"
+                    loading="lazy" width="1051" height="636" />
+                  <span class="dv-glare" aria-hidden="true"></span>
+                </div>
+                <div class="dv-base" aria-hidden="true"><span></span></div>
+              </div>
+              <div class="dv-phone">
+                <span class="dv-notch" aria-hidden="true"></span>
+                <div class="dv-phone-screen">
+                  <img src="assets/images/recipe-meal-planer/image copy.png"
+                    alt="Recipe &amp; Meal Planner on mobile" loading="lazy" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="proj-body">
+            <p class="proj-index">03</p>
+            <h3 class="proj-title">Recipe &amp; Meal Planner</h3>
+            <p class="proj-kicker">A personal cookbook meets weekly planner</p>
+            <p class="proj-text">
+              Build a recipe collection with full details — ingredients, steps, cook time
+              and servings — then plan the week at a glance. When you're ready, the app
+              generates a clean consolidated grocery list so you buy exactly what you need.
+            </p>
+            <ul class="chips">
+              <li>React</li>
+              <li>Node.js</li>
+              <li>REST API</li>
+            </ul>
+            <!-- TODO(you): live URL -->
+            <a class="btn btn-ghost proj-link" href="#" hidden>
+              Visit site
+              <svg class="btn-arrow" aria-hidden="true"><use href="#i-arrow" /></svg>
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════ ABOUT ═══ -->
+    <section class="section" id="about" aria-label="About">
+      <div class="about">
+        <div class="about-copy reveal">
+          <p class="eyebrow"><span class="eyebrow-bar"></span>About Me</p>
+          <h2 class="section-title">Crafting digital<br />experiences that matter</h2>
+          <p>
+            Hey, I'm <strong>El Yousfi Mohamed</strong> — a passionate full-stack developer
+            based in Morocco who loves turning complex problems into beautiful, intuitive
+            solutions.
+          </p>
+          <p>
+            I specialise in building scalable web applications from pixel-perfect frontends
+            to robust backend architectures. I care deeply about <strong>clean code</strong>,
+            <strong>great UX</strong>, and writing software that genuinely helps people.
+          </p>
+          <p>
+            When I'm not coding, I'm exploring new design trends, experimenting with
+            emerging technologies, or contributing to open-source projects.
+          </p>
+          <div class="about-actions">
+            <a href="#work" class="btn btn-primary">
+              See My Work
+              <svg class="btn-arrow" aria-hidden="true"><use href="#i-arrow" /></svg>
+            </a>
+            <a href="#contact" class="btn btn-ghost">Contact Me</a>
+          </div>
+        </div>
+
+        <aside class="about-panel reveal">
+          <div class="panel-head">
+            <span class="panel-dot"></span>
+            <span>profile</span>
+          </div>
+          <dl class="panel-list">
+            <div><dt>Role</dt><dd>Full-Stack Developer</dd></div>
+            <div><dt>Location</dt><dd>Morocco &mdash; remote</dd></div>
+            <div><dt>Frontend</dt><dd>React, Next.js, TypeScript</dd></div>
+            <div><dt>Backend</dt><dd>Laravel, Node.js</dd></div>
+            <div><dt>Database</dt><dd>PostgreSQL, MySQL</dd></div>
+            <div><dt>Approach</dt><dd>Hand-coded, no page builders</dd></div>
+          </dl>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════ STACK ═══ -->
+    <section class="section" id="stack" aria-label="Stack">
+      <header class="section-head">
+        <p class="eyebrow"><span class="eyebrow-bar"></span>Stack</p>
+        <h2 class="section-title">Technologies I<br />build with</h2>
+      </header>
+
+      <div class="stack-grid">
+        <div class="stack-card reveal">
+          <p class="stack-index">01</p>
+          <h3>Frontend</h3>
+          <ul class="chips">
+            <li>React</li>
+            <li>Vue.js</li>
+            <li>Next.js</li>
+            <li>TypeScript</li>
+            <li>Tailwind CSS</li>
+            <li>HTML5 / CSS3</li>
+          </ul>
+        </div>
+        <div class="stack-card reveal">
+          <p class="stack-index">02</p>
+          <h3>Backend</h3>
+          <ul class="chips">
+            <li>Node.js</li>
+            <li>Express</li>
+            <li>Laravel</li>
+            <li>PHP</li>
+            <li>REST APIs</li>
+            <li>JWT / OAuth</li>
+          </ul>
+        </div>
+        <div class="stack-card reveal">
+          <p class="stack-index">03</p>
+          <h3>Database</h3>
+          <ul class="chips">
+            <li>PostgreSQL</li>
+            <li>MySQL</li>
+            <li>MongoDB</li>
+            <li>Prisma</li>
+            <li>Eloquent ORM</li>
+          </ul>
+        </div>
+        <div class="stack-card reveal">
+          <p class="stack-index">04</p>
+          <h3>DevOps &amp; Tools</h3>
+          <ul class="chips">
+            <li>Docker</li>
+            <li>Git / GitHub</li>
+            <li>Linux</li>
+            <li>CI/CD</li>
+            <li>Vercel</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════ CONTACT ═══ -->
+    <section class="section" id="contact" aria-label="Contact">
+      <div class="contact reveal">
+        <div class="contact-copy">
+          <p class="eyebrow"><span class="eyebrow-bar"></span>Contact</p>
+          <h2 class="section-title">Tell me what<br />you need built</h2>
+          <p class="contact-desc">
+            A new site, a rebuild of one that's slow or broken on mobile, or a web app.
+            Send me the details and I'll reply with what it would take.
+          </p>
+
+          <a href="mailto:elyousfimohamed263@gmail.com" class="contact-link">
+            <svg aria-hidden="true"><use href="#i-mail" /></svg>
+            elyousfimohamed263@gmail.com
+          </a>
+          <!-- TODO(you): confirm this handle -->
+          <a href="https://github.com/mohamed-elyousfi" target="_blank" rel="noopener noreferrer"
+            class="contact-link">
+            <svg aria-hidden="true"><use href="#i-github" /></svg>
+            github.com/mohamed-elyousfi
+          </a>
+        </div>
+
+        <form class="form" id="contact-form" novalidate>
+          <div class="form-head">
+            <span class="panel-dot"></span>
+            <span>new-project</span>
+          </div>
+          <div class="field">
+            <label for="f-name">Name</label>
+            <input type="text" id="f-name" name="name" required autocomplete="name" placeholder="Your name" />
+          </div>
+          <div class="field">
+            <label for="f-email">Email</label>
+            <input type="email" id="f-email" name="email" required autocomplete="email"
+              placeholder="you@example.com" />
+          </div>
+          <div class="field">
+            <label for="f-site">Website (if you have one)</label>
+            <input type="url" id="f-site" name="website" inputmode="url" placeholder="https://" />
+          </div>
+          <div class="field">
+            <label for="f-message">Project</label>
+            <textarea id="f-message" name="message" rows="4" required
+              placeholder="What do you need built, and roughly when?"></textarea>
+          </div>
+          <div class="hp" aria-hidden="true">
+            <label for="f-company">Company</label>
+            <input type="text" id="f-company" name="_honey" tabindex="-1" autocomplete="off" />
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg form-submit">
+            <span class="btn-label">Send Message</span>
+            <svg class="btn-arrow" aria-hidden="true"><use href="#i-arrow" /></svg>
           </button>
           <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
         </form>
       </div>
-    </div>
-  </nav>
+    </section>
 
-  <!-- ══════════════════════════════
-     HERO
-══════════════════════════════ -->
-  <section id="hero" aria-label="Hero section">
-    <video id="hero-video" autoplay muted loop playsinline aria-hidden="true" preload="metadata">
-      <source src="assets/video/Pre2.mp4" type="video/mp4">
-    </video>
-    <div class="hero-overlay" aria-hidden="true"></div>
-
-    <div class="hero-content">
-      <h1 class="hero-name" aria-label="WELCOME TO MY WORLD">
-        <span class="hero-name-line">WELCOME TO MY</span>
-        <span class="hero-name-line">
-          <span class="name-gradient">WORLD</span>
-        </span>
-      </h1>
-
-      <p class="hero-role">
-        I build&nbsp;<span class="typed-text"></span><span class="cursor-blink" aria-hidden="true"></span>
-      </p>
-
-      <div class="hero-buttons">
-        <a href="#projects" id="hero-cta-primary" class="btn-primary">
-          View My Work
-          <span aria-hidden="true">→</span>
+    <footer class="footer">
+      <div class="footer-inner">
+        <a href="#top" class="logo logo-sm">
+          <span class="logo-plate">
+            <svg viewBox="0 0 26 26" aria-hidden="true">
+              <path d="M7 20V6h10M7 13h7M7 20h10" fill="none" stroke="currentColor" stroke-width="2.6"
+                stroke-linecap="square" />
+            </svg>
+          </span>
+          <span class="logo-type"><strong>El Yousfi Mohamed</strong></span>
         </a>
-        <a href="#contact" id="hero-cta-secondary" class="btn-secondary">
-          Get in Touch
-          <span aria-hidden="true">↗</span>
-        </a>
+        <p>&copy; <span id="year">2026</span> All rights reserved.</p>
+        <p>Hand-coded with HTML, CSS &amp; JavaScript.</p>
       </div>
-    </div>
+    </footer>
 
-    <div class="hero-scroll" aria-hidden="true">
-      <span>Scroll</span>
-      <div class="scroll-line"></div>
-    </div>
-  </section>
+  </main>
 
-  <!-- ══════════════════════════════
-     MARQUEE
-══════════════════════════════ -->
-  <div class="marquee-section" aria-hidden="true">
-    <div class="marquee-track">
-      <!-- Set A -->
-      <span class="marquee-item">
-        <i class="devicon-react-original colored marquee-icon"></i>
-        <span class="marquee-text" style="--c:#61DAFB">React</span>
-      </span>
-      <span class="marquee-item">
-        <i class="devicon-vuejs-plain colored marquee-icon"></i>
-        <span class="marquee-text" style="--c:#42D392">Vue.js</span>
-      </span>
-      <span class="marquee-item">
-        <i class="devicon-nodejs-plain colored marquee-icon"></i>
-        <span class="marquee-text" style="--c:#6CCC55">Node.js</span>
-      </span>
-      <span class="marquee-item">
-        <i class="devicon-typescript-plain colored marquee-icon"></i>
-        <span class="marquee-text" style="--c:#3178C6">TypeScript</span>
-      </span>
-      <span class="marquee-item">
-        <i class="devicon-laravel-plain colored marquee-icon"></i>
-        <span class="marquee-text" style="--c:#FF2D20">Laravel</span>
-      </span>
-      <span class="marquee-item">
-        <i class="devicon-postgresql-plain colored marquee-icon"></i>
-        <span class="marquee-text" style="--c:#4169E1">PostgreSQL</span>
-      </span>
-      <span class="marquee-item">
-        <i class="devicon-docker-plain colored marquee-icon"></i>
-        <span class="marquee-text" style="--c:#2496ED">Docker</span>
-      </span>
-      <span class="marquee-item">
-        <i class="devicon-tailwindcss-plain colored marquee-icon"></i>
-        <span class="marquee-text" style="--c:#38BDF8">Tailwind</span>
-      </span>
-      <span class="marquee-item">
-        <i class="devicon-graphql-plain colored marquee-icon"></i>
-        <span class="marquee-text" style="--c:#E10098">GraphQL</span>
-      </span>
-      <span class="marquee-item">
-        <i class="devicon-nextjs-plain marquee-icon" style="color:#fff"></i>
-        <span class="marquee-text" style="--c:#ffffff">Next.js</span>
-      </span>
-      <span class="marquee-item">
-        <i class="devicon-mongodb-plain colored marquee-icon"></i>
-        <span class="marquee-text" style="--c:#4DB33D">MongoDB</span>
-      </span>
-      <span class="marquee-item">
-        <i class="devicon-amazonwebservices-plain-wordmark colored marquee-icon"></i>
-        <span class="marquee-text" style="--c:#FF9900">AWS</span>
-      </span>
-      <!-- Set B (duplicate for seamless loop) -->
-      <span class="marquee-item">
-        <i class="devicon-react-original colored marquee-icon"></i>
-        <span class="marquee-text" style="--c:#61DAFB">React</span>
-      </span>
-      <span class="marquee-item">
-        <i class="devicon-vuejs-plain colored marquee-icon"></i>
-        <span class="marquee-text" style="--c:#42D392">Vue.js</span>
-      </span>
-      <span class="marquee-item">
-        <i class="devicon-nodejs-plain colored marquee-icon"></i>
-        <span class="marquee-text" style="--c:#6CCC55">Node.js</span>
-      </span>
-      <span class="marquee-item">
-        <i class="devicon-typescript-plain colored marquee-icon"></i>
-        <span class="marquee-text" style="--c:#3178C6">TypeScript</span>
-      </span>
-      <span class="marquee-item">
-        <i class="devicon-laravel-plain colored marquee-icon"></i>
-        <span class="marquee-text" style="--c:#FF2D20">Laravel</span>
-      </span>
-      <span class="marquee-item">
-        <i class="devicon-postgresql-plain colored marquee-icon"></i>
-        <span class="marquee-text" style="--c:#4169E1">PostgreSQL</span>
-      </span>
-      <span class="marquee-item">
-        <i class="devicon-docker-plain colored marquee-icon"></i>
-        <span class="marquee-text" style="--c:#2496ED">Docker</span>
-      </span>
-      <span class="marquee-item">
-        <i class="devicon-tailwindcss-plain colored marquee-icon"></i>
-        <span class="marquee-text" style="--c:#38BDF8">Tailwind</span>
-      </span>
-      <span class="marquee-item">
-        <i class="devicon-graphql-plain colored marquee-icon"></i>
-        <span class="marquee-text" style="--c:#E10098">GraphQL</span>
-      </span>
-      <span class="marquee-item">
-        <i class="devicon-nextjs-plain marquee-icon" style="color:#fff"></i>
-        <span class="marquee-text" style="--c:#ffffff">Next.js</span>
-      </span>
-      <span class="marquee-item">
-        <i class="devicon-mongodb-plain colored marquee-icon"></i>
-        <span class="marquee-text" style="--c:#4DB33D">MongoDB</span>
-      </span>
-      <span class="marquee-item">
-        <i class="devicon-amazonwebservices-plain-wordmark colored marquee-icon"></i>
-        <span class="marquee-text" style="--c:#FF9900">AWS</span>
-      </span>
-    </div>
-  </div>
-
-  <!-- ══════════════════════════════
-     ABOUT
-══════════════════════════════ -->
-  <section id="about" class="section" aria-label="About me">
-    <div class="about-grid">
-
-      <!-- Visual -->
-      <div class="about-visual reveal-left" style="flex: 1.2;">
-        <div class="about-slider-wrap">
-          <div class="about-slider-images">
-            <img src="assets/images/webdev.png" class="slider-img active" alt="Web Development" loading="lazy" />
-            <img src="assets/images/uiux.png" class="slider-img" alt="UI/UX Design" loading="lazy" />
-            <img src="assets/images/ecommerce.png" class="slider-img" alt="E-Commerce App" loading="lazy" />
-          </div>
-          <div class="slider-controls">
-            <button class="slider-btn" id="sliderPrev">❮</button>
-            <div class="slider-dots">
-              <span class="slider-dot active" data-index="0"></span>
-              <span class="slider-dot" data-index="1"></span>
-              <span class="slider-dot" data-index="2"></span>
-            </div>
-            <button class="slider-btn" id="sliderNext">❯</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Text -->
-      <div class="about-text">
-        <div class="section-label reveal stagger-1">About Me</div>
-        <h2 class="section-title reveal stagger-2">
-          Crafting <span class="highlight">digital experiences</span><br>
-          that matter
-        </h2>
-
-        <div class="reveal stagger-3">
-          <p>
-            Hey, I'm <strong>El Yousfi Mohamed</strong> — a passionate full-stack developer
-            based in Morocco who loves turning complex problems into beautiful,
-            intuitive solutions.
-          </p>
-          <p>
-            I specialize in building scalable web applications from pixel-perfect
-            frontends to robust backend architectures. I care deeply about
-            <strong>clean code</strong>, <strong>great UX</strong>, and writing
-            software that genuinely helps people.
-          </p>
-          <p>
-            When I'm not coding, I'm exploring new design trends, experimenting
-            with emerging technologies, or contributing to open-source projects.
-          </p>
-        </div>
-
-        <div class="hero-buttons reveal stagger-4" style="justify-content: flex-start; margin-top: 32px;">
-          <a href="#projects" class="btn-primary" id="about-cta">See My Work →</a>
-          <a href="#contact" class="btn-secondary" id="about-contact">Contact Me ↗</a>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <div class="glow-divider"></div>
-
-  <!-- ══════════════════════════════
-     SKILLS
-══════════════════════════════ -->
-  <section id="skills" class="section section-full" aria-label="Skills and technologies">
-    <div style="max-width:1400px;margin:0 auto;">
-      <div class="section-label reveal">Stack</div>
-      <h2 class="section-title reveal stagger-1">
-        Technologies I <span class="highlight">master</span>
-      </h2>
-      <p class="section-sub reveal stagger-2">
-        A curated toolkit for building modern, scalable, high-performance web products.
-      </p>
-
-      <div class="skills-grid">
-
-        <!-- Frontend -->
-        <div class="skill-category reveal stagger-1"
-          style="background: radial-gradient(circle at 15% 0%, rgba(124,58,237,0.10) 0%, transparent 55%), linear-gradient(to bottom, rgba(5,5,8,0.85), rgba(5,5,8,0.98));">
-          <div class="skill-cat-header">
-            <span class="skill-cat-icon">⚛️</span>
-            <span class="skill-cat-title">Frontend</span>
-          </div>
-          <div class="skill-items">
-            <span class="skill-pill"><i class="devicon-react-original colored"></i> React</span>
-            <span class="skill-pill"><i class="devicon-vuejs-plain colored"></i> Vue.js</span>
-            <span class="skill-pill"><i class="devicon-nextjs-plain"></i> Next.js</span>
-            <span class="skill-pill"><i class="devicon-typescript-plain colored"></i> TypeScript</span>
-            <span class="skill-pill"><i class="devicon-tailwindcss-original colored"></i> Tailwind CSS</span>
-            <span class="skill-pill"><i class="devicon-framermotion-original"></i> Framer Motion</span>
-            <span class="skill-pill"><i class="devicon-threejs-original colored"></i> Three.js</span>
-            <span class="skill-pill"><i class="devicon-html5-plain colored"></i> HTML5 / CSS3</span>
-          </div>
-        </div>
-
-        <!-- Backend -->
-        <div class="skill-category reveal stagger-2"
-          style="background: radial-gradient(circle at 15% 0%, rgba(14,165,209,0.10) 0%, transparent 55%), linear-gradient(to bottom, rgba(5,5,8,0.85), rgba(5,5,8,0.98));">
-          <div class="skill-cat-header">
-            <span class="skill-cat-icon">🛠️</span>
-            <span class="skill-cat-title">Backend</span>
-          </div>
-          <div class="skill-items">
-            <span class="skill-pill"><i class="devicon-nodejs-plain colored"></i> Node.js</span>
-            <span class="skill-pill"><i class="devicon-express-original"></i> Express</span>
-            <span class="skill-pill"><i class="devicon-laravel-plain colored"></i> Laravel</span>
-            <span class="skill-pill"><i class="devicon-php-plain colored"></i> PHP</span>
-            <span class="skill-pill"><i class="devicon-spring-plain colored"></i> REST APIs</span>
-            <span class="skill-pill"><i class="devicon-graphql-plain colored"></i> GraphQL</span>
-            <span class="skill-pill"><i class="devicon-socketio-original"></i> WebSockets</span>
-            <span class="skill-pill"><i class="devicon-oauth-plain colored"></i> JWT / OAuth</span>
-          </div>
-        </div>
-
-        <!-- Database -->
-        <div class="skill-category reveal stagger-3"
-          style="background: radial-gradient(circle at 15% 0%, rgba(232,121,249,0.10) 0%, transparent 55%), linear-gradient(to bottom, rgba(5,5,8,0.85), rgba(5,5,8,0.98));">
-          <div class="skill-cat-header">
-            <span class="skill-cat-icon">🗄️</span>
-            <span class="skill-cat-title">Database</span>
-          </div>
-          <div class="skill-items">
-            <span class="skill-pill"><i class="devicon-postgresql-plain colored"></i> PostgreSQL</span>
-            <span class="skill-pill"><i class="devicon-mysql-plain colored"></i> MySQL</span>
-            <span class="skill-pill"><i class="devicon-mongodb-plain colored"></i> MongoDB</span>
-            <span class="skill-pill"><i class="devicon-redis-plain colored"></i> Redis</span>
-            <span class="skill-pill"><i class="devicon-prisma-original"></i> Prisma</span>
-            <span class="skill-pill"><i class="devicon-laravel-plain colored"></i> Eloquent ORM</span>
-          </div>
-        </div>
-
-        <!-- DevOps -->
-        <div class="skill-category reveal stagger-4"
-          style="background: radial-gradient(circle at 15% 0%, rgba(66,211,146,0.10) 0%, transparent 55%), linear-gradient(to bottom, rgba(5,5,8,0.85), rgba(5,5,8,0.98));">
-          <div class="skill-cat-header">
-            <span class="skill-cat-icon">☁️</span>
-            <span class="skill-cat-title">DevOps & Tools</span>
-          </div>
-          <div class="skill-items">
-            <span class="skill-pill"><i class="devicon-docker-plain colored"></i> Docker</span>
-            <span class="skill-pill"><i class="devicon-git-plain colored"></i> Git / GitHub</span>
-            <span class="skill-pill"><i class="devicon-linux-plain"></i> Linux</span>
-            <span class="skill-pill"><i class="devicon-githubactions-plain colored"></i> CI/CD</span>
-            <span class="skill-pill"><i class="devicon-nginx-original colored"></i> Nginx</span>
-            <span class="skill-pill"><i class="devicon-amazonwebservices-plain-wordmark colored"></i> AWS</span>
-            <span class="skill-pill"><i class="devicon-vercel-original"></i> Vercel</span>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════
-     PROJECTS
-══════════════════════════════ -->
-  <section id="projects" class="section section-full" aria-label="Projects">
-    <div style="max-width:1400px;margin:0 auto;">
-
-      <div class="projects-header">
-        <div>
-          <div class="section-label reveal">Work</div>
-          <h2 class="section-title reveal stagger-1">
-            Selected <span class="highlight">Projects</span>
-          </h2>
-        </div>
-        <p class="section-sub reveal stagger-2" style="max-width:360px; text-align:right;">
-          More projects are on the way — check back soon or reach out to collaborate.
-        </p>
-      </div>
-
-      <div class="projects-carousel-container">
-        <!-- The spotlight beam -->
-        <div class="active-glow" id="carousel-glow"></div>
-
-        <div class="carousel-track" id="project-track">
-
-          <!-- Card 1 — Schedio -->
-          <div class="project-card reveal active" id="project-schedio" data-index="0" style="border-top: 2px solid #0EA5D1;">
-            <div
-              style="background:#f0f4f8; border-bottom: 1px solid var(--glass-border); border-radius: 14px 14px 0 0; overflow:hidden; aspect-ratio: 16/11;">
-              <img src="assets/images/image.png" alt="Schedio" loading="lazy"
-                style="width:100%; height:100%; display:block; object-fit:contain;" />
-            </div>
-            <div class="project-card-body" style="gap:16px;">
-              <div class="project-tags" style="margin:0;">
-                <span class="project-tag"
-                  style="background:rgba(14,165,209,0.18); color:#0EA5D1; border-color:rgba(14,165,209,0.35);">Featured</span>
-                <span class="project-tag">School Admin</span>
-              </div>
-              <div>
-                <h3 class="project-title" style="margin:0 0 4px; font-size:1.6rem;">Schedio</h3>
-                <p
-                  style="margin:0; font-size:0.82rem; color:var(--text-muted); text-transform:uppercase; font-weight:500;">
-                  Pedagogical Planning &amp; Timetable</p>
-              </div>
-              <p class="project-desc" style="margin:0; line-height:1.7;">
-                <strong>Schedio</strong> is a full-stack school administration and timetable management platform built
-                with <strong>React, Vite, Laravel, and MySQL</strong>. It helps training centers manage poles, sectors,
-                programs, groups, trainers, rooms, module assignments, academic calendars, and weekly timetables from
-                one <strong>centralized system</strong>. The app includes role-based dashboards, timetable validation
-                workflows, trainer availability/change requests, conflict checks, and module progress tracking.
-              </p>
-              <div style="display:flex; flex-wrap:wrap; gap:8px;">
-                <span class="project-tag"
-                  style="background:transparent; border:1px solid var(--glass-border); color:var(--text-muted); text-transform:none;">🗓
-                  Timetable Builder</span>
-                <span class="project-tag"
-                  style="background:transparent; border:1px solid var(--glass-border); color:var(--text-muted); text-transform:none;">🔐
-                  Role-Based Access</span>
-              </div>
-              <div class="project-footer">
-                <div class="project-stack">
-                  <div class="stack-dot" title="React">Re</div>
-                  <div class="stack-dot" title="Laravel">La</div>
-                  <div class="stack-dot" title="MySQL">My</div>
-                </div>
-                <button class="project-arrow" style="color:#0EA5D1;" aria-label="Next Project">→</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Card 2 — Recipe & Meal Planner -->
-          <div class="project-card reveal" id="project-meal-planner" data-index="1"
-            style="border-top:2px solid #f97316;">
-            <div
-              style="position:relative;overflow:hidden;border-bottom:1px solid var(--glass-border);border-radius:14px 14px 0 0;background:#f8f8f6; aspect-ratio: 16/11;">
-              <div class="project-gallery" data-gallery-interval="3600" aria-label="Recipe and Meal Planner screenshots">
-                <img class="project-gallery-image active" src="assets/images/recipe-meal-planer/image.png"
-                  alt="Recipe collection dashboard" loading="lazy" />
-                <img class="project-gallery-image" src="assets/images/recipe-meal-planer/image copy.png"
-                  alt="Weekly meal plan calendar" loading="lazy" />
-                <img class="project-gallery-image" src="assets/images/recipe-meal-planer/image copy 2.png"
-                  alt="Generated grocery list view" loading="lazy" />
-                <div class="project-gallery-controls">
-                  <button class="project-gallery-dot active" type="button" aria-label="Show recipe collection screenshot"></button>
-                  <button class="project-gallery-dot" type="button" aria-label="Show meal planner screenshot"></button>
-                  <button class="project-gallery-dot" type="button" aria-label="Show grocery list screenshot"></button>
-                </div>
-              </div>
-            </div>
-            <div class="project-card-body" style="gap:14px;">
-              <div class="project-tags">
-                <span class="project-tag"
-                  style="background:rgba(249,115,22,0.15);color:#f97316;border-color:rgba(249,115,22,0.3);">Full
-                  Stack</span>
-                <span class="project-tag">Web App</span>
-              </div>
-              <h3 class="project-title">Recipe &amp; Meal Planner</h3>
-              <p class="project-desc">
-                A personal cookbook meets weekly planner. Build your recipe collection with full details — ingredients,
-                steps, cook time &amp; servings — then plan your <strong>week at a glance</strong>. When ready, the app
-                generates a clean <strong>consolidated grocery list</strong> so you buy exactly what you need.
-              </p>
-              <div class="project-footer">
-                <div class="project-stack">
-                  <div class="stack-dot" title="React">Re</div>
-                  <div class="stack-dot" title="Node.js">Nd</div>
-                </div>
-                <button class="project-arrow" style="color:#f97316;" aria-label="Next Project">→</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Card 3 — DevPulse -->
-          <div class="project-card reveal" id="project-devpulse" data-index="2" style="border-top:2px solid #10b981;">
-            <div
-              style="position:relative; overflow:hidden; border-bottom:1px solid var(--glass-border); border-radius:14px 14px 0 0; background:#050508; aspect-ratio: 16/11;">
-              <div class="project-gallery" data-gallery-interval="4000" aria-label="DevPulse screenshots">
-                <img class="project-gallery-image active" src="assets/images/DevPulse/image1.png"
-                  alt="DevPulse overview dashboard" loading="lazy" />
-                <img class="project-gallery-image" src="assets/images/DevPulse/image2.png"
-                  alt="DevPulse monitoring analytics" loading="lazy" />
-                <img class="project-gallery-image" src="assets/images/DevPulse/image3.png"
-                  alt="DevPulse incident details" loading="lazy" />
-                <div class="project-gallery-controls">
-                  <button class="project-gallery-dot active" type="button" aria-label="Show DevPulse dashboard screenshot"></button>
-                  <button class="project-gallery-dot" type="button" aria-label="Show DevPulse analytics screenshot"></button>
-                  <button class="project-gallery-dot" type="button" aria-label="Show DevPulse incident screenshot"></button>
-                </div>
-              </div>
-            </div>
-            <div class="project-card-body" style="gap:16px;">
-              <div class="project-tags">
-                <span class="project-tag"
-                  style="background:rgba(16,185,129,0.18); color:#10b981; border-color:rgba(16,185,129,0.35);">Full
-                  Stack SaaS</span>
-                <span class="project-tag">Next.js</span>
-              </div>
-              <h3 class="project-title" style="font-size:1.6rem;">DevPulse</h3>
-              <p class="project-desc" style="margin:0; line-height:1.6; font-size: 0.92rem;">
-                DevPulse is a full-stack uptime monitoring platform I built for developers and small teams. It lets
-                users track websites and APIs, view response-time history, detect outages, and share public status
-                pages. The app includes a protected dashboard, incident tracking, manual and scheduled health checks,
-                and email alert support for downtime and recovery.
-              </p>
-              <p class="project-desc" style="margin:8px 0 0; line-height:1.6; font-size: 0.85rem; opacity: 0.8;">
-                I built it with Next.js, TypeScript, Tailwind CSS, Prisma, and PostgreSQL, with Auth.js for
-                authentication, QStash for scheduled checks, Resend for alerts, and Recharts for monitoring visuals. The
-                project was designed to demonstrate production-style engineering: secure server-side monitoring,
-                database design, background job workflows, and resilient failure handling.
-              </p>
-              <div class="project-footer">
-                <div class="project-stack">
-                  <div class="stack-dot" title="Next.js">Nx</div>
-                  <div class="stack-dot" title="Prisma">Pr</div>
-                  <div class="stack-dot" title="PostgreSQL">Pg</div>
-                </div>
-                <button class="project-arrow" style="color:#10b981;" aria-label="Next Project">→</button>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Navigation buttons -->
-        <div class="carousel-nav">
-          <button class="carousel-btn" id="carousel-prev" aria-label="Previous Project">← PREV</button>
-          <button class="carousel-btn" id="carousel-next" aria-label="Next Project">NEXT →</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="glow-divider" style="margin: 0 clamp(24px,8vw,120px)"></div>
-
-  <!-- ══════════════════════════════
-     CONTACT
-══════════════════════════════ -->
-  <section id="contact" class="section" aria-label="Contact">
-    <div style="max-width:700px;margin:0 auto;">
-      <div class="section-label reveal" style="justify-content:center;">Contact</div>
-      <h2 class="section-title reveal stagger-1" style="text-align:center;">
-        Let's build something<br><span class="highlight">great together</span>
-      </h2>
-      <p class="section-sub reveal stagger-2" style="text-align:center;margin:0 auto 40px;">
-        Have a project in mind, a collaboration idea, or just want to say hi?
-        My inbox is always open.
-      </p>
-
-      <div style="text-align:center;" class="reveal stagger-3">
-        <a href="mailto:elyousfimohamed263@gmail.com" class="contact-email" id="contact-email">
-          <span>✉</span> elyousfimohamed263@gmail.com
-        </a>
-      </div>
-
-      <div class="social-links reveal stagger-4">
-        <a href="https://github.com/mohamed-elyousfi" target="_blank" rel="noopener noreferrer" id="social-github" class="social-link">
-          <span class="social-icon">⌥</span> GitHub
-        </a>
-        <button type="button" class="social-link" id="contact-portal-open" data-open-portal>
-          <span class="social-icon">✦</span> Send a Message
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════
-     FOOTER
-══════════════════════════════ -->
-  <footer role="contentinfo">
-    <span class="footer-logo">EYM</span>
-    <p>© <span id="footer-year">2026</span> El Yousfi Mohamed. All rights reserved.</p>
-    <p>Built with HTML, CSS &amp; JavaScript</p>
-  </footer>
-
-  <!-- Scripts -->
   <script src="js/main.js" defer></script>
-
-
 </body>
 
 </html>

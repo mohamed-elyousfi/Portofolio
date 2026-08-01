@@ -1,496 +1,211 @@
 'use strict';
 
-const navbar = document.getElementById('navbar');
-const contactBtn = document.getElementById('nav-contact');
-const closePortalBtn = document.getElementById('portal-close');
-const body = document.body;
+/* --------------------------------------------------------------------------
+   El Yousfi Mohamed — freelance web development
+   No libraries. If this file fails to load the page is still fully readable:
+   .reveal is gated behind the .js class set in the document head.
+   -------------------------------------------------------------------------- */
 
-const ROLES = [
-  'scalable web apps.',
-  'pixel-perfect UIs.',
-  'fast REST APIs.',
-  'seamless experiences.',
-  'clean, modern code.',
-];
+const reducedMotion = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-let roleIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
+/* ---------------------------------------------------------------- theme --- */
+function initTheme() {
+  const toggle = document.getElementById('theme-toggle');
+  if (!toggle) return;
 
-const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-const prefersReducedMotion = () => reduceMotionQuery.matches;
+  const root = document.documentElement;
 
-let lastPortalTrigger = null;
+  const apply = (theme) => {
+    root.setAttribute('data-theme', theme);
+    toggle.setAttribute(
+      'aria-label',
+      theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'
+    );
+  };
 
-function openPortal(trigger) {
-  lastPortalTrigger = trigger || document.activeElement;
-  body.classList.add('portal-open');
-
-  const firstField = document.querySelector('.cyber-form input');
-  if (firstField) {
-    setTimeout(() => firstField.focus(), 450);
-  }
-}
-
-function closePortal() {
-  if (!body.classList.contains('portal-open')) return;
-
-  body.classList.remove('portal-open');
-
-  if (lastPortalTrigger && typeof lastPortalTrigger.focus === 'function') {
-    lastPortalTrigger.focus();
-  }
-
-  lastPortalTrigger = null;
-}
-
-function initPortal() {
-  if (contactBtn) {
-    contactBtn.addEventListener('click', (event) => {
-      event.preventDefault();
-      openPortal(contactBtn);
-    });
-  }
-
-  if (closePortalBtn) {
-    closePortalBtn.addEventListener('click', closePortal);
-  }
-
-  // The contact section's own CTAs open the portal instead of only linking to it
-  document.querySelectorAll('[data-open-portal]').forEach((trigger) => {
-    trigger.addEventListener('click', (event) => {
-      event.preventDefault();
-      openPortal(trigger);
-    });
-  });
-
-  window.addEventListener('scroll', () => {
-    if (navbar) {
-      navbar.classList.toggle('scrolled', window.scrollY > 40);
-    }
-  }, { passive: true });
-
-  // Escape works everywhere; wheel-up is a desktop convenience only
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') {
-      closePortal();
+  toggle.addEventListener('click', () => {
+    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    apply(next);
+    try {
+      localStorage.setItem('theme', next);
+    } catch (e) {
+      /* private mode: the choice just won't persist */
     }
   });
 
-  window.addEventListener('wheel', (event) => {
-    if (!body.classList.contains('portal-open')) return;
-    if (event.deltaY < -20) {
-      closePortal();
-    }
+  // Track the OS only until the visitor picks for themselves
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    let saved = null;
+    try {
+      saved = localStorage.getItem('theme');
+    } catch (err) { /* ignore */ }
+    if (!saved) apply(e.matches ? 'dark' : 'light');
+  });
+
+  apply(root.getAttribute('data-theme') || 'light');
+}
+
+/* ------------------------------------------------------------------ nav --- */
+function initNav() {
+  const burger = document.getElementById('burger');
+  const menu = document.getElementById('mobile-menu');
+  if (!burger || !menu) return;
+
+  const setOpen = (open) => {
+    burger.setAttribute('aria-expanded', String(open));
+    burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    menu.hidden = !open;
+  };
+
+  burger.addEventListener('click', () => {
+    setOpen(burger.getAttribute('aria-expanded') !== 'true');
+  });
+
+  menu.querySelectorAll('[data-nav-mobile]').forEach((link) =>
+    link.addEventListener('click', () => setOpen(false))
+  );
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') setOpen(false);
+  });
+
+  // A menu left open while resizing to desktop would hang under the nav island
+  matchMedia('(min-width: 901px)').addEventListener('change', (e) => {
+    if (e.matches) setOpen(false);
+  });
+
+  // Tapping outside closes it
+  document.addEventListener('click', (e) => {
+    if (burger.getAttribute('aria-expanded') !== 'true') return;
+    if (menu.contains(e.target) || burger.contains(e.target)) return;
+    setOpen(false);
   });
 }
 
-function typeLoop() {
-  const typedEl = document.querySelector('.typed-text');
-  if (!typedEl) return;
+/* ------------------------------------------------------------ scrollspy --- */
+function initScrollSpy() {
+  const links = Array.from(document.querySelectorAll('.nav-links [data-nav]'));
+  if (!links.length) return;
 
-  // Reduced motion: show one role statically instead of typing on a loop
-  if (prefersReducedMotion()) {
-    typedEl.textContent = ROLES[0];
+  const sections = links
+    .map((l) => document.querySelector(l.getAttribute('href')))
+    .filter(Boolean);
+  if (!sections.length) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      const onScreen = entries
+        .filter((e) => e.isIntersecting)
+        .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+      if (!onScreen.length) return;
+
+      const id = onScreen[0].target.id;
+      links.forEach((l) =>
+        l.classList.toggle('is-active', l.getAttribute('href') === `#${id}`)
+      );
+    },
+    { rootMargin: '-30% 0px -55% 0px', threshold: 0 }
+  );
+
+  sections.forEach((s) => observer.observe(s));
+}
+
+/* --------------------------------------------------------------- reveal --- */
+function initReveal() {
+  const items = Array.from(document.querySelectorAll('.reveal'));
+  if (!items.length) return;
+
+  if (reducedMotion() || !('IntersectionObserver' in window)) {
+    items.forEach((i) => i.classList.add('is-visible'));
     return;
   }
 
-  const currentRole = ROLES[roleIndex];
-
-  if (!isDeleting) {
-    typedEl.textContent = currentRole.slice(0, ++charIndex);
-
-    if (charIndex === currentRole.length) {
-      isDeleting = true;
-      setTimeout(typeLoop, 2200);
-      return;
-    }
-  } else {
-    typedEl.textContent = currentRole.slice(0, --charIndex);
-
-    if (charIndex === 0) {
-      isDeleting = false;
-      roleIndex = (roleIndex + 1) % ROLES.length;
-    }
-  }
-
-  setTimeout(typeLoop, isDeleting ? 45 : 85);
-}
-
-function initAboutSlider() {
-  const images = document.querySelectorAll('.slider-img');
-  const dots = document.querySelectorAll('.slider-dot');
-  const prev = document.getElementById('sliderPrev');
-  const next = document.getElementById('sliderNext');
-
-  if (!images.length || !dots.length) return;
-
-  let current = 0;
-  let interval = null;
-
-  function goTo(index) {
-    images[current].classList.remove('active');
-    dots[current].classList.remove('active');
-    current = (index + images.length) % images.length;
-    images[current].classList.add('active');
-    dots[current].classList.add('active');
-    resetTimer();
-  }
-
-  function nextSlide() {
-    goTo(current + 1);
-  }
-
-  function prevSlide() {
-    goTo(current - 1);
-  }
-
-  function resetTimer() {
-    if (interval) {
-      clearInterval(interval);
-    }
-
-    if (prefersReducedMotion()) return;
-
-    interval = setInterval(nextSlide, 4500);
-  }
-
-  next?.addEventListener('click', nextSlide);
-  prev?.addEventListener('click', prevSlide);
-  dots.forEach((dotElement, index) => {
-    dotElement.addEventListener('click', () => goTo(index));
-  });
-
-  resetTimer();
-}
-
-function initRevealAnimations() {
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.12 });
-
-  document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach((element) => {
-    revealObserver.observe(element);
-  });
-}
-
-function initProjectCarousel() {
-  const track = document.getElementById('project-track');
-  const cards = Array.from(track?.querySelectorAll('.project-card') || []);
-  const glow = document.getElementById('carousel-glow');
-  const prevBtn = document.getElementById('carousel-prev');
-  const nextBtn = document.getElementById('carousel-next');
-
-  if (!track || cards.length === 0) return;
-
-  let currentIndex = 0;
-  let autoPlayTimer = null;
-
-  function updateCarousel() {
-    cards.forEach((card, index) => {
-      card.classList.remove('active', 'prev', 'next', 'far-prev', 'far-next', 'hidden');
-
-      const offset = (index - currentIndex + cards.length) % cards.length;
-
-      if (offset === 0) {
-        card.classList.add('active');
-        glow?.classList.add('visible');
-      } else if (offset === 1) {
-        card.classList.add('next');
-      } else if (offset === cards.length - 1) {
-        card.classList.add('prev');
-      } else if (offset === 2) {
-        card.classList.add('far-next');
-      } else if (offset === cards.length - 2) {
-        card.classList.add('far-prev');
-      } else {
-        card.classList.add('hidden');
-      }
-    });
-  }
-
-  function goTo(index) {
-    currentIndex = (index + cards.length) % cards.length;
-    updateCarousel();
-    startAutoPlay();
-  }
-
-  function next() {
-    goTo(currentIndex + 1);
-  }
-
-  function prev() {
-    goTo(currentIndex - 1);
-  }
-
-  function stopAutoPlay() {
-    if (autoPlayTimer) {
-      clearInterval(autoPlayTimer);
-      autoPlayTimer = null;
-    }
-  }
-
-  function startAutoPlay() {
-    stopAutoPlay();
-
-    if (prefersReducedMotion()) return;
-
-    autoPlayTimer = setInterval(next, 5000);
-  }
-
-  // Arrow keys drive the carousel once either nav button has focus
-  track.addEventListener('keydown', handleCarouselKeys);
-  prevBtn?.addEventListener('keydown', handleCarouselKeys);
-  nextBtn?.addEventListener('keydown', handleCarouselKeys);
-
-  function handleCarouselKeys(event) {
-    if (event.key === 'ArrowLeft') {
-      event.preventDefault();
-      prev();
-    } else if (event.key === 'ArrowRight') {
-      event.preventDefault();
-      next();
-    }
-  }
-
-  nextBtn?.addEventListener('click', (event) => {
-    event.stopPropagation();
-    next();
-  });
-
-  prevBtn?.addEventListener('click', (event) => {
-    event.stopPropagation();
-    prev();
-  });
-
-  cards.forEach((card, index) => {
-    card.addEventListener('click', () => {
-      if (index !== currentIndex) {
-        goTo(index);
-      }
-    });
-
-    const arrow = card.querySelector('.project-arrow');
-    arrow?.addEventListener('click', (event) => {
-      event.stopPropagation();
-      next();
-    });
-  });
-
-  track.addEventListener('mouseenter', stopAutoPlay);
-  track.addEventListener('mouseleave', startAutoPlay);
-
-  updateCarousel();
-  startAutoPlay();
-}
-
-function initProjectGalleries() {
-  const galleries = document.querySelectorAll('.project-gallery');
-
-  galleries.forEach((gallery) => {
-    const slides = Array.from(gallery.querySelectorAll('.project-gallery-image'));
-    const dots = Array.from(gallery.querySelectorAll('.project-gallery-dot'));
-
-    if (slides.length <= 1 || dots.length !== slides.length) return;
-
-    let current = slides.findIndex((slide) => slide.classList.contains('active'));
-    let timer = null;
-    const interval = Number(gallery.dataset.galleryInterval) || 3500;
-
-    if (current < 0) {
-      current = 0;
-      slides[0].classList.add('active');
-      dots[0].classList.add('active');
-    }
-
-    function update(nextIndex) {
-      slides[current].classList.remove('active');
-      dots[current].classList.remove('active');
-
-      current = (nextIndex + slides.length) % slides.length;
-
-      slides[current].classList.add('active');
-      dots[current].classList.add('active');
-    }
-
-    function stop() {
-      if (timer) {
-        clearInterval(timer);
-        timer = null;
-      }
-    }
-
-    function start() {
-      stop();
-
-      if (prefersReducedMotion()) return;
-
-      timer = setInterval(() => update(current + 1), interval);
-    }
-
-    dots.forEach((dotElement, index) => {
-      dotElement.addEventListener('click', (event) => {
-        event.stopPropagation();
-        update(index);
-        start();
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry, i) => {
+        if (!entry.isIntersecting) return;
+        // Small stagger so a row of cards arrives in sequence, not as a block
+        entry.target.style.transitionDelay = `${Math.min(i, 4) * 90}ms`;
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
       });
-    });
+    },
+    { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+  );
 
-    gallery.addEventListener('mouseenter', stop);
-    gallery.addEventListener('mouseleave', start);
-
-    start();
-  });
+  items.forEach((i) => observer.observe(i));
 }
 
-function initSmoothScroll() {
-  document.querySelectorAll('a[href^="#"]').forEach((link) => {
-    link.addEventListener('click', (event) => {
-      if (link.id === 'nav-contact') return;
-
-      event.preventDefault();
-
-      const target = document.querySelector(link.getAttribute('href'));
-      if (target) {
-        target.scrollIntoView({
-          behavior: prefersReducedMotion() ? 'auto' : 'smooth',
-          block: 'start',
-        });
-      }
-    });
-  });
-}
-
-function initParallax() {
-  if (prefersReducedMotion()) return;
-
-  window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY;
-    const heroContent = document.querySelector('.hero-content');
-
-    if (heroContent && scrollY < window.innerHeight) {
-      heroContent.style.transform = `translateY(${scrollY * 0.3}px)`;
-      heroContent.style.opacity = 1 - scrollY / (window.innerHeight * 0.7);
-    }
-  }, { passive: true });
-}
-
-function initContactForm() {
-  const cyberForm = document.getElementById('cyber-contact-form');
-  if (!cyberForm) return;
+/* ----------------------------------------------------------------- form --- */
+function initForm() {
+  const form = document.getElementById('contact-form');
+  if (!form) return;
 
   const status = document.getElementById('form-status');
+  const submit = form.querySelector('.form-submit');
+  const label = form.querySelector('.btn-label');
 
-  function setStatus(message, state) {
+  const setStatus = (msg, state) => {
     if (!status) return;
-    status.textContent = message;
+    status.textContent = msg;
     status.classList.remove('is-success', 'is-error');
-    if (state) {
-      status.classList.add(state);
-    }
-  }
+    if (state) status.classList.add(state);
+  };
 
-  cyberForm.addEventListener('submit', async (event) => {
-    event.preventDefault();
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!form.reportValidity()) return;
 
-    const submitBtn = cyberForm.querySelector('.cyber-submit-btn');
-    const btnText = submitBtn?.querySelector('.btn-text');
+    const data = Object.fromEntries(new FormData(form));
+    if (data._honey) return; // bot
 
-    if (!submitBtn || !btnText) return;
-
-    const originalText = btnText.textContent;
-    btnText.textContent = 'TRANSMITTING DATA...';
-    submitBtn.disabled = true;
-    submitBtn.style.color = '#42D392';
-    submitBtn.style.borderColor = '#42D392';
-    setStatus('Sending your message…');
-
-    const formData = new FormData(cyberForm);
-    const data = Object.fromEntries(formData);
+    const original = label ? label.textContent : '';
+    if (label) label.textContent = 'Sending…';
+    if (submit) submit.disabled = true;
+    setStatus('Sending…');
 
     try {
-      const response = await fetch('https://formsubmit.co/ajax/elyousfimohamed263@gmail.com', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-        body: JSON.stringify({
-          name: data.name,
-          email: data.email,
-          message: data.message,
-          _subject: 'New Portfolio Message via Portal',
-        }),
-      });
+      const res = await fetch(
+        'https://formsubmit.co/ajax/elyousfimohamed263@gmail.com',
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({
+            name: data.name,
+            email: data.email,
+            message: data.message,
+            _subject: 'New project enquiry from your portfolio',
+          }),
+        }
+      );
+      if (!res.ok) throw new Error('Request failed');
 
-      if (!response.ok) {
-        throw new Error('Transmission failed');
-      }
-
-      btnText.textContent = 'TRANSMISSION SUCCESSFUL';
-      setStatus('Message sent — thanks, I will get back to you soon.', 'is-success');
-      cyberForm.reset();
-
-      setTimeout(() => {
-        btnText.textContent = originalText;
-        submitBtn.disabled = false;
-        submitBtn.style.color = '';
-        submitBtn.style.borderColor = '';
-      }, 3500);
-    } catch (error) {
-      btnText.textContent = 'ERROR: SYSTEM FAILURE';
-      setStatus('Could not send. Please email elyousfimohamed263@gmail.com directly.', 'is-error');
-      submitBtn.style.color = '#ef4444';
-      submitBtn.style.borderColor = '#ef4444';
-
-      setTimeout(() => {
-        btnText.textContent = originalText;
-        submitBtn.disabled = false;
-        submitBtn.style.color = '';
-        submitBtn.style.borderColor = '';
-      }, 3500);
+      form.reset();
+      setStatus("Sent — I'll reply within a day or two.", 'is-success');
+    } catch (err) {
+      setStatus(
+        'Could not send. Please email elyousfimohamed263@gmail.com directly.',
+        'is-error'
+      );
+    } finally {
+      if (label) label.textContent = original;
+      if (submit) submit.disabled = false;
     }
   });
 }
 
-function setHeroVideoSpeed() {
-  const heroVideo = document.getElementById('hero-video');
-  if (!heroVideo) return;
-
-  if (prefersReducedMotion()) {
-    heroVideo.removeAttribute('autoplay');
-    heroVideo.pause();
-    return;
-  }
-
-  heroVideo.playbackRate = 0.5;
-  heroVideo.addEventListener('canplay', () => {
-    heroVideo.playbackRate = 0.5;
-  }, { once: true });
+/* ----------------------------------------------------------------- misc --- */
+function setYear() {
+  const el = document.getElementById('year');
+  if (el) el.textContent = String(new Date().getFullYear());
 }
 
-function setFooterYear() {
-  const yearEl = document.getElementById('footer-year');
-  if (yearEl) {
-    yearEl.textContent = String(new Date().getFullYear());
-  }
-}
-
-window.addEventListener('load', () => {
-  initPortal();
-  initAboutSlider();
-  initRevealAnimations();
-  initProjectCarousel();
-  initProjectGalleries();
-  initSmoothScroll();
-  initParallax();
-  initContactForm();
-  setHeroVideoSpeed();
-  setFooterYear();
-
-  setTimeout(typeLoop, prefersReducedMotion() ? 0 : 1800);
+// DOMContentLoaded, not load — waiting on images would delay every reveal
+document.addEventListener('DOMContentLoaded', () => {
+  initTheme();
+  initNav();
+  initScrollSpy();
+  initReveal();
+  initForm();
+  setYear();
 });
