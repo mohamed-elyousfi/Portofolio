@@ -1064,7 +1064,9 @@ textarea {
   position: relative;
   padding: 13px 11px 15px;
   background: linear-gradient(#33334552, #1c1c26), linear-gradient(#2b2b3a, #1a1a24);
-  border-radius: 13px 13px 5px 5px;
+  /* square along the bottom: the deck butts straight against the hinge, and a
+     radius here would let the page background show through at both corners */
+  border-radius: 13px 13px 0 0;
   box-shadow: var(--shadow-lg), inset 0 1px 0 rgba(255, 255, 255, 0.09);
 }
 
@@ -1100,11 +1102,16 @@ textarea {
   pointer-events: none;
 }
 
-/* deck: hand-drawn SVG base, wider than the lid like a real laptop */
+/* deck: hand-drawn SVG base, wider than the lid like a real laptop.
+   max-width is reset because the global `max-width:100%` on media would clamp
+   the 106% back to 100% while the negative margin still applied, pushing the
+   whole base off-centre to the left of the lid. The hinge inside the SVG is
+   drawn to the lid's exact width so the two line up. */
 .dv-deck {
   display: block;
-  width: 108%;
-  margin-left: -4%;
+  width: 106%;
+  max-width: none;
+  margin-left: -3%;
   height: auto;
   filter: drop-shadow(0 14px 18px rgba(0, 0, 0, 0.55));
 }
@@ -1122,8 +1129,10 @@ textarea {
   opacity: 0.85;
 }
 
+/* keycaps: gradient gives the top edge a catch-light so they read as raised
+   keys rather than slots printed on the deck (gradient lives in the sprite) */
 .dv-keys rect {
-  fill: #15151d;
+  fill: url(#dv-keycap);
 }
 
 .dv-trackpad {

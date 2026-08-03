@@ -53,6 +53,14 @@
   -->
   <svg class="sprite" aria-hidden="true" focusable="false">
     <defs>
+      <!-- keycap shading for the coded laptop in the Work section; defined once
+           here because url(#id) resolves document-wide across inline SVGs -->
+      <linearGradient id="dv-keycap" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#25252f" />
+        <stop offset="0.45" stop-color="#15151d" />
+        <stop offset="1" stop-color="#101017" />
+      </linearGradient>
+
       <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
         stroke-linecap="round" stroke-linejoin="round">
         <path d="M7 7h10v10" />
@@ -414,74 +422,91 @@
                     <span class="dv-glare" aria-hidden="true"></span>
                   </div>
                 </div>
-                <svg class="dv-deck" viewBox="0 0 1000 134" aria-hidden="true" focusable="false">
-                  <path class="dv-edge" d="M16 100 H984 L992 122 Q994 132 982 132 H18 Q6 132 8 122 Z" />
-                  <path class="dv-body" d="M66 0 H934 L984 104 Q992 118 977 118 H23 Q8 118 16 104 Z" />
-                  <rect class="dv-hinge" x="66" y="0" width="868" height="3.5" />
+                <svg class="dv-deck" viewBox="0 0 1000 155" aria-hidden="true" focusable="false">
+                  <path class="dv-body" d="M28 0 H972 L989.8 143 Q989.8 151 981.8 151 H18.2 Q10.2 151 10.2 143 Z" />
+                  <rect class="dv-hinge" x="28" y="0" width="944" height="3.5" />
                   <g class="dv-keys">
-                    <rect x="148.0" y="13" width="47.1" height="8.6" rx="2" />
-                    <rect x="198.5" y="13" width="47.1" height="8.6" rx="2" />
-                    <rect x="249.1" y="13" width="47.1" height="8.6" rx="2" />
-                    <rect x="299.6" y="13" width="47.1" height="8.6" rx="2" />
-                    <rect x="350.1" y="13" width="47.1" height="8.6" rx="2" />
-                    <rect x="400.6" y="13" width="47.1" height="8.6" rx="2" />
-                    <rect x="451.2" y="13" width="47.1" height="8.6" rx="2" />
-                    <rect x="501.7" y="13" width="47.1" height="8.6" rx="2" />
-                    <rect x="552.2" y="13" width="47.1" height="8.6" rx="2" />
-                    <rect x="602.8" y="13" width="47.1" height="8.6" rx="2" />
-                    <rect x="653.3" y="13" width="47.1" height="8.6" rx="2" />
-                    <rect x="703.8" y="13" width="47.1" height="8.6" rx="2" />
-                    <rect x="754.3" y="13" width="47.1" height="8.6" rx="2" />
-                    <rect x="804.9" y="13" width="47.1" height="8.6" rx="2" />
-                    <rect x="140.0" y="24.5" width="48.3" height="9" rx="2" />
-                    <rect x="191.7" y="24.5" width="48.3" height="9" rx="2" />
-                    <rect x="243.3" y="24.5" width="48.3" height="9" rx="2" />
-                    <rect x="295.0" y="24.5" width="48.3" height="9" rx="2" />
-                    <rect x="346.7" y="24.5" width="48.3" height="9" rx="2" />
-                    <rect x="398.4" y="24.5" width="48.3" height="9" rx="2" />
-                    <rect x="450.0" y="24.5" width="48.3" height="9" rx="2" />
-                    <rect x="501.7" y="24.5" width="48.3" height="9" rx="2" />
-                    <rect x="553.4" y="24.5" width="48.3" height="9" rx="2" />
-                    <rect x="605.0" y="24.5" width="48.3" height="9" rx="2" />
-                    <rect x="656.7" y="24.5" width="48.3" height="9" rx="2" />
-                    <rect x="708.4" y="24.5" width="48.3" height="9" rx="2" />
-                    <rect x="760.1" y="24.5" width="48.3" height="9" rx="2" />
-                    <rect x="811.7" y="24.5" width="48.3" height="9" rx="2" />
-                    <rect x="132.0" y="36.4" width="53.5" height="9.4" rx="2" />
-                    <rect x="188.9" y="36.4" width="53.5" height="9.4" rx="2" />
-                    <rect x="245.8" y="36.4" width="53.5" height="9.4" rx="2" />
-                    <rect x="302.6" y="36.4" width="53.5" height="9.4" rx="2" />
-                    <rect x="359.5" y="36.4" width="53.5" height="9.4" rx="2" />
-                    <rect x="416.4" y="36.4" width="53.5" height="9.4" rx="2" />
-                    <rect x="473.3" y="36.4" width="53.5" height="9.4" rx="2" />
-                    <rect x="530.1" y="36.4" width="53.5" height="9.4" rx="2" />
-                    <rect x="587.0" y="36.4" width="53.5" height="9.4" rx="2" />
-                    <rect x="643.9" y="36.4" width="53.5" height="9.4" rx="2" />
-                    <rect x="700.8" y="36.4" width="53.5" height="9.4" rx="2" />
-                    <rect x="757.6" y="36.4" width="53.5" height="9.4" rx="2" />
-                    <rect x="814.5" y="36.4" width="53.5" height="9.4" rx="2" />
-                    <rect x="124.0" y="48.7" width="59.6" height="9.8" rx="2" />
-                    <rect x="186.9" y="48.7" width="59.6" height="9.8" rx="2" />
-                    <rect x="249.9" y="48.7" width="59.6" height="9.8" rx="2" />
-                    <rect x="312.9" y="48.7" width="59.6" height="9.8" rx="2" />
-                    <rect x="375.8" y="48.7" width="59.6" height="9.8" rx="2" />
-                    <rect x="438.8" y="48.7" width="59.6" height="9.8" rx="2" />
-                    <rect x="501.7" y="48.7" width="59.6" height="9.8" rx="2" />
-                    <rect x="564.7" y="48.7" width="59.6" height="9.8" rx="2" />
-                    <rect x="627.6" y="48.7" width="59.6" height="9.8" rx="2" />
-                    <rect x="690.6" y="48.7" width="59.6" height="9.8" rx="2" />
-                    <rect x="753.5" y="48.7" width="59.6" height="9.8" rx="2" />
-                    <rect x="816.5" y="48.7" width="59.6" height="9.8" rx="2" />
-                    <rect x="116.0" y="61.4" width="64.4" height="10.2" rx="2" />
-                    <rect x="183.8" y="61.4" width="64.4" height="10.2" rx="2" />
-                    <rect x="251.7" y="61.4" width="64.4" height="10.2" rx="2" />
-                    <rect x="319.5" y="61.4" width="360.9" height="10.2" rx="2" />
-                    <rect x="683.9" y="61.4" width="64.4" height="10.2" rx="2" />
-                    <rect x="751.7" y="61.4" width="64.4" height="10.2" rx="2" />
-                    <rect x="819.6" y="61.4" width="64.4" height="10.2" rx="2" />
+                    <rect x="128.8" y="12" width="48.9" height="6.5" rx="2" />
+                    <rect x="182.2" y="12" width="48.9" height="6.5" rx="2" />
+                    <rect x="235.5" y="12" width="48.9" height="6.5" rx="2" />
+                    <rect x="288.9" y="12" width="48.9" height="6.5" rx="2" />
+                    <rect x="342.2" y="12" width="48.9" height="6.5" rx="2" />
+                    <rect x="395.5" y="12" width="48.9" height="6.5" rx="2" />
+                    <rect x="448.9" y="12" width="48.9" height="6.5" rx="2" />
+                    <rect x="502.2" y="12" width="48.9" height="6.5" rx="2" />
+                    <rect x="555.6" y="12" width="48.9" height="6.5" rx="2" />
+                    <rect x="608.9" y="12" width="48.9" height="6.5" rx="2" />
+                    <rect x="662.3" y="12" width="48.9" height="6.5" rx="2" />
+                    <rect x="715.6" y="12" width="48.9" height="6.5" rx="2" />
+                    <rect x="769" y="12" width="48.9" height="6.5" rx="2" />
+                    <rect x="822.3" y="12" width="48.9" height="6.5" rx="2" />
+                    <rect x="127.8" y="22" width="45.4" height="9" rx="2" />
+                    <rect x="177.7" y="22" width="45.4" height="9" rx="2" />
+                    <rect x="227.6" y="22" width="45.4" height="9" rx="2" />
+                    <rect x="277.6" y="22" width="45.4" height="9" rx="2" />
+                    <rect x="327.5" y="22" width="45.4" height="9" rx="2" />
+                    <rect x="377.4" y="22" width="45.4" height="9" rx="2" />
+                    <rect x="427.4" y="22" width="45.4" height="9" rx="2" />
+                    <rect x="477.3" y="22" width="45.4" height="9" rx="2" />
+                    <rect x="527.2" y="22" width="45.4" height="9" rx="2" />
+                    <rect x="577.1" y="22" width="45.4" height="9" rx="2" />
+                    <rect x="627.1" y="22" width="45.4" height="9" rx="2" />
+                    <rect x="677" y="22" width="45.4" height="9" rx="2" />
+                    <rect x="726.9" y="22" width="45.4" height="9" rx="2" />
+                    <rect x="776.9" y="22" width="95.4" height="9" rx="2" />
+                    <rect x="126.6" y="34" width="70.6" height="9.5" rx="2" />
+                    <rect x="201.8" y="34" width="45.6" height="9.5" rx="2" />
+                    <rect x="251.9" y="34" width="45.6" height="9.5" rx="2" />
+                    <rect x="301.9" y="34" width="45.6" height="9.5" rx="2" />
+                    <rect x="352" y="34" width="45.6" height="9.5" rx="2" />
+                    <rect x="402.1" y="34" width="45.6" height="9.5" rx="2" />
+                    <rect x="452.2" y="34" width="45.6" height="9.5" rx="2" />
+                    <rect x="502.3" y="34" width="45.6" height="9.5" rx="2" />
+                    <rect x="552.3" y="34" width="45.6" height="9.5" rx="2" />
+                    <rect x="602.4" y="34" width="45.6" height="9.5" rx="2" />
+                    <rect x="652.5" y="34" width="45.6" height="9.5" rx="2" />
+                    <rect x="702.6" y="34" width="45.6" height="9.5" rx="2" />
+                    <rect x="752.7" y="34" width="45.6" height="9.5" rx="2" />
+                    <rect x="802.7" y="34" width="70.6" height="9.5" rx="2" />
+                    <rect x="125.5" y="46.5" width="83.4" height="10" rx="2" />
+                    <rect x="213.4" y="46.5" width="45.7" height="10" rx="2" />
+                    <rect x="263.6" y="46.5" width="45.7" height="10" rx="2" />
+                    <rect x="313.9" y="46.5" width="45.7" height="10" rx="2" />
+                    <rect x="364.1" y="46.5" width="45.7" height="10" rx="2" />
+                    <rect x="414.3" y="46.5" width="45.7" height="10" rx="2" />
+                    <rect x="464.6" y="46.5" width="45.7" height="10" rx="2" />
+                    <rect x="514.8" y="46.5" width="45.7" height="10" rx="2" />
+                    <rect x="565.1" y="46.5" width="45.7" height="10" rx="2" />
+                    <rect x="615.3" y="46.5" width="45.7" height="10" rx="2" />
+                    <rect x="665.5" y="46.5" width="45.7" height="10" rx="2" />
+                    <rect x="715.8" y="46.5" width="45.7" height="10" rx="2" />
+                    <rect x="766" y="46.5" width="108.5" height="10" rx="2" />
+                    <rect x="124.2" y="59.5" width="108.9" height="10.5" rx="2" />
+                    <rect x="237.7" y="59.5" width="45.9" height="10.5" rx="2" />
+                    <rect x="288.1" y="59.5" width="45.9" height="10.5" rx="2" />
+                    <rect x="338.5" y="59.5" width="45.9" height="10.5" rx="2" />
+                    <rect x="388.9" y="59.5" width="45.9" height="10.5" rx="2" />
+                    <rect x="439.3" y="59.5" width="45.9" height="10.5" rx="2" />
+                    <rect x="489.7" y="59.5" width="45.9" height="10.5" rx="2" />
+                    <rect x="540.1" y="59.5" width="45.9" height="10.5" rx="2" />
+                    <rect x="590.5" y="59.5" width="45.9" height="10.5" rx="2" />
+                    <rect x="640.9" y="59.5" width="45.9" height="10.5" rx="2" />
+                    <rect x="691.3" y="59.5" width="45.9" height="10.5" rx="2" />
+                    <rect x="741.7" y="59.5" width="134.1" height="10.5" rx="2" />
+                    <rect x="123" y="73" width="46" height="11" rx="2" />
+                    <rect x="173.5" y="73" width="46" height="11" rx="2" />
+                    <rect x="224.1" y="73" width="46" height="11" rx="2" />
+                    <rect x="274.7" y="73" width="58.7" height="11" rx="2" />
+                    <rect x="337.9" y="73" width="273.6" height="11" rx="2" />
+                    <rect x="616.1" y="73" width="58.7" height="11" rx="2" />
+                    <rect x="679.3" y="73" width="46" height="11" rx="2" />
+                    <rect x="729.9" y="73" width="46" height="11" rx="2" />
+                    <rect x="780.4" y="73" width="46" height="11" rx="2" />
+                    <rect x="831" y="73" width="46" height="11" rx="2" />
                   </g>
-                  <rect class="dv-trackpad" x="415" y="79" width="170" height="30" rx="4" />
-                  <path class="dv-notchline" d="M430 118 h140" />
+                  <rect class="dv-trackpad" x="343.9" y="93" width="312.1" height="28" rx="5" />
+                  <path class="dv-edge" d="M12.9 128 H987.1 L989.8 143 Q989.8 151 981.8 151 H18.2 Q10.2 151 10.2 143 Z" />
+                  <path class="dv-notchline" d="M430 139.5 h140" />
                 </svg>
               </div>
               <div class="dv-phone">
@@ -530,74 +555,91 @@
                     <span class="dv-glare" aria-hidden="true"></span>
                   </div>
                 </div>
-                <svg class="dv-deck" viewBox="0 0 1000 134" aria-hidden="true" focusable="false">
-                  <path class="dv-edge" d="M16 100 H984 L992 122 Q994 132 982 132 H18 Q6 132 8 122 Z" />
-                  <path class="dv-body" d="M66 0 H934 L984 104 Q992 118 977 118 H23 Q8 118 16 104 Z" />
-                  <rect class="dv-hinge" x="66" y="0" width="868" height="3.5" />
+                <svg class="dv-deck" viewBox="0 0 1000 155" aria-hidden="true" focusable="false">
+                  <path class="dv-body" d="M28 0 H972 L989.8 143 Q989.8 151 981.8 151 H18.2 Q10.2 151 10.2 143 Z" />
+                  <rect class="dv-hinge" x="28" y="0" width="944" height="3.5" />
                   <g class="dv-keys">
-                    <rect x="148.0" y="13" width="47.1" height="8.6" rx="2" />
-                    <rect x="198.5" y="13" width="47.1" height="8.6" rx="2" />
-                    <rect x="249.1" y="13" width="47.1" height="8.6" rx="2" />
-                    <rect x="299.6" y="13" width="47.1" height="8.6" rx="2" />
-                    <rect x="350.1" y="13" width="47.1" height="8.6" rx="2" />
-                    <rect x="400.6" y="13" width="47.1" height="8.6" rx="2" />
-                    <rect x="451.2" y="13" width="47.1" height="8.6" rx="2" />
-                    <rect x="501.7" y="13" width="47.1" height="8.6" rx="2" />
-                    <rect x="552.2" y="13" width="47.1" height="8.6" rx="2" />
-                    <rect x="602.8" y="13" width="47.1" height="8.6" rx="2" />
-                    <rect x="653.3" y="13" width="47.1" height="8.6" rx="2" />
-                    <rect x="703.8" y="13" width="47.1" height="8.6" rx="2" />
-                    <rect x="754.3" y="13" width="47.1" height="8.6" rx="2" />
-                    <rect x="804.9" y="13" width="47.1" height="8.6" rx="2" />
-                    <rect x="140.0" y="24.5" width="48.3" height="9" rx="2" />
-                    <rect x="191.7" y="24.5" width="48.3" height="9" rx="2" />
-                    <rect x="243.3" y="24.5" width="48.3" height="9" rx="2" />
-                    <rect x="295.0" y="24.5" width="48.3" height="9" rx="2" />
-                    <rect x="346.7" y="24.5" width="48.3" height="9" rx="2" />
-                    <rect x="398.4" y="24.5" width="48.3" height="9" rx="2" />
-                    <rect x="450.0" y="24.5" width="48.3" height="9" rx="2" />
-                    <rect x="501.7" y="24.5" width="48.3" height="9" rx="2" />
-                    <rect x="553.4" y="24.5" width="48.3" height="9" rx="2" />
-                    <rect x="605.0" y="24.5" width="48.3" height="9" rx="2" />
-                    <rect x="656.7" y="24.5" width="48.3" height="9" rx="2" />
-                    <rect x="708.4" y="24.5" width="48.3" height="9" rx="2" />
-                    <rect x="760.1" y="24.5" width="48.3" height="9" rx="2" />
-                    <rect x="811.7" y="24.5" width="48.3" height="9" rx="2" />
-                    <rect x="132.0" y="36.4" width="53.5" height="9.4" rx="2" />
-                    <rect x="188.9" y="36.4" width="53.5" height="9.4" rx="2" />
-                    <rect x="245.8" y="36.4" width="53.5" height="9.4" rx="2" />
-                    <rect x="302.6" y="36.4" width="53.5" height="9.4" rx="2" />
-                    <rect x="359.5" y="36.4" width="53.5" height="9.4" rx="2" />
-                    <rect x="416.4" y="36.4" width="53.5" height="9.4" rx="2" />
-                    <rect x="473.3" y="36.4" width="53.5" height="9.4" rx="2" />
-                    <rect x="530.1" y="36.4" width="53.5" height="9.4" rx="2" />
-                    <rect x="587.0" y="36.4" width="53.5" height="9.4" rx="2" />
-                    <rect x="643.9" y="36.4" width="53.5" height="9.4" rx="2" />
-                    <rect x="700.8" y="36.4" width="53.5" height="9.4" rx="2" />
-                    <rect x="757.6" y="36.4" width="53.5" height="9.4" rx="2" />
-                    <rect x="814.5" y="36.4" width="53.5" height="9.4" rx="2" />
-                    <rect x="124.0" y="48.7" width="59.6" height="9.8" rx="2" />
-                    <rect x="186.9" y="48.7" width="59.6" height="9.8" rx="2" />
-                    <rect x="249.9" y="48.7" width="59.6" height="9.8" rx="2" />
-                    <rect x="312.9" y="48.7" width="59.6" height="9.8" rx="2" />
-                    <rect x="375.8" y="48.7" width="59.6" height="9.8" rx="2" />
-                    <rect x="438.8" y="48.7" width="59.6" height="9.8" rx="2" />
-                    <rect x="501.7" y="48.7" width="59.6" height="9.8" rx="2" />
-                    <rect x="564.7" y="48.7" width="59.6" height="9.8" rx="2" />
-                    <rect x="627.6" y="48.7" width="59.6" height="9.8" rx="2" />
-                    <rect x="690.6" y="48.7" width="59.6" height="9.8" rx="2" />
-                    <rect x="753.5" y="48.7" width="59.6" height="9.8" rx="2" />
-                    <rect x="816.5" y="48.7" width="59.6" height="9.8" rx="2" />
-                    <rect x="116.0" y="61.4" width="64.4" height="10.2" rx="2" />
-                    <rect x="183.8" y="61.4" width="64.4" height="10.2" rx="2" />
-                    <rect x="251.7" y="61.4" width="64.4" height="10.2" rx="2" />
-                    <rect x="319.5" y="61.4" width="360.9" height="10.2" rx="2" />
-                    <rect x="683.9" y="61.4" width="64.4" height="10.2" rx="2" />
-                    <rect x="751.7" y="61.4" width="64.4" height="10.2" rx="2" />
-                    <rect x="819.6" y="61.4" width="64.4" height="10.2" rx="2" />
+                    <rect x="128.8" y="12" width="48.9" height="6.5" rx="2" />
+                    <rect x="182.2" y="12" width="48.9" height="6.5" rx="2" />
+                    <rect x="235.5" y="12" width="48.9" height="6.5" rx="2" />
+                    <rect x="288.9" y="12" width="48.9" height="6.5" rx="2" />
+                    <rect x="342.2" y="12" width="48.9" height="6.5" rx="2" />
+                    <rect x="395.5" y="12" width="48.9" height="6.5" rx="2" />
+                    <rect x="448.9" y="12" width="48.9" height="6.5" rx="2" />
+                    <rect x="502.2" y="12" width="48.9" height="6.5" rx="2" />
+                    <rect x="555.6" y="12" width="48.9" height="6.5" rx="2" />
+                    <rect x="608.9" y="12" width="48.9" height="6.5" rx="2" />
+                    <rect x="662.3" y="12" width="48.9" height="6.5" rx="2" />
+                    <rect x="715.6" y="12" width="48.9" height="6.5" rx="2" />
+                    <rect x="769" y="12" width="48.9" height="6.5" rx="2" />
+                    <rect x="822.3" y="12" width="48.9" height="6.5" rx="2" />
+                    <rect x="127.8" y="22" width="45.4" height="9" rx="2" />
+                    <rect x="177.7" y="22" width="45.4" height="9" rx="2" />
+                    <rect x="227.6" y="22" width="45.4" height="9" rx="2" />
+                    <rect x="277.6" y="22" width="45.4" height="9" rx="2" />
+                    <rect x="327.5" y="22" width="45.4" height="9" rx="2" />
+                    <rect x="377.4" y="22" width="45.4" height="9" rx="2" />
+                    <rect x="427.4" y="22" width="45.4" height="9" rx="2" />
+                    <rect x="477.3" y="22" width="45.4" height="9" rx="2" />
+                    <rect x="527.2" y="22" width="45.4" height="9" rx="2" />
+                    <rect x="577.1" y="22" width="45.4" height="9" rx="2" />
+                    <rect x="627.1" y="22" width="45.4" height="9" rx="2" />
+                    <rect x="677" y="22" width="45.4" height="9" rx="2" />
+                    <rect x="726.9" y="22" width="45.4" height="9" rx="2" />
+                    <rect x="776.9" y="22" width="95.4" height="9" rx="2" />
+                    <rect x="126.6" y="34" width="70.6" height="9.5" rx="2" />
+                    <rect x="201.8" y="34" width="45.6" height="9.5" rx="2" />
+                    <rect x="251.9" y="34" width="45.6" height="9.5" rx="2" />
+                    <rect x="301.9" y="34" width="45.6" height="9.5" rx="2" />
+                    <rect x="352" y="34" width="45.6" height="9.5" rx="2" />
+                    <rect x="402.1" y="34" width="45.6" height="9.5" rx="2" />
+                    <rect x="452.2" y="34" width="45.6" height="9.5" rx="2" />
+                    <rect x="502.3" y="34" width="45.6" height="9.5" rx="2" />
+                    <rect x="552.3" y="34" width="45.6" height="9.5" rx="2" />
+                    <rect x="602.4" y="34" width="45.6" height="9.5" rx="2" />
+                    <rect x="652.5" y="34" width="45.6" height="9.5" rx="2" />
+                    <rect x="702.6" y="34" width="45.6" height="9.5" rx="2" />
+                    <rect x="752.7" y="34" width="45.6" height="9.5" rx="2" />
+                    <rect x="802.7" y="34" width="70.6" height="9.5" rx="2" />
+                    <rect x="125.5" y="46.5" width="83.4" height="10" rx="2" />
+                    <rect x="213.4" y="46.5" width="45.7" height="10" rx="2" />
+                    <rect x="263.6" y="46.5" width="45.7" height="10" rx="2" />
+                    <rect x="313.9" y="46.5" width="45.7" height="10" rx="2" />
+                    <rect x="364.1" y="46.5" width="45.7" height="10" rx="2" />
+                    <rect x="414.3" y="46.5" width="45.7" height="10" rx="2" />
+                    <rect x="464.6" y="46.5" width="45.7" height="10" rx="2" />
+                    <rect x="514.8" y="46.5" width="45.7" height="10" rx="2" />
+                    <rect x="565.1" y="46.5" width="45.7" height="10" rx="2" />
+                    <rect x="615.3" y="46.5" width="45.7" height="10" rx="2" />
+                    <rect x="665.5" y="46.5" width="45.7" height="10" rx="2" />
+                    <rect x="715.8" y="46.5" width="45.7" height="10" rx="2" />
+                    <rect x="766" y="46.5" width="108.5" height="10" rx="2" />
+                    <rect x="124.2" y="59.5" width="108.9" height="10.5" rx="2" />
+                    <rect x="237.7" y="59.5" width="45.9" height="10.5" rx="2" />
+                    <rect x="288.1" y="59.5" width="45.9" height="10.5" rx="2" />
+                    <rect x="338.5" y="59.5" width="45.9" height="10.5" rx="2" />
+                    <rect x="388.9" y="59.5" width="45.9" height="10.5" rx="2" />
+                    <rect x="439.3" y="59.5" width="45.9" height="10.5" rx="2" />
+                    <rect x="489.7" y="59.5" width="45.9" height="10.5" rx="2" />
+                    <rect x="540.1" y="59.5" width="45.9" height="10.5" rx="2" />
+                    <rect x="590.5" y="59.5" width="45.9" height="10.5" rx="2" />
+                    <rect x="640.9" y="59.5" width="45.9" height="10.5" rx="2" />
+                    <rect x="691.3" y="59.5" width="45.9" height="10.5" rx="2" />
+                    <rect x="741.7" y="59.5" width="134.1" height="10.5" rx="2" />
+                    <rect x="123" y="73" width="46" height="11" rx="2" />
+                    <rect x="173.5" y="73" width="46" height="11" rx="2" />
+                    <rect x="224.1" y="73" width="46" height="11" rx="2" />
+                    <rect x="274.7" y="73" width="58.7" height="11" rx="2" />
+                    <rect x="337.9" y="73" width="273.6" height="11" rx="2" />
+                    <rect x="616.1" y="73" width="58.7" height="11" rx="2" />
+                    <rect x="679.3" y="73" width="46" height="11" rx="2" />
+                    <rect x="729.9" y="73" width="46" height="11" rx="2" />
+                    <rect x="780.4" y="73" width="46" height="11" rx="2" />
+                    <rect x="831" y="73" width="46" height="11" rx="2" />
                   </g>
-                  <rect class="dv-trackpad" x="415" y="79" width="170" height="30" rx="4" />
-                  <path class="dv-notchline" d="M430 118 h140" />
+                  <rect class="dv-trackpad" x="343.9" y="93" width="312.1" height="28" rx="5" />
+                  <path class="dv-edge" d="M12.9 128 H987.1 L989.8 143 Q989.8 151 981.8 151 H18.2 Q10.2 151 10.2 143 Z" />
+                  <path class="dv-notchline" d="M430 139.5 h140" />
                 </svg>
               </div>
               <div class="dv-phone">
@@ -647,74 +689,91 @@
                     <span class="dv-glare" aria-hidden="true"></span>
                   </div>
                 </div>
-                <svg class="dv-deck" viewBox="0 0 1000 134" aria-hidden="true" focusable="false">
-                  <path class="dv-edge" d="M16 100 H984 L992 122 Q994 132 982 132 H18 Q6 132 8 122 Z" />
-                  <path class="dv-body" d="M66 0 H934 L984 104 Q992 118 977 118 H23 Q8 118 16 104 Z" />
-                  <rect class="dv-hinge" x="66" y="0" width="868" height="3.5" />
+                <svg class="dv-deck" viewBox="0 0 1000 155" aria-hidden="true" focusable="false">
+                  <path class="dv-body" d="M28 0 H972 L989.8 143 Q989.8 151 981.8 151 H18.2 Q10.2 151 10.2 143 Z" />
+                  <rect class="dv-hinge" x="28" y="0" width="944" height="3.5" />
                   <g class="dv-keys">
-                    <rect x="148.0" y="13" width="47.1" height="8.6" rx="2" />
-                    <rect x="198.5" y="13" width="47.1" height="8.6" rx="2" />
-                    <rect x="249.1" y="13" width="47.1" height="8.6" rx="2" />
-                    <rect x="299.6" y="13" width="47.1" height="8.6" rx="2" />
-                    <rect x="350.1" y="13" width="47.1" height="8.6" rx="2" />
-                    <rect x="400.6" y="13" width="47.1" height="8.6" rx="2" />
-                    <rect x="451.2" y="13" width="47.1" height="8.6" rx="2" />
-                    <rect x="501.7" y="13" width="47.1" height="8.6" rx="2" />
-                    <rect x="552.2" y="13" width="47.1" height="8.6" rx="2" />
-                    <rect x="602.8" y="13" width="47.1" height="8.6" rx="2" />
-                    <rect x="653.3" y="13" width="47.1" height="8.6" rx="2" />
-                    <rect x="703.8" y="13" width="47.1" height="8.6" rx="2" />
-                    <rect x="754.3" y="13" width="47.1" height="8.6" rx="2" />
-                    <rect x="804.9" y="13" width="47.1" height="8.6" rx="2" />
-                    <rect x="140.0" y="24.5" width="48.3" height="9" rx="2" />
-                    <rect x="191.7" y="24.5" width="48.3" height="9" rx="2" />
-                    <rect x="243.3" y="24.5" width="48.3" height="9" rx="2" />
-                    <rect x="295.0" y="24.5" width="48.3" height="9" rx="2" />
-                    <rect x="346.7" y="24.5" width="48.3" height="9" rx="2" />
-                    <rect x="398.4" y="24.5" width="48.3" height="9" rx="2" />
-                    <rect x="450.0" y="24.5" width="48.3" height="9" rx="2" />
-                    <rect x="501.7" y="24.5" width="48.3" height="9" rx="2" />
-                    <rect x="553.4" y="24.5" width="48.3" height="9" rx="2" />
-                    <rect x="605.0" y="24.5" width="48.3" height="9" rx="2" />
-                    <rect x="656.7" y="24.5" width="48.3" height="9" rx="2" />
-                    <rect x="708.4" y="24.5" width="48.3" height="9" rx="2" />
-                    <rect x="760.1" y="24.5" width="48.3" height="9" rx="2" />
-                    <rect x="811.7" y="24.5" width="48.3" height="9" rx="2" />
-                    <rect x="132.0" y="36.4" width="53.5" height="9.4" rx="2" />
-                    <rect x="188.9" y="36.4" width="53.5" height="9.4" rx="2" />
-                    <rect x="245.8" y="36.4" width="53.5" height="9.4" rx="2" />
-                    <rect x="302.6" y="36.4" width="53.5" height="9.4" rx="2" />
-                    <rect x="359.5" y="36.4" width="53.5" height="9.4" rx="2" />
-                    <rect x="416.4" y="36.4" width="53.5" height="9.4" rx="2" />
-                    <rect x="473.3" y="36.4" width="53.5" height="9.4" rx="2" />
-                    <rect x="530.1" y="36.4" width="53.5" height="9.4" rx="2" />
-                    <rect x="587.0" y="36.4" width="53.5" height="9.4" rx="2" />
-                    <rect x="643.9" y="36.4" width="53.5" height="9.4" rx="2" />
-                    <rect x="700.8" y="36.4" width="53.5" height="9.4" rx="2" />
-                    <rect x="757.6" y="36.4" width="53.5" height="9.4" rx="2" />
-                    <rect x="814.5" y="36.4" width="53.5" height="9.4" rx="2" />
-                    <rect x="124.0" y="48.7" width="59.6" height="9.8" rx="2" />
-                    <rect x="186.9" y="48.7" width="59.6" height="9.8" rx="2" />
-                    <rect x="249.9" y="48.7" width="59.6" height="9.8" rx="2" />
-                    <rect x="312.9" y="48.7" width="59.6" height="9.8" rx="2" />
-                    <rect x="375.8" y="48.7" width="59.6" height="9.8" rx="2" />
-                    <rect x="438.8" y="48.7" width="59.6" height="9.8" rx="2" />
-                    <rect x="501.7" y="48.7" width="59.6" height="9.8" rx="2" />
-                    <rect x="564.7" y="48.7" width="59.6" height="9.8" rx="2" />
-                    <rect x="627.6" y="48.7" width="59.6" height="9.8" rx="2" />
-                    <rect x="690.6" y="48.7" width="59.6" height="9.8" rx="2" />
-                    <rect x="753.5" y="48.7" width="59.6" height="9.8" rx="2" />
-                    <rect x="816.5" y="48.7" width="59.6" height="9.8" rx="2" />
-                    <rect x="116.0" y="61.4" width="64.4" height="10.2" rx="2" />
-                    <rect x="183.8" y="61.4" width="64.4" height="10.2" rx="2" />
-                    <rect x="251.7" y="61.4" width="64.4" height="10.2" rx="2" />
-                    <rect x="319.5" y="61.4" width="360.9" height="10.2" rx="2" />
-                    <rect x="683.9" y="61.4" width="64.4" height="10.2" rx="2" />
-                    <rect x="751.7" y="61.4" width="64.4" height="10.2" rx="2" />
-                    <rect x="819.6" y="61.4" width="64.4" height="10.2" rx="2" />
+                    <rect x="128.8" y="12" width="48.9" height="6.5" rx="2" />
+                    <rect x="182.2" y="12" width="48.9" height="6.5" rx="2" />
+                    <rect x="235.5" y="12" width="48.9" height="6.5" rx="2" />
+                    <rect x="288.9" y="12" width="48.9" height="6.5" rx="2" />
+                    <rect x="342.2" y="12" width="48.9" height="6.5" rx="2" />
+                    <rect x="395.5" y="12" width="48.9" height="6.5" rx="2" />
+                    <rect x="448.9" y="12" width="48.9" height="6.5" rx="2" />
+                    <rect x="502.2" y="12" width="48.9" height="6.5" rx="2" />
+                    <rect x="555.6" y="12" width="48.9" height="6.5" rx="2" />
+                    <rect x="608.9" y="12" width="48.9" height="6.5" rx="2" />
+                    <rect x="662.3" y="12" width="48.9" height="6.5" rx="2" />
+                    <rect x="715.6" y="12" width="48.9" height="6.5" rx="2" />
+                    <rect x="769" y="12" width="48.9" height="6.5" rx="2" />
+                    <rect x="822.3" y="12" width="48.9" height="6.5" rx="2" />
+                    <rect x="127.8" y="22" width="45.4" height="9" rx="2" />
+                    <rect x="177.7" y="22" width="45.4" height="9" rx="2" />
+                    <rect x="227.6" y="22" width="45.4" height="9" rx="2" />
+                    <rect x="277.6" y="22" width="45.4" height="9" rx="2" />
+                    <rect x="327.5" y="22" width="45.4" height="9" rx="2" />
+                    <rect x="377.4" y="22" width="45.4" height="9" rx="2" />
+                    <rect x="427.4" y="22" width="45.4" height="9" rx="2" />
+                    <rect x="477.3" y="22" width="45.4" height="9" rx="2" />
+                    <rect x="527.2" y="22" width="45.4" height="9" rx="2" />
+                    <rect x="577.1" y="22" width="45.4" height="9" rx="2" />
+                    <rect x="627.1" y="22" width="45.4" height="9" rx="2" />
+                    <rect x="677" y="22" width="45.4" height="9" rx="2" />
+                    <rect x="726.9" y="22" width="45.4" height="9" rx="2" />
+                    <rect x="776.9" y="22" width="95.4" height="9" rx="2" />
+                    <rect x="126.6" y="34" width="70.6" height="9.5" rx="2" />
+                    <rect x="201.8" y="34" width="45.6" height="9.5" rx="2" />
+                    <rect x="251.9" y="34" width="45.6" height="9.5" rx="2" />
+                    <rect x="301.9" y="34" width="45.6" height="9.5" rx="2" />
+                    <rect x="352" y="34" width="45.6" height="9.5" rx="2" />
+                    <rect x="402.1" y="34" width="45.6" height="9.5" rx="2" />
+                    <rect x="452.2" y="34" width="45.6" height="9.5" rx="2" />
+                    <rect x="502.3" y="34" width="45.6" height="9.5" rx="2" />
+                    <rect x="552.3" y="34" width="45.6" height="9.5" rx="2" />
+                    <rect x="602.4" y="34" width="45.6" height="9.5" rx="2" />
+                    <rect x="652.5" y="34" width="45.6" height="9.5" rx="2" />
+                    <rect x="702.6" y="34" width="45.6" height="9.5" rx="2" />
+                    <rect x="752.7" y="34" width="45.6" height="9.5" rx="2" />
+                    <rect x="802.7" y="34" width="70.6" height="9.5" rx="2" />
+                    <rect x="125.5" y="46.5" width="83.4" height="10" rx="2" />
+                    <rect x="213.4" y="46.5" width="45.7" height="10" rx="2" />
+                    <rect x="263.6" y="46.5" width="45.7" height="10" rx="2" />
+                    <rect x="313.9" y="46.5" width="45.7" height="10" rx="2" />
+                    <rect x="364.1" y="46.5" width="45.7" height="10" rx="2" />
+                    <rect x="414.3" y="46.5" width="45.7" height="10" rx="2" />
+                    <rect x="464.6" y="46.5" width="45.7" height="10" rx="2" />
+                    <rect x="514.8" y="46.5" width="45.7" height="10" rx="2" />
+                    <rect x="565.1" y="46.5" width="45.7" height="10" rx="2" />
+                    <rect x="615.3" y="46.5" width="45.7" height="10" rx="2" />
+                    <rect x="665.5" y="46.5" width="45.7" height="10" rx="2" />
+                    <rect x="715.8" y="46.5" width="45.7" height="10" rx="2" />
+                    <rect x="766" y="46.5" width="108.5" height="10" rx="2" />
+                    <rect x="124.2" y="59.5" width="108.9" height="10.5" rx="2" />
+                    <rect x="237.7" y="59.5" width="45.9" height="10.5" rx="2" />
+                    <rect x="288.1" y="59.5" width="45.9" height="10.5" rx="2" />
+                    <rect x="338.5" y="59.5" width="45.9" height="10.5" rx="2" />
+                    <rect x="388.9" y="59.5" width="45.9" height="10.5" rx="2" />
+                    <rect x="439.3" y="59.5" width="45.9" height="10.5" rx="2" />
+                    <rect x="489.7" y="59.5" width="45.9" height="10.5" rx="2" />
+                    <rect x="540.1" y="59.5" width="45.9" height="10.5" rx="2" />
+                    <rect x="590.5" y="59.5" width="45.9" height="10.5" rx="2" />
+                    <rect x="640.9" y="59.5" width="45.9" height="10.5" rx="2" />
+                    <rect x="691.3" y="59.5" width="45.9" height="10.5" rx="2" />
+                    <rect x="741.7" y="59.5" width="134.1" height="10.5" rx="2" />
+                    <rect x="123" y="73" width="46" height="11" rx="2" />
+                    <rect x="173.5" y="73" width="46" height="11" rx="2" />
+                    <rect x="224.1" y="73" width="46" height="11" rx="2" />
+                    <rect x="274.7" y="73" width="58.7" height="11" rx="2" />
+                    <rect x="337.9" y="73" width="273.6" height="11" rx="2" />
+                    <rect x="616.1" y="73" width="58.7" height="11" rx="2" />
+                    <rect x="679.3" y="73" width="46" height="11" rx="2" />
+                    <rect x="729.9" y="73" width="46" height="11" rx="2" />
+                    <rect x="780.4" y="73" width="46" height="11" rx="2" />
+                    <rect x="831" y="73" width="46" height="11" rx="2" />
                   </g>
-                  <rect class="dv-trackpad" x="415" y="79" width="170" height="30" rx="4" />
-                  <path class="dv-notchline" d="M430 118 h140" />
+                  <rect class="dv-trackpad" x="343.9" y="93" width="312.1" height="28" rx="5" />
+                  <path class="dv-edge" d="M12.9 128 H987.1 L989.8 143 Q989.8 151 981.8 151 H18.2 Q10.2 151 10.2 143 Z" />
+                  <path class="dv-notchline" d="M430 139.5 h140" />
                 </svg>
               </div>
               <div class="dv-phone">
@@ -879,7 +938,6 @@
 
         <form class="form" id="contact-form" novalidate>
           <div class="form-head">
-            <span class="panel-dot"></span>
             <span>new-project</span>
           </div>
           <div class="field">
@@ -890,10 +948,6 @@
             <label for="f-email">Email</label>
             <input type="email" id="f-email" name="email" required autocomplete="email"
               placeholder="you@example.com" />
-          </div>
-          <div class="field">
-            <label for="f-site">Website (if you have one)</label>
-            <input type="url" id="f-site" name="website" inputmode="url" placeholder="https://" />
           </div>
           <div class="field">
             <label for="f-message">Project</label>
@@ -925,7 +979,6 @@
           <span class="logo-type"><strong>El Yousfi Mohamed</strong></span>
         </a>
         <p>&copy; <span id="year">2026</span> All rights reserved.</p>
-        <p>Hand-coded with HTML, CSS &amp; JavaScript.</p>
       </div>
     </footer>
 
